@@ -41,7 +41,7 @@ app.models.Project.findById({...}).then((project) => {
 ```
 or
 ```javascript
-app.models.Project.findById({...},function(err,project) => {}
+app.models.Project.findById({...},function(err,project) => {})
 
 
 ```
