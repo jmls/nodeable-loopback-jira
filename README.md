@@ -63,8 +63,7 @@ app.models.JiraProject.findById(token: *your_jwt_here*,...}).then((project) => {
 ```
 or
 ```javascript
-app.models.JiraProject.findById(token: *your_jwt_here*,...},function(err,project) => {}
-
+app.models.JiraProject.findById(token: *your_jwt_here*,...},function(err,project) => {})
 ```
 
 By default, all Jira models are prefixed with `Jira` to avoid any conflict with existing models. If you want to change this prefix, change the `prefix` setting in the config file
