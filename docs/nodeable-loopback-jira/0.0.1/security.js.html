@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: security.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: security.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const debug = require('debug')('loopback:connector:jira.security');
+const _secret = Symbol('secret');
+const crypto = require("crypto-extra");
+const nJwt = require('njwt');
+/**
+ * Represents a security client for the Jira Connector
+ *
+ * @constructor Security
+ * @property {ISecurity} settings
+ * @property {ISecurity.secret} secret to use
+ */
+class Security {
+    constructor(settings) {
+        /**
+         * decrypt the supplied data using an optional secret
+         * @param {string} data The data to be encrypted
+         * @param {string} secret The secret to use (defaults to class secret)
+         * @return {string} the decrypted data
+         */
+        this.decrypt = (data, secret = this[_secret]) => {
+            return crypto.decrypt(data, secret);
+        };
+        /**
+         * encrypt the supplied data using an optional secret
+         * @param {string} data The data to be encrypted
+         * @param {string} secret The secret to use (defaults to class secret)
+         * @return {string} the encrypted data
+         */
+        this.encrypt = (data, secret = this[_secret]) => {
+            return crypto.encrypt(data, secret);
+        };
+        /**
+         * generate a JWT using data and an optional secret
+         * @param {*} data The data to be stored in the JWT
+         * @param {string} secret The secret to use (defaults to class secret)
+         * @return {string} the compacted jwt
+         */
+        this.generateToken = (data, secret = this[_secret]) => {
+            let jwt = nJwt.create(data, secret);
+            return jwt.compact();
+        };
+        /**
+         * get the decrypted sessionid from a token
+         * @param {string} token The token to store
+         * @param {string} secret The secret to use (defaults to class secret)
+         * @return {string} the auth string
+         */
+        this.getSessionId = (token, secret = this[_secret]) => {
+            let result = this.validateToken(token, secret);
+            if (!result) {
+                throw new Error("invalid token");
+            }
+            if (!result || !result.sessionId) {
+                throw new Error("invalid sessionId");
+            }
+            return this.decrypt(result.sessionId, secret);
+        };
+        /**
+         * get a previouly stored token
+         * @return {string} the stored jwt
+         */
+        this.getToken = () => {
+            return this.storedToken;
+        };
+        /**
+         * remove a default token
+         * @return {boolean} result true if a stored token was removed, false if there was no token to remove
+         */
+        this.removeToken = () => {
+            if (!this.storedToken) {
+                return false;
+            }
+            delete this.storedToken;
+            return true;
+        };
+        /**
+         * set a default token
+         * only jwt tokens are allowed
+         * only tokens sealed with the same secret as the parameter or default key are allowed
+         * @param {string} token The token to store
+         * @return {string} the stored jwt
+         */
+        this.setToken = (token, secret = this[_secret]) => {
+            debug("setToken");
+            if (!this.validateToken(token, secret)) {
+                debug("token not validated");
+                return;
+            }
+            debug("token stored");
+            this.storedToken = token;
+        };
+        /**
+         * validate the supplied JWT using an optional secret
+         * @param {*} data The JWT to be validated
+         * @param {string} secret The secret to use (defaults to class secret)
+         * @return {*} the jwt.body property
+         */
+        this.validateToken = (data, secret = this[_secret]) => {
+            try {
+                return nJwt.verify(data, secret).body;
+            }
+            catch (e) {
+                return null;
+            }
+        };
+        // this[_secret] = settings.secret || crypto.generateKey();
+        this[_secret] = "abc123";
+    }
+}
+exports.Security = Security;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 01 2017 11:42:50 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

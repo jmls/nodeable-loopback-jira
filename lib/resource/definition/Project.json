@@ -1,0 +1,16 @@
+{
+    "methods": {
+        "create": {
+             "rules": {
+                "key": ["required","between:2,10","isUpperCase"],
+                "name": ["required"]
+            }
+        },
+
+        "findById": {
+            "rules": {
+                "projectIdOrKey": ["required"]
+            }
+        }
+    }
+}

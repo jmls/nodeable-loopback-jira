@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resource/Permissions.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resource/Permissions.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const baseResource_1 = require('./baseResource');
+/**
+ * Permissions Provide permission information for the current user.
+ *
+ * @constructor Permissions
+ * @property {IConnector} connector the jira connector instance
+ */
+class Permissions extends baseResource_1.baseResource {
+    constructor(connector, Model, settings) {
+        super(connector, Model, settings);
+        /**
+         * Returns all permissions that are present in the JIRA instance - Global, Project and the global ones added by plugins
+         *
+         * @method find
+         * @memberOf Permissions#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.find = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "token": args[0]
+            };
+            return this.makeRequest('find', 'GET', 'rest/api/2/permissions', options, callback);
+        };
+        /**
+         * Returns all permissions in the system and whether the currently logged in user has them. You can optionally provide a specific context to get permissions for
+         * (projectKey OR projectId OR issueKey OR issueId)
+         *
+         *  When no context supplied the project related permissions will return true if the user has that permission in ANY project
+         *  If a project context is provided, project related permissions will return true if the user has the permissions in the specified project.
+         * For permissions that are determined using issue data (e.g Current Assignee), true will be returned if the user meets the permission criteria in ANY issue in that project
+         *  If an issue context is provided, it will return whether or not the user has each permission in that specific issue
+         *
+         *
+         * NB: The above means that for issue-level permissions (EDIT_ISSUE for example), hasPermission may be true when no context is provided, or when a project context is provided,
+         * but may be false for any given (or all) issues. This would occur (for example) if Reporters were given the EDIT_ISSUE permission. This is because
+         * any user could be a reporter, except in the context of a concrete issue, where the reporter is known.
+         *
+         * Global permissions will still be returned for all scopes.
+         *
+         * Prior to version 6.4 this service returned project permissions with keys corresponding to com.atlassian.jira.security.Permissions.Permission constants.
+         * Since 6.4 those keys are considered deprecated and this service returns system project permission keys corresponding to constants defined in com.atlassian.jira.permission.ProjectPermissions.
+         * Permissions with legacy keys are still also returned for backwards compatibility, they are marked with an attribute deprecatedKey=true.
+         * The attribute is missing for project permissions with the current keys.
+         * - key of project to scope returned permissions for.- id of project to scope returned permissions for.- key of the issue to scope returned permissions for.- id of the issue to scope returned permissions for.
+         *
+         * @method myPermissions
+         * @memberOf Permissions#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.projectKey projectKey - key of project to scope returned permissions for.
+         * @param {string} options.projectId projectId - id of project to scope returned permissions for.
+         * @param {string} options.issueKey issueKey - key of the issue to scope returned permissions for.
+         * @param {string} options.issueId issueId - id of the issue to scope returned permissions for.
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.myPermissions = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "projectKey": args[0],
+                "projectId": args[1],
+                "issueKey": args[2],
+                "issueId": args[3],
+                "token": args[4]
+            };
+            return this.makeRequest('myPermissions', 'GET', 'rest/api/2/mypermissions', options, callback);
+        };
+        this.methods = [];
+        this.register();
+    }
+}
+exports.Permissions = Permissions;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 01 2017 11:42:50 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

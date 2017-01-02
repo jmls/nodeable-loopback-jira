@@ -1,0 +1,44 @@
+import {baseResource} from './baseResource';
+
+/**
+ * {{name}} {{description}}
+ *
+ * @constructor {{name}}
+ * @property {IConnector} connector the jira connector instance
+ */
+
+export class {{name}} extends baseResource {
+
+    constructor (connector:IConnector,Model:any,settings:any) {
+        super(connector,Model,settings);
+        this.methods = [{% for method in methods -%}'{{method.name}}',{% endfor %}];
+        this.register();
+    }
+
+    {% for method in methodArray|sort(attribute="name") %}
+    /**
+     * {{method.details | safe }}
+     *
+     * @method {{method.name}}
+     * @memberOf {{name}}#
+     * @param {Object} options An object containing options to pass to the Jira API.
+     {%- for item in method.allParams %}
+     * @param {string} {% if item.required %}[{% endif %}options.{{item.name}} {%- if item.required -%}]{% endif %} {{item.name}}{% if item.rules %} <{{item.rules}}>{% endif %} {{item.description | safe}}
+     {%- endfor %}
+     * @param [callback] if supplied, called with result of api call
+     * @return {Promise.<any>} result of api call
+     */
+
+    {{method.name}} = (...args : any[]):Promise<any> => {
+        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+
+        let options = ((typeof args[0]) === 'object') ? args[0] : {
+            {% for item in method.params %} "{{item.name}}": args[{{loop.index0}}]{% if loop.last -%}{% else %},{% endif %}
+            {% endfor %}
+        };
+
+        return this.makeRequest('{{method.name}}','{{method.verb}}','{{method.url}}',options,callback)
+    };
+    {% endfor %}
+
+}

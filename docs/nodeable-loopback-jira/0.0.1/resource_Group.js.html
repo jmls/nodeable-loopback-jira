@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resource/Group.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resource/Group.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const baseResource_1 = require('./baseResource');
+/**
+ * Group
+ *
+ * @constructor Group
+ * @property {IConnector} connector the jira connector instance
+ */
+class Group extends baseResource_1.baseResource {
+    constructor(connector, Model, settings) {
+        super(connector, Model, settings);
+        /**
+         * Adds given user to a group.
+         *
+         * Returns the current state of the group.A name of requested group.
+         *
+         * @method addUserToGroup
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.groupname groupname A name of requested group.
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.addUserToGroup = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "groupname": args[0],
+                "token": args[1]
+            };
+            return this.makeRequest('addUserToGroup', 'POST', 'rest/api/2/group/user', options, callback);
+        };
+        /**
+         * Creates a group by given group parameter
+         *
+         * Returns REST representation for the requested group.
+         *
+         * @method create
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.name name
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.create = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "data": args[0]
+            };
+            return this.makeRequest('create', 'POST', 'rest/api/2/group', options, callback);
+        };
+        /**
+         * Deletes a group by given group parameter.
+         *
+         * Returns no content(mandatory) The name of the group to delete.If you delete a group and content is restricted to that group, the content will be hidden from all users.
+         * To prevent this, use this parameter to specify a different group to transfer the restrictions (comments and worklogs only) to.
+         *
+         * @method deleteById
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.groupname groupname (mandatory) The name of the group to delete.
+         * @param {string} options.swapGroup swapGroup If you delete a group and content is restricted to that group, the content will be hidden from all users.
+     To prevent this, use this parameter to specify a different group to transfer the restrictions (comments and worklogs only) to.
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.deleteById = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "groupname": args[0],
+                "swapGroup": args[1],
+                "token": args[2]
+            };
+            return this.makeRequest('deleteById', 'DELETE', 'rest/api/2/group', options, callback);
+        };
+        /**
+         * Returns REST representation for the requested group. Allows to get list of active users belonging to the
+         * specified group and its subgroups if "users" expand option is provided. You can page through users list by using
+         * indexes in expand param. For example to get users from index 10 to index 15 use "users[10:15]" expand value. This
+         * will return 6 users (if there are at least 16 users in this group). Indexes are 0-based and inclusive.
+         *
+         * This resource is deprecated, please use group/member API instead.A name of requested group.List of fields to expand. Currently only available expand is "users".
+         *
+         * @method findById
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.groupname groupname A name of requested group.
+         * @param {string} options.expand expand List of fields to expand. Currently only available expand is "users".
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.findById = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "groupname": args[0],
+                "expand": args[1],
+                "token": args[2]
+            };
+            return this.makeRequest('findById', 'GET', 'rest/api/2/group', options, callback);
+        };
+        /**
+         * This resource returns a paginated list of users who are members of the specified group and its subgroups.
+         * Users in the page are ordered by user names. User of this resource is required to have sysadmin or admin permissions.a name of the group for which members will be returned.Default: falseinactive users will be included in the response if set to true.Default: 0the index of the first user in group to return (0 based).Default: 50the maximum number of users to return (max 50).
+         *
+         * @method getUsersFromGroup
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.groupname groupname a name of the group for which members will be returned.
+         * @param {string} options.includeInactiveUsers includeInactiveUsers Default: falseinactive users will be included in the response if set to true.
+         * @param {string} options.startAt startAt Default: 0the index of the first user in group to return (0 based).
+         * @param {string} options.maxResults maxResults Default: 50the maximum number of users to return (max 50).
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.getUsersFromGroup = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "groupname": args[0],
+                "includeInactiveUsers": args[1],
+                "startAt": args[2],
+                "maxResults": args[3],
+                "token": args[4]
+            };
+            return this.makeRequest('getUsersFromGroup', 'GET', 'rest/api/2/group/member', options, callback);
+        };
+        /**
+         * Removes given user from a group.
+         *
+         * Returns no contentA name of requested group.User to remove from a group
+         *
+         * @method removeUserFromGroup
+         * @memberOf Group#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.groupname groupname A name of requested group.
+         * @param {string} options.username username User to remove from a group
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.removeUserFromGroup = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "groupname": args[0],
+                "username": args[1],
+                "token": args[2]
+            };
+            return this.makeRequest('removeUserFromGroup', 'DELETE', 'rest/api/2/group/user', options, callback);
+        };
+        this.methods = [];
+        this.register();
+    }
+}
+exports.Group = Group;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 01 2017 11:42:50 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

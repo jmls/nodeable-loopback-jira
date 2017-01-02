@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resource/Search.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resource/Search.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const baseResource_1 = require('./baseResource');
+/**
+ * Search Resource for searches.
+ *
+ * @constructor Search
+ * @property {IConnector} connector the jira connector instance
+ */
+class Search extends baseResource_1.baseResource {
+    constructor(connector, Model, settings) {
+        super(connector, Model, settings);
+        /**
+         * Searches for issues using JQL.
+         *
+         * Sorting
+         * the jql parameter is a full JQL
+         * expression, and includes an ORDER BY clause.
+         *
+         * The fields param (which can be specified multiple times) gives a comma-separated list of fields
+         * to include in the response. This can be used to retrieve a subset of fields.
+         * A particular field can be excluded by prefixing it with a minus.
+         *
+         * By default, only navigable (*navigable) fields are returned in this search resource. Note: the default is different
+         * in the get-issue resource -- the default there all fields (*all).
+         *
+         * *all - include all fields
+         * *navigable - include just navigable fields
+         * summary,comment - include just the summary and comments
+         * -description - include navigable fields except the description (the default is *navigable for search)
+         * *all,-comment - include everything except comments
+         *
+         *
+         * GET vs POST:
+         * If the JQL query is too large to be encoded as a query param you should instead
+         * POST to this resource.
+         *
+         * Expanding Issues in the Search Result:
+         * It is possible to expand the issues returned by directly specifying the expansion on the expand parameter passed
+         * in to this resources.
+         *
+         * For instance, to expand the "changelog" for all the issues on the search result, it is neccesary to
+         * specify "changelog" as one of the values to expand.
+         * a JQL query stringthe index of the first issue to return (0-based)the maximum number of issues to return (defaults to 50). The maximum allowable value is
+         *                      dictated by the JIRA property 'jira.search.views.default.max'. If you specify a value that is higher than this
+         *                      number, your search results will be truncated.Default: truewhether to validate the JQL querythe list of fields to return for each issue. By default, all navigable fields are returned.A comma-separated list of the parameters to expand.
+         *
+         * @method search
+         * @memberOf Search#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.jql jql a JQL query string
+         * @param {string} options.startAt startAt the index of the first issue to return (0-based)
+         * @param {string} options.maxResults maxResults the maximum number of issues to return (defaults to 50). The maximum allowable value is
+                          dictated by the JIRA property 'jira.search.views.default.max'. If you specify a value that is higher than this
+                          number, your search results will be truncated.
+         * @param {string} options.validateQuery validateQuery Default: truewhether to validate the JQL query
+         * @param {string} options.fields fields the list of fields to return for each issue. By default, all navigable fields are returned.
+         * @param {string} options.expand expand A comma-separated list of the parameters to expand.
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.search = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "jql": args[0],
+                "startAt": args[1],
+                "maxResults": args[2],
+                "validateQuery": args[3],
+                "fields": args[4],
+                "expand": args[5],
+                "token": args[6]
+            };
+            return this.makeRequest('search', 'GET', 'rest/api/2/search', options, callback);
+        };
+        /**
+         * Performs a search using JQL.
+         *
+         * @method searchUsingSearchRequest
+         * @memberOf Search#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.jql jql
+         * @param {string} options.startAt startAt
+         * @param {string} options.maxResults maxResults
+         * @param {string} options.fields fields
+         * @param {string} options.validateQuery validateQuery
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.searchUsingSearchRequest = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "data": args[0]
+            };
+            return this.makeRequest('searchUsingSearchRequest', 'POST', 'rest/api/2/search', options, callback);
+        };
+        this.methods = [];
+        this.register();
+    }
+}
+exports.Search = Search;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 01 2017 11:42:50 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

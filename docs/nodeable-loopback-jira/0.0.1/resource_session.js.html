@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resource/session.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resource/session.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const baseResource_1 = require("./baseResource");
+/**
+ * Represents a session client for the Jira Connector
+ *
+ * @constructor Session
+ * @param settings The information needed to setup the resource
+ * @param {string} settings.name The name of jira model.
+ * @param {*} settings.request The request function to use.
+ * @param {jiraApi} settings.jiraApi The jiraApi library to use.
+ */
+class session extends baseResource_1.baseResource {
+    constructor(connector, definition) {
+        super(connector, definition);
+        /**
+         * login to jira and create a new session
+         * @param {string} username The username to login with
+         * @param {string} password The password of the username
+         * @return {Promise} Resolved with user session or rejected with error
+         */
+        this.login = (username, password) => {
+            return new Promise((resolve, reject) => {
+                this.jiraApi.auth.login({ username, password }).then((result) => {
+                    result.data.session.token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64');
+                    return resolve(result);
+                }).catch((e) => {
+                    return reject(e.message);
+                });
+            });
+        };
+    }
+}
+exports.session = session;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="project.html">project</a></li><li><a href="Project_.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="projectCategory_.html">projectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="user_.html">user</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sat Dec 31 2016 12:43:01 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

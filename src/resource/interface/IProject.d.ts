@@ -1,0 +1,3 @@
+interface IProject extends IResource {
+
+}

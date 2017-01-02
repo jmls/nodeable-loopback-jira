@@ -1,0 +1,16 @@
+{
+    "keyField": "name",
+
+    "methods": {
+
+        "login": {
+            "path": "/login",
+            "description": "login and get a token"
+        },
+
+        "logout": {
+            "path": "/logout",
+            "description": "logout"
+        }
+    }
+}

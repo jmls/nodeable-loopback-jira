@@ -1,0 +1,9 @@
+{
+    "public": false,
+
+    "methods": {
+        "validate": {
+            "tokenRequired": false
+        }
+    }
+}

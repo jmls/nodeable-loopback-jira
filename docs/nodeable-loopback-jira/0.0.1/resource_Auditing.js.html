@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: resource/Auditing.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: resource/Auditing.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+const baseResource_1 = require('./baseResource');
+/**
+ * Auditing Resource representing the auditing records
+ *
+ * @constructor Auditing
+ * @property {IConnector} connector the jira connector instance
+ */
+class Auditing extends baseResource_1.baseResource {
+    constructor(connector, Model, settings) {
+        super(connector, Model, settings);
+        /**
+         * Store a record in Audit Log
+         *
+         * @method addRecord
+         * @memberOf Auditing#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.id id
+         * @param {string} options.summary summary
+         * @param {string} options.remoteAddress remoteAddress
+         * @param {string} options.authorKey authorKey
+         * @param {string} options.created created
+         * @param {string} options.category category
+         * @param {string} options.eventSource eventSource
+         * @param {string} options.description description
+         * @param {string} options.objectItem objectItem
+         * @param {string} options.changedValues changedValues
+         * @param {string} options.associatedItems associatedItems
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.addRecord = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "data": args[0]
+            };
+            return this.makeRequest('addRecord', 'POST', 'rest/api/2/auditing/record', options, callback);
+        };
+        /**
+         * Returns auditing records filtered using provided parameters- the number of record from which search starts- maximum number of returned results (if is limit is  1000, it will be set do default value: 1000)- text query; each record that will be returned must contain the provided text in one of its fields- timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty
+         *               only records that where created in the same moment or after the 'from' timestamp will be provided in response- timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty
+         *               only records that where created in the same moment or earlier than the 'to' timestamp will be provided in response
+         *
+         * @method getRecords
+         * @memberOf Auditing#
+         * @param {Object} options An object containing options to pass to the Jira API.
+         * @param {string} options.offset offset - the number of record from which search starts
+         * @param {string} options.limit limit - maximum number of returned results (if is limit is  1000, it will be set do default value: 1000)
+         * @param {string} options.filter filter - text query; each record that will be returned must contain the provided text in one of its fields
+         * @param {string} options.from from - timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty
+                   only records that where created in the same moment or after the 'from' timestamp will be provided in response
+         * @param {string} options.to to - timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty
+                   only records that where created in the same moment or earlier than the 'to' timestamp will be provided in response
+         * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
+         * @param [callback] if supplied, called with result of api call
+         * @return {Promise.&lt;any>} result of api call
+         */
+        this.getRecords = (...args) => {
+            let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
+            let options = ((typeof args[0]) === 'object') ? args[0] : {
+                "offset": args[0],
+                "limit": args[1],
+                "filter": args[2],
+                "from": args[3],
+                "to": args[4],
+                "token": args[5]
+            };
+            return this.makeRequest('getRecords', 'GET', 'rest/api/2/auditing/record', options, callback);
+        };
+        this.methods = [];
+        this.register();
+    }
+}
+exports.Auditing = Auditing;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ApplicationProperties.html">ApplicationProperties</a></li><li><a href="Applicationrole.html">Applicationrole</a></li><li><a href="Attachment.html">Attachment</a></li><li><a href="Attachments.html">Attachments</a></li><li><a href="Auditing.html">Auditing</a></li><li><a href="Autocompletedata.html">Autocompletedata</a></li><li><a href="Avatar.html">Avatar</a></li><li><a href="baseResource.html">baseResource</a></li><li><a href="Component.html">Component</a></li><li><a href="Configuration.html">Configuration</a></li><li><a href="CustomFieldOption.html">CustomFieldOption</a></li><li><a href="Dashboard.html">Dashboard</a></li><li><a href="Field.html">Field</a></li><li><a href="Filter.html">Filter</a></li><li><a href="Group.html">Group</a></li><li><a href="Groups.html">Groups</a></li><li><a href="Groupuserpicker.html">Groupuserpicker</a></li><li><a href="Issue.html">Issue</a></li><li><a href="IssueLink.html">IssueLink</a></li><li><a href="IssueLinkType.html">IssueLinkType</a></li><li><a href="Issuesecuritylevelscheme.html">Issuesecuritylevelscheme</a></li><li><a href="Issuesecurityschemes.html">Issuesecurityschemes</a></li><li><a href="Issuetype.html">Issuetype</a></li><li><a href="LicenseValidator.html">LicenseValidator</a></li><li><a href="module.exports.html">exports</a></li><li><a href="Mypreferences.html">Mypreferences</a></li><li><a href="Myself.html">Myself</a></li><li><a href="Notificationscheme.html">Notificationscheme</a></li><li><a href="Password.html">Password</a></li><li><a href="Permissions.html">Permissions</a></li><li><a href="Permissionscheme.html">Permissionscheme</a></li><li><a href="Priority.html">Priority</a></li><li><a href="Project.html">Project</a></li><li><a href="ProjectCategory.html">ProjectCategory</a></li><li><a href="Projectvalidate.html">Projectvalidate</a></li><li><a href="Properties.html">Properties</a></li><li><a href="Reindex.html">Reindex</a></li><li><a href="Request.html">Request</a></li><li><a href="Resolution.html">Resolution</a></li><li><a href="Role.html">Role</a></li><li><a href="Screens.html">Screens</a></li><li><a href="Search.html">Search</a></li><li><a href="Security.html">Security</a></li><li><a href="Securitylevel.html">Securitylevel</a></li><li><a href="ServerInfo.html">ServerInfo</a></li><li><a href="Session.html">Session</a></li><li><a href="Settings.html">Settings</a></li><li><a href="Status.html">Status</a></li><li><a href="Statuscategory.html">Statuscategory</a></li><li><a href="Subtask.html">Subtask</a></li><li><a href="Type.html">Type</a></li><li><a href="Universal_avatar.html">Universal_avatar</a></li><li><a href="Upgrade.html">Upgrade</a></li><li><a href="User.html">User</a></li><li><a href="Validator.html">Validator</a></li><li><a href="Version.html">Version</a></li><li><a href="Websudo.html">Websudo</a></li><li><a href="Workflow.html">Workflow</a></li><li><a href="Workflowscheme.html">Workflowscheme</a></li><li><a href="Worklog.html">Worklog</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Sun Jan 01 2017 11:42:50 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
