@@ -1,6 +1,6 @@
 {
   "name": "nodeable-loopback-jira",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Connect Loopback to the Jira API",
   "main": "index.js",
   "directories": {
