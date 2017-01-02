@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jmls/loopback-connector-jira.git"
+    "url": "git+https://github.com/nodeableio/nodeable-loopback-jira.git
   },
   "keywords": [
     "loopback",
@@ -25,9 +25,9 @@
   "author": "Julian Lyndon-Smith",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jmls/loopback-connector-jira/issues"
+    "url": "https://github.com/nodeableio/nodeable-loopback-jira.git/issues"
   },
-  "homepage": "https://github.com/jmls/loopback-connector-jira#readme",
+  "homepage": "https://github.com/nodeableio/nodeable-loopback-jira.git",
   "dependencies": {
     "@types/request": "0.0.36",
     "change-case": "^3.0.0",
