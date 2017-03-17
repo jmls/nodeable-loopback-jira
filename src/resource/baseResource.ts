@@ -5,6 +5,7 @@ const debug = require('debug')('loopback:connector:jira.resource.baseResource');
 const _ = require('lodash');
 const UrlPattern = require('url-pattern');
 const api = require(`./definition/api`);
+const path = require('path');
 
 function getToken(ctx) {
     let req = ctx.req;
@@ -52,14 +53,17 @@ export class baseResource implements IResource {
      * @return {Object} the json data in the file (if it exists) or an empty object {}
      */
 
-     static loadCustom = (fileName:string) => {
+     static loadCustom = (file:string) => {
+
          let override = {
              methods: {}
          };
 
-         if (!fileName) {
+         if (!file) {
              return {};
          }
+
+         let fileName = path.resolve(file);
 
         // try to load the override definitions
 
@@ -116,8 +120,6 @@ export class baseResource implements IResource {
 
         // default the model visibility to true
 
-        definition.public = ('public' in definition) ? definition.public : true;
-
         Object.keys(definition.methods).forEach((key) => {
             let method = definition.methods[key];
 
@@ -170,6 +172,9 @@ export class baseResource implements IResource {
         this.jiraModelName = this.model.settings.jiraModelName;
 
         this.definition = baseResource.loadDefinition(this.jiraModelName,this.settings.customFolder);
+
+        this.definition.public = ('public' in this.definition) ? this.definition.public : this.settings.public || false;
+
         this.connector = connector;
     }
 
