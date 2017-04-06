@@ -16,8 +16,7 @@ export class Security implements ISecurity {
     private storedToken;
 
     constructor (settings:any) {
-        // this[_secret] = settings.secret || crypto.generateKey();
-        this[_secret] = "abc123";
+        this[_secret] = settings.secret || crypto.generateKey();
     }
 
     /**
@@ -69,11 +68,11 @@ export class Security implements ISecurity {
             throw new Error("invalid token");
         }
 
-        if (!result || !result.sessionId) {
+        if (!result || !result.session.sessionId) {
             throw new Error("invalid sessionId");
         }
 
-        return this.decrypt(result.sessionId,secret);
+        return this.decrypt(result.session.sessionId,secret);
     }
 
     /**

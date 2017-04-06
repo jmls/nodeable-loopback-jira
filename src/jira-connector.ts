@@ -74,19 +74,44 @@ module.exports = class JiraConnector implements IConnector {
             password: args[1]
         };
 
+        let sessionData;
+
         return new Promise((resolve,reject) => {
-            this.makeRequest({
+            return this.makeRequest({
                 method: 'POST',
                 path: 'rest/auth/1/session',
                 ignoreAuth: true,
                 body: options
             }).then((result) => {
-                result.session.sessionId = this.security.encrypt(Buffer.from(`${options.username}:${options.password}`, 'utf8').toString('base64'))
-                result.session.jwt = this.security.generateToken(result.session);
-                delete result.session.sessionId;
+                sessionData = result;
 
-                return callback ? callback(null,result) : resolve(result);
-            }).catch((e) => {
+                sessionData.session.sessionId = this.security.encrypt(Buffer.from(`${options.username}:${options.password}`, 'utf8').toString('base64'))
+
+                let token = this.security.generateToken(sessionData);
+
+                return this.resource.User.findById({
+                    username: options.username,
+                    token
+                });
+
+            }).then((user) => {
+                let tokenData = {
+                    key: user.key,
+                    name: user.name,
+                    emailAddress: user.emailAddress,
+                    displayName: user.displayName,
+                    applicationRoles: user.applicationRoles,
+                    session: sessionData.session
+                }
+
+                tokenData.session.jwt = this.security.generateToken(tokenData);
+
+                delete tokenData.session.sessionId;
+
+                return callback ? callback(null,tokenData) : resolve(tokenData);
+            })
+
+            .catch((e) => {
                 debug("unable to login",e);
                 return callback ? callback(e) : reject(e);
             })
@@ -134,17 +159,19 @@ module.exports = class JiraConnector implements IConnector {
 
         let sessionId;
 
-        try { sessionId = this.security.getSessionId(requestOpts.token); }
+        if (requestOptions.tokenRequired) {
+            try { sessionId = this.security.getSessionId(requestOpts.token); }
 
-        catch(e) {
-            if (requestOptions.tokenRequired) {
-                let err = {statusCode: 401, message:'no token supplied'};
-                return callback ? callback(err) : Promise.reject(err);
+            catch(e) {
+                if (requestOptions.tokenRequired) {
+                    let err = {statusCode: 401, message:'no token supplied'};
+                    return callback ? callback(err) : Promise.reject(err);
+                }
             }
-        }
 
-        if (sessionId) {
-            requestOpts.headers.Authorization = `Basic ${sessionId}`;
+            if (sessionId) {
+                requestOpts.headers.Authorization = `Basic ${sessionId}`;
+            }
         }
 
         return new Promise((resolve,reject) => {
