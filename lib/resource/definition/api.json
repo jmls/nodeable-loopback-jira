@@ -470,115 +470,142 @@
             }
         }
     },
-    "Properties": {
-        "name": "Properties",
+    "ClusterZdu": {
+        "name": "ClusterZdu",
+        "description": "",
+        "methods": {
+            "approveUpgrade": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Approve upgrade",
+                "name": "approveUpgrade",
+                "details": "",
+                "verb": "POST",
+                "url": "rest/api/2/cluster/zdu/approve",
+                "path": "/zdu/approve",
+                "responseType": null
+            },
+            "cancelUpgrade": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Cancel upgrade",
+                "name": "cancelUpgrade",
+                "details": "",
+                "verb": "POST",
+                "url": "rest/api/2/cluster/zdu/cancel",
+                "path": "/zdu/cancel",
+                "responseType": null
+            },
+            "setReadyToUpgrade": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Set ready to upgrade",
+                "name": "setReadyToUpgrade",
+                "details": "",
+                "verb": "POST",
+                "url": "rest/api/2/cluster/zdu/start",
+                "path": "/zdu/start",
+                "responseType": null
+            },
+            "getState": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get state",
+                "name": "getState",
+                "details": "",
+                "verb": "GET",
+                "url": "rest/api/2/cluster/zdu/state",
+                "path": "/zdu/state",
+                "responseType": null
+            }
+        }
+    },
+    "CommentProperties": {
+        "name": "CommentProperties",
         "description": "",
         "methods": {
             "getPropertiesKeys": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [
+                "urlParams": [
                     {
-                        "name": "userKey",
-                        "type": "string",
-                        "description": "key of the user whose properties are to be returned"
-                    },
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "username of the user whose properties are to be returned"
+                        "name": "commentId",
+                        "type": "string"
                     }
                 ],
+                "schema": [],
+                "queryParams": [],
                 "description": "Get properties keys",
                 "name": "getPropertiesKeys",
-                "details": "Returns the keys of all properties for the user identified by the key or by the id.key of the user whose properties are to be returnedusername of the user whose properties are to be returned",
+                "details": "Returns the keys of all properties for the comment identified by the key or by the id.",
                 "verb": "GET",
-                "url": "rest/api/2/user/properties",
-                "path": "/properties",
+                "url": "rest/api/2/comment/:commentId/properties",
+                "path": "/:commentId/properties",
                 "responseType": "object"
             },
             "deleteProperty": {
                 "urlParams": [
                     {
+                        "name": "commentId",
+                        "type": "string"
+                    },
+                    {
                         "name": "propertyKey",
                         "type": "string"
                     }
                 ],
                 "schema": [],
-                "queryParams": [
-                    {
-                        "name": "userKey",
-                        "type": "string",
-                        "description": "key of the user whose property is to be removed"
-                    },
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "username of the user whose property is to be removed"
-                    }
-                ],
+                "queryParams": [],
                 "description": "Delete property",
                 "name": "deleteProperty",
-                "details": "Removes the property from the user identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the user.key of the user whose property is to be removedusername of the user whose property is to be removed",
+                "details": "Removes the property from the comment identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the comment.",
                 "verb": "DELETE",
-                "url": "rest/api/2/user/properties/:propertyKey",
-                "path": "/properties/:propertyKey",
+                "url": "rest/api/2/comment/:commentId/properties/:propertyKey",
+                "path": "/:commentId/properties/:propertyKey",
                 "responseType": null
             },
             "setProperty": {
                 "urlParams": [
                     {
+                        "name": "commentId",
+                        "type": "string"
+                    },
+                    {
                         "name": "propertyKey",
                         "type": "string"
                     }
                 ],
                 "schema": [],
-                "queryParams": [
-                    {
-                        "name": "userKey",
-                        "type": "string",
-                        "description": "key of the user whose property is to be set"
-                    },
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "username of the user whose property is to be set"
-                    }
-                ],
+                "queryParams": [],
                 "description": "Set property",
                 "name": "setProperty",
-                "details": "Sets the value of the specified user's property.\n \n You can use this resource to store a custom data against the user identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the user.\n key of the user whose property is to be setusername of the user whose property is to be set",
+                "details": "Sets the value of the specified comment's property.\n \n You can use this resource to store a custom data against the comment identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the comment.\n ",
                 "verb": "PUT",
-                "url": "rest/api/2/user/properties/:propertyKey",
-                "path": "/properties/:propertyKey",
+                "url": "rest/api/2/comment/:commentId/properties/:propertyKey",
+                "path": "/:commentId/properties/:propertyKey",
                 "responseType": null
             },
             "getProperty": {
                 "urlParams": [
                     {
+                        "name": "commentId",
+                        "type": "string"
+                    },
+                    {
                         "name": "propertyKey",
                         "type": "string"
                     }
                 ],
                 "schema": [],
-                "queryParams": [
-                    {
-                        "name": "userKey",
-                        "type": "string",
-                        "description": "key of the user whose property is to be returned"
-                    },
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "username of the user whose property is to be returned"
-                    }
-                ],
+                "queryParams": [],
                 "description": "Get property",
                 "name": "getProperty",
-                "details": "Returns the value of the property with a given key from the user identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the user.key of the user whose property is to be returnedusername of the user whose property is to be returned",
+                "details": "Returns the value of the property with a given key from the comment identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the comment.",
                 "verb": "GET",
-                "url": "rest/api/2/user/properties/:propertyKey",
-                "path": "/properties/:propertyKey",
+                "url": "rest/api/2/comment/:commentId/properties/:propertyKey",
+                "path": "/:commentId/properties/:propertyKey",
                 "responseType": "object"
             }
         }
@@ -853,6 +880,108 @@
                 "verb": "GET",
                 "url": "rest/api/2/dashboard/:id",
                 "path": "/:id",
+                "responseType": "object"
+            }
+        }
+    },
+    "DashboardItemsProperties": {
+        "name": "DashboardItemsProperties",
+        "description": "",
+        "methods": {
+            "getPropertiesKeys": {
+                "urlParams": [
+                    {
+                        "name": "dashboardId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "itemId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get properties keys",
+                "name": "getPropertiesKeys",
+                "details": "Returns the keys of all properties for the dashboard item identified by the id.",
+                "verb": "GET",
+                "url": "rest/api/2/dashboard/:dashboardId/items/:itemId/properties",
+                "path": "/:dashboardId/items/:itemId/properties",
+                "responseType": "object"
+            },
+            "deleteProperty": {
+                "urlParams": [
+                    {
+                        "name": "dashboardId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "itemId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Delete property",
+                "name": "deleteProperty",
+                "details": "Removes the property from the dashboard item identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the dashboard item.",
+                "verb": "DELETE",
+                "url": "rest/api/2/dashboard/:dashboardId/items/:itemId/properties/:propertyKey",
+                "path": "/:dashboardId/items/:itemId/properties/:propertyKey",
+                "responseType": null
+            },
+            "setProperty": {
+                "urlParams": [
+                    {
+                        "name": "dashboardId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "itemId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Set property",
+                "name": "setProperty",
+                "details": "Sets the value of the specified dashboard item's property.\n \n You can use this resource to store a custom data against the dashboard item identified by the id.\n The user who stores the data is required to have permissions to administer the dashboard item.\n ",
+                "verb": "PUT",
+                "url": "rest/api/2/dashboard/:dashboardId/items/:itemId/properties/:propertyKey",
+                "path": "/:dashboardId/items/:itemId/properties/:propertyKey",
+                "responseType": null
+            },
+            "getProperty": {
+                "urlParams": [
+                    {
+                        "name": "dashboardId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "itemId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get property",
+                "name": "getProperty",
+                "details": "Returns the value of the property with a given key from the dashboard item identified by the id.\n The user who retrieves the property is required to have permissions to read the dashboard item.",
+                "verb": "GET",
+                "url": "rest/api/2/dashboard/:dashboardId/items/:itemId/properties/:propertyKey",
+                "path": "/:dashboardId/items/:itemId/properties/:propertyKey",
                 "responseType": "object"
             }
         }
@@ -2342,8 +2471,8 @@
             }
         }
     },
-    "Attachments": {
-        "name": "Attachments",
+    "IssueAttachments": {
+        "name": "IssueAttachments",
         "description": "Issue attachments",
         "methods": {
             "addAttachment": {
@@ -2365,8 +2494,94 @@
             }
         }
     },
-    "Subtask": {
-        "name": "Subtask",
+    "IssueProperties": {
+        "name": "IssueProperties",
+        "description": "",
+        "methods": {
+            "getPropertiesKeys": {
+                "urlParams": [
+                    {
+                        "name": "issueIdOrKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get properties keys",
+                "name": "getPropertiesKeys",
+                "details": "Returns the keys of all properties for the issue identified by the key or by the id.",
+                "verb": "GET",
+                "url": "rest/api/2/issue/:issueIdOrKey/properties",
+                "path": "/:issueIdOrKey/properties",
+                "responseType": "object"
+            },
+            "deleteProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Delete property",
+                "name": "deleteProperty",
+                "details": "Removes the property from the issue identified by the key or by the id. Ths user removing the property is required\n to have permissions to edit the issue.",
+                "verb": "DELETE",
+                "url": "rest/api/2/issue/:issueIdOrKey/properties/:propertyKey",
+                "path": "/:issueIdOrKey/properties/:propertyKey",
+                "responseType": null
+            },
+            "setProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Set property",
+                "name": "setProperty",
+                "details": "Sets the value of the specified issue's property.\n \n You can use this resource to store a custom data against the issue identified by the key or by the id. The user\n who stores the data is required to have permissions to edit the issue.\n ",
+                "verb": "PUT",
+                "url": "rest/api/2/issue/:issueIdOrKey/properties/:propertyKey",
+                "path": "/:issueIdOrKey/properties/:propertyKey",
+                "responseType": null
+            },
+            "getProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get property",
+                "name": "getProperty",
+                "details": "Returns the value of the property with a given key from the issue identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the issue.",
+                "verb": "GET",
+                "url": "rest/api/2/issue/:issueIdOrKey/properties/:propertyKey",
+                "path": "/:issueIdOrKey/properties/:propertyKey",
+                "responseType": "object"
+            }
+        }
+    },
+    "IssueSubtask": {
+        "name": "IssueSubtask",
         "description": "",
         "methods": {
             "getSubTasks": {
@@ -2545,6 +2760,23 @@
                 "path": "/",
                 "responseType": "object"
             },
+            "findById": {
+                "urlParams": [
+                    {
+                        "name": "issueLinkTypeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get issue link type",
+                "name": "findById",
+                "details": "Returns for a given issue link type id all information about this issue link type.",
+                "verb": "GET",
+                "url": "rest/api/2/issueLinkType/:issueLinkTypeId",
+                "path": "/:issueLinkTypeId",
+                "responseType": "object"
+            },
             "deleteById": {
                 "urlParams": [
                     {
@@ -2592,23 +2824,6 @@
                 "name": "update",
                 "details": "Update the specified issue link type.",
                 "verb": "PUT",
-                "url": "rest/api/2/issueLinkType/:issueLinkTypeId",
-                "path": "/:issueLinkTypeId",
-                "responseType": "object"
-            },
-            "findById": {
-                "urlParams": [
-                    {
-                        "name": "issueLinkTypeId",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [],
-                "description": "Get issue link type",
-                "name": "findById",
-                "details": "Returns for a given issue link type id all information about this issue link type.",
-                "verb": "GET",
                 "url": "rest/api/2/issueLinkType/:issueLinkTypeId",
                 "path": "/:issueLinkTypeId",
                 "responseType": "object"
@@ -2691,23 +2906,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "getIssueType": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [],
-                "description": "Get issue type",
-                "name": "getIssueType",
-                "details": "Returns a full representation of the issue type that has the given id.",
-                "verb": "GET",
-                "url": "rest/api/2/issuetype/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
             "deleteIssueType": {
                 "urlParams": [
                     {
@@ -2757,6 +2955,23 @@
                 "name": "updateIssueType",
                 "details": "Updates the specified issue type from a JSON representation.",
                 "verb": "PUT",
+                "url": "rest/api/2/issuetype/:id",
+                "path": "/:id",
+                "responseType": "object"
+            },
+            "getIssueType": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get issue type",
+                "name": "getIssueType",
+                "details": "Returns a full representation of the issue type that has the given id.",
+                "verb": "GET",
                 "url": "rest/api/2/issuetype/:id",
                 "path": "/:id",
                 "responseType": "object"
@@ -2863,8 +3078,94 @@
             }
         }
     },
-    "Autocompletedata": {
-        "name": "Autocompletedata",
+    "IssuetypeProperties": {
+        "name": "IssuetypeProperties",
+        "description": "This resource allows to store custom properties for issue types.",
+        "methods": {
+            "getPropertyKeys": {
+                "urlParams": [
+                    {
+                        "name": "issueTypeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get property keys",
+                "name": "getPropertyKeys",
+                "details": "Returns the keys of all properties for the issue type identified by the id.",
+                "verb": "GET",
+                "url": "rest/api/2/issuetype/:issueTypeId/properties",
+                "path": "/:issueTypeId/properties",
+                "responseType": "object"
+            },
+            "deleteProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueTypeId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Delete property",
+                "name": "deleteProperty",
+                "details": "Removes the property from the issue type identified by the id. Ths user removing the property is required\n to have permissions to edit the issue type.",
+                "verb": "DELETE",
+                "url": "rest/api/2/issuetype/:issueTypeId/properties/:propertyKey",
+                "path": "/:issueTypeId/properties/:propertyKey",
+                "responseType": null
+            },
+            "setProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueTypeId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Set property",
+                "name": "setProperty",
+                "details": "Sets the value of the specified issue type's property.\n \n You can use this resource to store a custom data against an issue type identified by the id. The user\n who stores the data is required to have permissions to edit an issue type.\n ",
+                "verb": "PUT",
+                "url": "rest/api/2/issuetype/:issueTypeId/properties/:propertyKey",
+                "path": "/:issueTypeId/properties/:propertyKey",
+                "responseType": null
+            },
+            "getProperty": {
+                "urlParams": [
+                    {
+                        "name": "issueTypeId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get property",
+                "name": "getProperty",
+                "details": "Returns the value of the property with a given key from the issue type identified by the id. The user who retrieves\n the property is required to have permissions to view the issue type.",
+                "verb": "GET",
+                "url": "rest/api/2/issuetype/:issueTypeId/properties/:propertyKey",
+                "path": "/:issueTypeId/properties/:propertyKey",
+                "responseType": "object"
+            }
+        }
+    },
+    "JqlAutocompletedata": {
+        "name": "JqlAutocompletedata",
         "description": "Resource for auto complete data for searches.",
         "methods": {
             "getAutoComplete": {
@@ -3074,12 +3375,40 @@
     },
     "Notificationscheme": {
         "name": "Notificationscheme",
-        "description": "Resource for associating notification schemes and projects.",
+        "description": "",
         "methods": {
+            "getNotificationSchemes": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "startAt",
+                        "type": "number",
+                        "description": "the index of the first notification scheme to return (0 based)."
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "number",
+                        "description": "the maximum number of notification schemes to return (max 50)."
+                    },
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Get notification schemes",
+                "name": "getNotificationSchemes",
+                "details": "Returns a paginated list of notification schemes. In order to access notification scheme, the calling user is\n required to have permissions to administer at least one project associated with the requested notification scheme. Each scheme contains\n a list of events and recipient configured to receive notifications for these events. Consumer should allow events without recipients to appear in response.\n The list is ordered by the scheme's name.\n Follow the documentation of /notificationscheme/{id} resource for all details about returned value.the index of the first notification scheme to return (0 based).the maximum number of notification schemes to return (max 50).",
+                "verb": "GET",
+                "url": "rest/api/2/notificationscheme",
+                "path": "/",
+                "responseType": "object"
+            },
             "getNotificationScheme": {
                 "urlParams": [
                     {
-                        "name": "projectKeyOrId",
+                        "name": "id",
                         "type": "string"
                     }
                 ],
@@ -3093,10 +3422,10 @@
                 ],
                 "description": "Get notification scheme",
                 "name": "getNotificationScheme",
-                "details": "Gets a notification scheme associated with the project.\n Follow the documentation of /notificationscheme/{id} resource for all details about returned value.",
+                "details": "Returns a full representation of the notification scheme for the given id. This resource will return a\n notification scheme containing a list of events and recipient configured to receive notifications for these events. Consumer\n should allow events without recipients to appear in response. User accessing\n the data is required to have permissions to administer at least one project associated with the requested notification scheme.\n \n Notification recipients can be:\n \n current assignee - the value of the notificationType is CurrentAssignee\n issue reporter - the value of the notificationType is Reporter\n current user - the value of the notificationType is CurrentUser\n project lead - the value of the notificationType is ProjectLead\n component lead - the value of the notificationType is ComponentLead\n all watchers - the value of the notification type is AllWatchers\n configured user - the value of the notification type is User. Parameter will contain key of the user. Information about the user will be provided\n if user expand parameter is used. \n configured group - the value of the notification type is Group. Parameter will contain name of the group. Information about the group will be provided\n if group expand parameter is used. \n configured email address - the value of the notification type is EmailAddress, additionally information about the email will be provided.\n users or users in groups in the configured custom fields - the value of the notification type is UserCustomField or GroupCustomField. Parameter\n will contain id of the custom field. Information about the field will be provided if field expand parameter is used. \n configured project role - the value of the notification type is ProjectRole. Parameter will contain project role id. Information about the project role\n will be provided if projectRole expand parameter is used. \n \n Please see the example for reference.\n ",
                 "verb": "GET",
-                "url": "rest/api/2/project/:projectKeyOrId/notificationscheme",
-                "path": "/:projectKeyOrId/notificationscheme",
+                "url": "rest/api/2/notificationscheme/:id",
+                "path": "/:id",
                 "responseType": "object"
             }
         }
@@ -3181,15 +3510,10 @@
     },
     "Permissionscheme": {
         "name": "Permissionscheme",
-        "description": "Resource for associating permission schemes and projects.",
+        "description": "",
         "methods": {
-            "assignPermissionScheme": {
-                "urlParams": [
-                    {
-                        "name": "projectKeyOrId",
-                        "type": "string"
-                    }
-                ],
+            "getPermissionSchemes": {
+                "urlParams": [],
                 "schema": [],
                 "queryParams": [
                     {
@@ -3198,18 +3522,36 @@
                         "description": ""
                     }
                 ],
-                "description": "Assign permission scheme",
-                "name": "assignPermissionScheme",
-                "details": "Assigns a permission scheme with a project.",
-                "verb": "PUT",
-                "url": "rest/api/2/project/:projectKeyOrId/permissionscheme",
-                "path": "/:projectKeyOrId/permissionscheme",
+                "description": "Get permission schemes",
+                "name": "getPermissionSchemes",
+                "details": "Returns a list of all permission schemes.\n \n By default only shortened beans are returned. If you want to include permissions of all the schemes,\n then specify the permissions expand parameter. Permissions will be included also if you specify\n any other expand parameter.\n ",
+                "verb": "GET",
+                "url": "rest/api/2/permissionscheme",
+                "path": "/",
                 "responseType": "object"
             },
-            "getAssignedPermissionScheme": {
+            "createPermissionScheme": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Create permission scheme",
+                "name": "createPermissionScheme",
+                "details": "Create a new permission scheme.\n This method can create schemes with a defined permission set, or without.",
+                "verb": "POST",
+                "url": "rest/api/2/permissionscheme",
+                "path": "/",
+                "responseType": "object"
+            },
+            "getPermissionScheme": {
                 "urlParams": [
                     {
-                        "name": "projectKeyOrId",
+                        "name": "schemeId",
                         "type": "string"
                     }
                 ],
@@ -3221,12 +3563,146 @@
                         "description": ""
                     }
                 ],
-                "description": "Get assigned permission scheme",
-                "name": "getAssignedPermissionScheme",
-                "details": "Gets a permission scheme assigned with a project.",
+                "description": "Get permission scheme",
+                "name": "getPermissionScheme",
+                "details": "Returns a permission scheme identified by the given id.",
                 "verb": "GET",
-                "url": "rest/api/2/project/:projectKeyOrId/permissionscheme",
-                "path": "/:projectKeyOrId/permissionscheme",
+                "url": "rest/api/2/permissionscheme/:schemeId",
+                "path": "/:schemeId",
+                "responseType": "object"
+            },
+            "deletePermissionScheme": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Delete permission scheme",
+                "name": "deletePermissionScheme",
+                "details": "Deletes a permission scheme identified by the given id.",
+                "verb": "DELETE",
+                "url": "rest/api/2/permissionscheme/:schemeId",
+                "path": "/:schemeId",
+                "responseType": null
+            },
+            "updatePermissionScheme": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Update permission scheme",
+                "name": "updatePermissionScheme",
+                "details": "Updates a permission scheme.\n \n If the permissions list is present then it will be set in the permission scheme, which basically means it will overwrite any permission grants that\n existed in the permission scheme. Sending an empty list will remove all permission grants from the permission scheme.\n \n To update just the name and description, do not send permissions list at all.\n \n To add or remove a single permission grant instead of updating the whole list at once use the {schemeId}/permission/ resource.\n ",
+                "verb": "PUT",
+                "url": "rest/api/2/permissionscheme/:schemeId",
+                "path": "/:schemeId",
+                "responseType": "object"
+            },
+            "getPermissionSchemeGrants": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Get permission scheme grants",
+                "name": "getPermissionSchemeGrants",
+                "details": "Returns all permission grants of the given permission scheme.",
+                "verb": "GET",
+                "url": "rest/api/2/permissionscheme/:schemeId/permission",
+                "path": "/:schemeId/permission",
+                "responseType": "object"
+            },
+            "createPermissionGrant": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Create permission grant",
+                "name": "createPermissionGrant",
+                "details": "Creates a permission grant in a permission scheme.",
+                "verb": "POST",
+                "url": "rest/api/2/permissionscheme/:schemeId/permission",
+                "path": "/:schemeId/permission",
+                "responseType": "object"
+            },
+            "deletePermissionSchemeEntity": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "permissionId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Delete permission scheme entity",
+                "name": "deletePermissionSchemeEntity",
+                "details": "Deletes a permission grant from a permission scheme.",
+                "verb": "DELETE",
+                "url": "rest/api/2/permissionscheme/:schemeId/permission/:permissionId",
+                "path": "/:schemeId/permission/:permissionId",
+                "responseType": null
+            },
+            "getPermissionSchemeGrant": {
+                "urlParams": [
+                    {
+                        "name": "schemeId",
+                        "type": "string"
+                    },
+                    {
+                        "name": "permissionId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Get permission scheme grant",
+                "name": "getPermissionSchemeGrant",
+                "details": "Returns a permission grant identified by the given id.",
+                "verb": "GET",
+                "url": "rest/api/2/permissionscheme/:schemeId/permission/:permissionId",
+                "path": "/:schemeId/permission/:permissionId",
                 "responseType": "object"
             }
         }
@@ -3706,210 +4182,217 @@
             }
         }
     },
-    "Role": {
-        "name": "Role",
+    "ProjectProperties": {
+        "name": "ProjectProperties",
         "description": "",
         "methods": {
-            "getProjectRoles": {
-                "urlParams": [],
+            "getPropertiesKeys": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    }
+                ],
                 "schema": [],
                 "queryParams": [],
-                "description": "Get project roles",
-                "name": "getProjectRoles",
-                "details": "Get all the ProjectRoles available in JIRA. Currently this list is global.",
+                "description": "Get properties keys",
+                "name": "getPropertiesKeys",
+                "details": "Returns the keys of all properties for the project identified by the key or by the id.",
                 "verb": "GET",
-                "url": "rest/api/2/role",
-                "path": "/",
+                "url": "rest/api/2/project/:projectIdOrKey/properties",
+                "path": "/:projectIdOrKey/properties",
                 "responseType": "object"
             },
-            "createProjectRole": {
-                "urlParams": [],
-                "schema": [
+            "deleteProperty": {
+                "urlParams": [
                     {
-                        "name": "description",
+                        "name": "projectIdOrKey",
                         "type": "string"
                     },
                     {
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "queryParams": [],
-                "description": "Create project role",
-                "name": "createProjectRole",
-                "details": "Creates a new ProjectRole to be available in JIRA.\n The created role does not have any default actors assigned.",
-                "verb": "POST",
-                "url": "rest/api/2/role",
-                "path": "/",
-                "responseType": "object"
-            },
-            "getProjectRolesById": {
-                "urlParams": [
-                    {
-                        "name": "id",
+                        "name": "propertyKey",
                         "type": "string"
                     }
                 ],
                 "schema": [],
                 "queryParams": [],
-                "description": "Get project roles by id",
-                "name": "getProjectRolesById",
-                "details": "Get a specific ProjectRole available in JIRA.",
-                "verb": "GET",
-                "url": "rest/api/2/role/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
-            "partialUpdateProjectRole": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [
-                    {
-                        "name": "description",
-                        "type": "string"
-                    },
-                    {
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "queryParams": [],
-                "description": "Partial update project role",
-                "name": "partialUpdateProjectRole",
-                "details": "Partially updates a roles name or description.",
-                "verb": "POST",
-                "url": "rest/api/2/role/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
-            "fullyUpdateProjectRole": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [
-                    {
-                        "name": "description",
-                        "type": "string"
-                    },
-                    {
-                        "name": "name",
-                        "type": "string"
-                    }
-                ],
-                "queryParams": [],
-                "description": "Fully update project role",
-                "name": "fullyUpdateProjectRole",
-                "details": "Fully updates a roles. Both name and description must be given.",
-                "verb": "PUT",
-                "url": "rest/api/2/role/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
-            "deleteProjectRole": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "swap",
-                        "type": "number",
-                        "description": "if given, removes a role even if it is used in scheme by replacing the role with the given one"
-                    }
-                ],
-                "description": "Delete project role",
-                "name": "deleteProjectRole",
-                "details": "Deletes a role. May return 403 in the futureif given, removes a role even if it is used in scheme by replacing the role with the given one",
+                "description": "Delete property",
+                "name": "deleteProperty",
+                "details": "Removes the property from the project identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the project.",
                 "verb": "DELETE",
-                "url": "rest/api/2/role/:id",
-                "path": "/:id",
+                "url": "rest/api/2/project/:projectIdOrKey/properties/:propertyKey",
+                "path": "/:projectIdOrKey/properties/:propertyKey",
                 "responseType": null
             },
-            "getProjectRoleActorsForRole": {
+            "setProperty": {
                 "urlParams": [
                     {
-                        "name": "id",
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
                         "type": "string"
                     }
                 ],
                 "schema": [],
                 "queryParams": [],
-                "description": "Get project role actors for role",
-                "name": "getProjectRoleActorsForRole",
-                "details": "Gets default actors for the given role.",
+                "description": "Set property",
+                "name": "setProperty",
+                "details": "Sets the value of the specified project's property.\n \n You can use this resource to store a custom data against the project identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the project.\n ",
+                "verb": "PUT",
+                "url": "rest/api/2/project/:projectIdOrKey/properties/:propertyKey",
+                "path": "/:projectIdOrKey/properties/:propertyKey",
+                "responseType": null
+            },
+            "getProperty": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get property",
+                "name": "getProperty",
+                "details": "Returns the value of the property with a given key from the project identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the project.",
                 "verb": "GET",
-                "url": "rest/api/2/role/:id/actors",
-                "path": "/:id/actors",
-                "responseType": "object"
-            },
-            "addProjectRoleActorsToRole": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [
-                    {
-                        "name": "user",
-                        "type": "array"
-                    },
-                    {
-                        "name": "group",
-                        "type": "array"
-                    }
-                ],
-                "queryParams": [],
-                "description": "Add project role actors to role",
-                "name": "addProjectRoleActorsToRole",
-                "details": "Adds default actors to the given role. The request data should contain a list of usernames or a list of groups to add.",
-                "verb": "POST",
-                "url": "rest/api/2/role/:id/actors",
-                "path": "/:id/actors",
-                "responseType": "object"
-            },
-            "deleteProjectRoleActorsFromRole": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "user",
-                        "type": "string",
-                        "description": "if given, removes an actor from given role"
-                    },
-                    {
-                        "name": "group",
-                        "type": "string",
-                        "description": "if given, removes an actor from given role"
-                    }
-                ],
-                "description": "Delete project role actors from role",
-                "name": "deleteProjectRoleActorsFromRole",
-                "details": "Removes default actor from the given role.if given, removes an actor from given roleif given, removes an actor from given role",
-                "verb": "DELETE",
-                "url": "rest/api/2/role/:id/actors",
-                "path": "/:id/actors",
+                "url": "rest/api/2/project/:projectIdOrKey/properties/:propertyKey",
+                "path": "/:projectIdOrKey/properties/:propertyKey",
                 "responseType": "object"
             }
         }
     },
-    "Issuesecuritylevelscheme": {
-        "name": "Issuesecuritylevelscheme",
+    "ProjectRole": {
+        "name": "ProjectRole",
+        "description": "",
+        "methods": {
+            "getProjectRoles": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get project roles",
+                "name": "getProjectRoles",
+                "details": "Returns all roles in the given project Id or key, with links to full details on each role.",
+                "verb": "GET",
+                "url": "rest/api/2/project/:projectIdOrKey/role",
+                "path": "/:projectIdOrKey/role",
+                "responseType": "object"
+            },
+            "findById": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get project role",
+                "name": "findById",
+                "details": "Returns the details for a given project role in a project.",
+                "verb": "GET",
+                "url": "rest/api/2/project/:projectIdOrKey/role/:id",
+                "path": "/:projectIdOrKey/role/:id",
+                "responseType": "object"
+            },
+            "setActors": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [
+                    {
+                        "name": "categorisedActors",
+                        "type": "object"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Set actors",
+                "name": "setActors",
+                "details": "Updates a project role to include the specified actors (users or groups).",
+                "verb": "PUT",
+                "url": "rest/api/2/project/:projectIdOrKey/role/:id",
+                "path": "/:projectIdOrKey/role/:id",
+                "responseType": "object"
+            },
+            "addActorUsers": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Add actor users",
+                "name": "addActorUsers",
+                "details": "Adds an actor (user or group) to a project role.",
+                "verb": "POST",
+                "url": "rest/api/2/project/:projectIdOrKey/role/:id",
+                "path": "/:projectIdOrKey/role/:id",
+                "responseType": "object"
+            },
+            "deleteActor": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "user",
+                        "type": "string",
+                        "description": "the username to remove from the project role"
+                    },
+                    {
+                        "name": "group",
+                        "type": "string",
+                        "description": "the groupname to remove from the project role"
+                    }
+                ],
+                "description": "Delete actor",
+                "name": "deleteActor",
+                "details": "Deletes actors (users or groups) from a project role.\n \n \n Delete a user from the role: /rest/api/2/project/{projectIdOrKey}/role/{roleId}?user={username}\n Delete a group from the role: /rest/api/2/project/{projectIdOrKey}/role/{roleId}?group={groupname}\n the username to remove from the project rolethe groupname to remove from the project role",
+                "verb": "DELETE",
+                "url": "rest/api/2/project/:projectIdOrKey/role/:id",
+                "path": "/:projectIdOrKey/role/:id",
+                "responseType": null
+            }
+        }
+    },
+    "ProjectIssuesecuritylevelscheme": {
+        "name": "ProjectIssuesecuritylevelscheme",
         "description": "Resource for associating permission schemes and projects.",
         "methods": {
             "getIssueSecurityScheme": {
@@ -3931,39 +4414,120 @@
             }
         }
     },
-    "Securitylevel": {
-        "name": "Securitylevel",
-        "description": "",
+    "ProjectNotificationscheme": {
+        "name": "ProjectNotificationscheme",
+        "description": "Resource for associating notification schemes and projects.",
         "methods": {
-            "getIssuesecuritylevel": {
+            "getNotificationScheme": {
                 "urlParams": [
                     {
-                        "name": "id",
+                        "name": "projectKeyOrId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Get notification scheme",
+                "name": "getNotificationScheme",
+                "details": "Gets a notification scheme associated with the project.\n Follow the documentation of /notificationscheme/{id} resource for all details about returned value.",
+                "verb": "GET",
+                "url": "rest/api/2/project/:projectKeyOrId/notificationscheme",
+                "path": "/:projectKeyOrId/notificationscheme",
+                "responseType": "object"
+            }
+        }
+    },
+    "ProjectPermissionscheme": {
+        "name": "ProjectPermissionscheme",
+        "description": "Resource for associating permission schemes and projects.",
+        "methods": {
+            "assignPermissionScheme": {
+                "urlParams": [
+                    {
+                        "name": "projectKeyOrId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Assign permission scheme",
+                "name": "assignPermissionScheme",
+                "details": "Assigns a permission scheme with a project.",
+                "verb": "PUT",
+                "url": "rest/api/2/project/:projectKeyOrId/permissionscheme",
+                "path": "/:projectKeyOrId/permissionscheme",
+                "responseType": "object"
+            },
+            "getAssignedPermissionScheme": {
+                "urlParams": [
+                    {
+                        "name": "projectKeyOrId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": ""
+                    }
+                ],
+                "description": "Get assigned permission scheme",
+                "name": "getAssignedPermissionScheme",
+                "details": "Gets a permission scheme assigned with a project.",
+                "verb": "GET",
+                "url": "rest/api/2/project/:projectKeyOrId/permissionscheme",
+                "path": "/:projectKeyOrId/permissionscheme",
+                "responseType": "object"
+            }
+        }
+    },
+    "ProjectSecuritylevel": {
+        "name": "ProjectSecuritylevel",
+        "description": "Provide security level information of the given project for the current user.",
+        "methods": {
+            "getSecurityLevelsForProject": {
+                "urlParams": [
+                    {
+                        "name": "projectKeyOrId",
                         "type": "string"
                     }
                 ],
                 "schema": [],
                 "queryParams": [],
-                "description": "Get issuesecuritylevel",
-                "name": "getIssuesecuritylevel",
-                "details": "Returns a full representation of the security level that has the given id.",
+                "description": "Get security levels for project",
+                "name": "getSecurityLevelsForProject",
+                "details": "Returns all security levels for the project that the current logged in user has access to.\n If the user does not have the Set Issue Security permission, the list will be empty.",
                 "verb": "GET",
-                "url": "rest/api/2/securitylevel/:id",
-                "path": "/:id",
+                "url": "rest/api/2/project/:projectKeyOrId/securitylevel",
+                "path": "/:projectKeyOrId/securitylevel",
                 "responseType": "object"
             }
         }
     },
-    "Type": {
-        "name": "Type",
+    "ProjectType": {
+        "name": "ProjectType",
         "description": "",
         "methods": {
-            "getAllProjectTypes": {
+            "find": {
                 "urlParams": [],
                 "schema": [],
                 "queryParams": [],
                 "description": "Get all project types",
-                "name": "getAllProjectTypes",
+                "name": "find",
                 "details": "Returns all the project types defined on the JIRA instance, not taking into account whether\n the license to use those project types is valid or not.",
                 "verb": "GET",
                 "url": "rest/api/2/project/type",
@@ -4241,8 +4805,8 @@
             }
         }
     },
-    "Request": {
-        "name": "Request",
+    "ReindexRequest": {
+        "name": "ReindexRequest",
         "description": "REST resource for querying and executing reindex requests.",
         "methods": {
             "processRequests": {
@@ -4325,6 +4889,208 @@
                 "verb": "GET",
                 "url": "rest/api/2/resolution/:id",
                 "path": "/:id",
+                "responseType": "object"
+            }
+        }
+    },
+    "Role": {
+        "name": "Role",
+        "description": "",
+        "methods": {
+            "getProjectRoles": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get project roles",
+                "name": "getProjectRoles",
+                "details": "Get all the ProjectRoles available in JIRA. Currently this list is global.",
+                "verb": "GET",
+                "url": "rest/api/2/role",
+                "path": "/",
+                "responseType": "object"
+            },
+            "createProjectRole": {
+                "urlParams": [],
+                "schema": [
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Create project role",
+                "name": "createProjectRole",
+                "details": "Creates a new ProjectRole to be available in JIRA.\n The created role does not have any default actors assigned.",
+                "verb": "POST",
+                "url": "rest/api/2/role",
+                "path": "/",
+                "responseType": "object"
+            },
+            "getProjectRolesById": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get project roles by id",
+                "name": "getProjectRolesById",
+                "details": "Get a specific ProjectRole available in JIRA.",
+                "verb": "GET",
+                "url": "rest/api/2/role/:id",
+                "path": "/:id",
+                "responseType": "object"
+            },
+            "partialUpdateProjectRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Partial update project role",
+                "name": "partialUpdateProjectRole",
+                "details": "Partially updates a roles name or description.",
+                "verb": "POST",
+                "url": "rest/api/2/role/:id",
+                "path": "/:id",
+                "responseType": "object"
+            },
+            "fullyUpdateProjectRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Fully update project role",
+                "name": "fullyUpdateProjectRole",
+                "details": "Fully updates a roles. Both name and description must be given.",
+                "verb": "PUT",
+                "url": "rest/api/2/role/:id",
+                "path": "/:id",
+                "responseType": "object"
+            },
+            "deleteProjectRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "swap",
+                        "type": "number",
+                        "description": "if given, removes a role even if it is used in scheme by replacing the role with the given one"
+                    }
+                ],
+                "description": "Delete project role",
+                "name": "deleteProjectRole",
+                "details": "Deletes a role. May return 403 in the futureif given, removes a role even if it is used in scheme by replacing the role with the given one",
+                "verb": "DELETE",
+                "url": "rest/api/2/role/:id",
+                "path": "/:id",
+                "responseType": null
+            },
+            "getProjectRoleActorsForRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get project role actors for role",
+                "name": "getProjectRoleActorsForRole",
+                "details": "Gets default actors for the given role.",
+                "verb": "GET",
+                "url": "rest/api/2/role/:id/actors",
+                "path": "/:id/actors",
+                "responseType": "object"
+            },
+            "addProjectRoleActorsToRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [
+                    {
+                        "name": "user",
+                        "type": "array"
+                    },
+                    {
+                        "name": "group",
+                        "type": "array"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Add project role actors to role",
+                "name": "addProjectRoleActorsToRole",
+                "details": "Adds default actors to the given role. The request data should contain a list of usernames or a list of groups to add.",
+                "verb": "POST",
+                "url": "rest/api/2/role/:id/actors",
+                "path": "/:id/actors",
+                "responseType": "object"
+            },
+            "deleteProjectRoleActorsFromRole": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "user",
+                        "type": "string",
+                        "description": "if given, removes an actor from given role"
+                    },
+                    {
+                        "name": "group",
+                        "type": "string",
+                        "description": "if given, removes an actor from given role"
+                    }
+                ],
+                "description": "Delete project role actors from role",
+                "name": "deleteProjectRoleActorsFromRole",
+                "details": "Removes default actor from the given role.if given, removes an actor from given roleif given, removes an actor from given role",
+                "verb": "DELETE",
+                "url": "rest/api/2/role/:id/actors",
+                "path": "/:id/actors",
                 "responseType": "object"
             }
         }
@@ -4688,6 +5454,29 @@
             }
         }
     },
+    "Securitylevel": {
+        "name": "Securitylevel",
+        "description": "",
+        "methods": {
+            "getIssuesecuritylevel": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get issuesecuritylevel",
+                "name": "getIssuesecuritylevel",
+                "details": "Returns a full representation of the security level that has the given id.",
+                "verb": "GET",
+                "url": "rest/api/2/securitylevel/:id",
+                "path": "/:id",
+                "responseType": "object"
+            }
+        }
+    },
     "ServerInfo": {
         "name": "ServerInfo",
         "description": "",
@@ -5027,29 +5816,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "update": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "the username"
-                    },
-                    {
-                        "name": "key",
-                        "type": "string",
-                        "description": "user key"
-                    }
-                ],
-                "description": "Update user",
-                "name": "update",
-                "details": "Modify user. The \"value\" fields present will override the existing value.\n Fields skipped in request will not be changed.the usernameuser key",
-                "verb": "PUT",
-                "url": "rest/api/2/user",
-                "path": "/",
-                "responseType": "object"
-            },
             "create": {
                 "urlParams": [],
                 "schema": [
@@ -5087,6 +5853,29 @@
                 "name": "create",
                 "details": "Create user. By default created user will not be notified with email.\n If password field is not set then password will be randomly generated.",
                 "verb": "POST",
+                "url": "rest/api/2/user",
+                "path": "/",
+                "responseType": "object"
+            },
+            "update": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "the username"
+                    },
+                    {
+                        "name": "key",
+                        "type": "string",
+                        "description": "user key"
+                    }
+                ],
+                "description": "Update user",
+                "name": "update",
+                "details": "Modify user. The \"value\" fields present will override the existing value.\n Fields skipped in request will not be changed.the usernameuser key",
+                "verb": "PUT",
                 "url": "rest/api/2/user",
                 "path": "/",
                 "responseType": "object"
@@ -5581,6 +6370,119 @@
                 "url": "rest/api/2/user/viewissue/search",
                 "path": "/viewissue/search",
                 "responseType": "array"
+            }
+        }
+    },
+    "UserProperties": {
+        "name": "UserProperties",
+        "description": "",
+        "methods": {
+            "getPropertiesKeys": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "userKey",
+                        "type": "string",
+                        "description": "key of the user whose properties are to be returned"
+                    },
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "username of the user whose properties are to be returned"
+                    }
+                ],
+                "description": "Get properties keys",
+                "name": "getPropertiesKeys",
+                "details": "Returns the keys of all properties for the user identified by the key or by the id.key of the user whose properties are to be returnedusername of the user whose properties are to be returned",
+                "verb": "GET",
+                "url": "rest/api/2/user/properties",
+                "path": "/properties",
+                "responseType": "object"
+            },
+            "deleteProperty": {
+                "urlParams": [
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "userKey",
+                        "type": "string",
+                        "description": "key of the user whose property is to be removed"
+                    },
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "username of the user whose property is to be removed"
+                    }
+                ],
+                "description": "Delete property",
+                "name": "deleteProperty",
+                "details": "Removes the property from the user identified by the key or by the id. Ths user removing the property is required\n to have permissions to administer the user.key of the user whose property is to be removedusername of the user whose property is to be removed",
+                "verb": "DELETE",
+                "url": "rest/api/2/user/properties/:propertyKey",
+                "path": "/properties/:propertyKey",
+                "responseType": null
+            },
+            "setProperty": {
+                "urlParams": [
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "userKey",
+                        "type": "string",
+                        "description": "key of the user whose property is to be set"
+                    },
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "username of the user whose property is to be set"
+                    }
+                ],
+                "description": "Set property",
+                "name": "setProperty",
+                "details": "Sets the value of the specified user's property.\n \n You can use this resource to store a custom data against the user identified by the key or by the id. The user\n who stores the data is required to have permissions to administer the user.\n key of the user whose property is to be setusername of the user whose property is to be set",
+                "verb": "PUT",
+                "url": "rest/api/2/user/properties/:propertyKey",
+                "path": "/properties/:propertyKey",
+                "responseType": null
+            },
+            "getProperty": {
+                "urlParams": [
+                    {
+                        "name": "propertyKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "userKey",
+                        "type": "string",
+                        "description": "key of the user whose property is to be returned"
+                    },
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "username of the user whose property is to be returned"
+                    }
+                ],
+                "description": "Get property",
+                "name": "getProperty",
+                "details": "Returns the value of the property with a given key from the user identified by the key or by the id. The user who retrieves\n the property is required to have permissions to read the user.key of the user whose property is to be returnedusername of the user whose property is to be returned",
+                "verb": "GET",
+                "url": "rest/api/2/user/properties/:propertyKey",
+                "path": "/properties/:propertyKey",
+                "responseType": "object"
             }
         }
     },
@@ -6636,33 +7538,6 @@
                 "path": "/:id/draft/workflow",
                 "responseType": "object"
             },
-            "getIssueType": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    },
-                    {
-                        "name": "issueType",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "returnDraftIfExists",
-                        "type": "boolean",
-                        "description": "Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
-                    }
-                ],
-                "description": "Get issue type",
-                "name": "getIssueType",
-                "details": "Returns the issue type mapping for the passed workflow scheme.Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself.",
-                "verb": "GET",
-                "url": "rest/api/2/workflowscheme/:id/issuetype/:issueType",
-                "path": "/:id/issuetype/:issueType",
-                "responseType": "object"
-            },
             "deleteIssueType": {
                 "urlParams": [
                     {
@@ -6686,6 +7561,33 @@
                 "name": "deleteIssueType",
                 "details": "Remove the specified issue type mapping from the scheme.when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project).",
                 "verb": "DELETE",
+                "url": "rest/api/2/workflowscheme/:id/issuetype/:issueType",
+                "path": "/:id/issuetype/:issueType",
+                "responseType": "object"
+            },
+            "getIssueType": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueType",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "returnDraftIfExists",
+                        "type": "boolean",
+                        "description": "Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself."
+                    }
+                ],
+                "description": "Get issue type",
+                "name": "getIssueType",
+                "details": "Returns the issue type mapping for the passed workflow scheme.Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of\n                            the scheme itself.",
+                "verb": "GET",
                 "url": "rest/api/2/workflowscheme/:id/issuetype/:issueType",
                 "path": "/:id/issuetype/:issueType",
                 "responseType": "object"
@@ -6885,18 +7787,6 @@
                 "path": "/1/session",
                 "responseType": "object"
             },
-            "currentUser": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [],
-                "description": "Current user",
-                "name": "currentUser",
-                "details": "Returns information about the currently authenticated user's session. If the caller is not authenticated they\n will get a 401 Unauthorized status code.",
-                "verb": "GET",
-                "url": "rest/auth/1/session",
-                "path": "/1/session",
-                "responseType": "object"
-            },
             "logout": {
                 "urlParams": [],
                 "schema": [],
@@ -6908,6 +7798,18 @@
                 "url": "rest/auth/1/session",
                 "path": "/1/session",
                 "responseType": null
+            },
+            "currentUser": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Current user",
+                "name": "currentUser",
+                "details": "Returns information about the currently authenticated user's session. If the caller is not authenticated they\n will get a 401 Unauthorized status code.",
+                "verb": "GET",
+                "url": "rest/auth/1/session",
+                "path": "/1/session",
+                "responseType": "object"
             }
         }
     },

@@ -56,22 +56,26 @@ module.exports = class JiraConnector implements IConnector {
 
         });
 
+        debug("jira loaded");
+
     }
 
     /**
      * login a user and get a sessionId
      * @param {string} username The user name
      * @param {string} password The user password
+     * @param {string} id session id to use
      * @param {function} [callback] The callback function
      */
 
     login = (...args : any[]):Promise<String> => {
-
+        debug("login");
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
         let options = ((typeof args[0]) === 'object') ? args[0] : {
             username: args[0],
-            password: args[1]
+            password: args[1],
+            sessionId: args[2]
         };
 
         let sessionData;
@@ -107,7 +111,7 @@ module.exports = class JiraConnector implements IConnector {
                 tokenData.session.jwt = this.security.generateToken(tokenData);
 
                 delete tokenData.session.sessionId;
-
+                debug("login successful");
                 return callback ? callback(null,tokenData) : resolve(tokenData);
             })
 

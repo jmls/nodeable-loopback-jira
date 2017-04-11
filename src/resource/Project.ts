@@ -22,8 +22,8 @@ export class Project extends baseResource {
      * @method create
      * @memberOf Project#
      * @param {Object} options An object containing options to pass to the Jira API.
-     * @param {string} [options.key] key <required,between:2,10,isUpperCase> 
-     * @param {string} [options.name] name <required> 
+     * @param {string} options.key key 
+     * @param {string} options.name name 
      * @param {string} options.projectTypeKey projectTypeKey 
      * @param {string} options.projectTemplateKey projectTemplateKey 
      * @param {string} options.description description 
@@ -166,7 +166,7 @@ export class Project extends baseResource {
      * @method findById
      * @memberOf Project#
      * @param {Object} options An object containing options to pass to the Jira API.
-     * @param {string} [options.projectIdOrKey] projectIdOrKey <required> 
+     * @param {string} options.projectIdOrKey projectIdOrKey 
      * @param {string} options.expand expand the parameters to expand
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call

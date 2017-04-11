@@ -20,8 +20,25 @@ request(config.url, (error, response, html) => {
         let resource = $(this);
         let h3 = resource.children().first();
         let basePath = h3.attr('id');
-
+        let paths = basePath.split('/');
         let resourceName = changeCase.upperCaseFirst(basePath.split('/').pop());
+
+        if (paths.length > 3) {
+            resourceName = "";
+
+            paths.forEach((path,index) => {
+                if (index < 2) {
+                    return;
+                }
+
+                if (path.startsWith("{")) {
+                    return;
+                }
+
+                resourceName+= changeCase.upperCaseFirst(path);
+            });
+
+        }
 
         if (resourceName === '') { // special case for permissions
             resourceName = "Permissions";
