@@ -6,5 +6,6 @@ interface IJiraConfig  {
     request?: any
     name: string,
     prefix:string,
-    app: any
+    app: any,
+    refreshUrl: string
 }

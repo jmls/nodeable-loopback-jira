@@ -56,6 +56,27 @@ module.exports = class JiraConnector implements IConnector {
 
         });
 
+
+        app.use('/api/token/refresh',(req,res) =>{
+            let jwt;
+
+            if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+                jwt = req.headers.authorization.split(' ')[1];
+            } else if (req.query) {
+                jwt = req.query.token || req.query.access_token;
+            }
+
+            this.security.refreshToken(jwt)
+
+            .then((token) => {
+                return res.status(200).json({token});
+            })
+
+            .catch((e) => {
+                return res.status(406).send(e.message);
+            });
+        });
+
         debug("jira loaded");
 
     }
@@ -193,7 +214,7 @@ module.exports = class JiraConnector implements IConnector {
                         statusCode: response.statusCode,
                         message: body.errorMessages && body.errorMessages.length > 0 ? body.errorMessages : body.errors
                     }
-                    return callback ? callback(err) : reject(err);
+                    return callback ? callback(null,err) : resolve(err);
                 }
 
                 return callback ? callback(null,body) : resolve(body);

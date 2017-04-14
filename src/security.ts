@@ -48,9 +48,10 @@ export class Security implements ISecurity {
      * @return {string} the compacted jwt
      */
 
-    generateToken = (data:any, secret:string = this[_secret]):string => {
+    generateToken = (data:any, secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):string => {
         let jwt = nJwt.create(data,secret);
 
+        jwt.setExpiration(expiration);
         return jwt.compact();
     }
 
@@ -82,6 +83,35 @@ export class Security implements ISecurity {
 
     getToken = ():string => {
         return this.storedToken;
+    }
+
+    /**
+     * refresh token
+     * @param {string} token The token to refresh
+     * @param {string} secret The secret to use (defaults to class secret)
+     * @return {string} the refreshed token
+     */
+
+    refreshToken = (token:string,secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):Promise<{}> => {
+
+        return new Promise((resolve,reject) => {
+
+            try {
+                let newToken = this.validateToken(token,secret);
+
+                if (!newToken) {
+                    return reject(new Error("invalid token"));
+                }
+
+                newToken.setSigningKey(secret);
+                newToken.setExpiration(expiration);
+                return resolve(newToken.compact());
+            }
+
+            catch(e) {
+                return reject(e);
+            }
+        });
     }
 
     /**
@@ -129,7 +159,7 @@ export class Security implements ISecurity {
     validateToken = (data:any, secret:string = this[_secret]):any => {
 
         try{
-          return nJwt.verify(data,secret).body;
+          return nJwt.verify(data,secret);
         }
 
         catch(e) {
