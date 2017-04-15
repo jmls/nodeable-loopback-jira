@@ -63,7 +63,7 @@ export class Security implements ISecurity {
      */
 
     getSessionId = (token:string,secret:string = this[_secret]):string => {
-        let result = this.validateToken(token,secret);
+        let result = this.validateToken(token,secret).body;
 
         if (!result) {
             throw new Error("invalid token");
