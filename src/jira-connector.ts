@@ -108,6 +108,15 @@ module.exports = class JiraConnector implements IConnector {
                 ignoreAuth: true,
                 body: options
             }).then((result) => {
+
+                if (result.statusCode) {
+                    if (callback) {
+                        callback(result);
+                    }
+
+                    return reject(result);
+                }
+
                 sessionData = result;
 
                 sessionData.session.sessionId = this.security.encrypt(Buffer.from(`${options.username}:${options.password}`, 'utf8').toString('base64'))
