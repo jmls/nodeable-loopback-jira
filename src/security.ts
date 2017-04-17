@@ -27,6 +27,7 @@ export class Security implements ISecurity {
      */
 
     decrypt = (data:string,secret:string = this[_secret]):string => {
+        debug("decrypt");
         return crypto.decrypt(data,secret);
     }
 
@@ -38,6 +39,7 @@ export class Security implements ISecurity {
      */
 
     encrypt = (data:string, secret:string = this[_secret]):string => {
+        debug("encrypt");
         return crypto.encrypt(data,secret);
     }
 
@@ -49,6 +51,7 @@ export class Security implements ISecurity {
      */
 
     generateToken = (data:any, secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):string => {
+        debug("generateToken");
         let jwt = nJwt.create(data,secret);
 
         jwt.setExpiration(expiration);
@@ -63,6 +66,7 @@ export class Security implements ISecurity {
      */
 
     getSessionId = (token:string,secret:string = this[_secret]):string => {
+        debug("getSessionId");
         let result = this.validateToken(token,secret).body;
 
         if (!result) {
@@ -82,6 +86,7 @@ export class Security implements ISecurity {
      */
 
     getToken = ():string => {
+        debug("getToken");
         return this.storedToken;
     }
 
@@ -93,7 +98,7 @@ export class Security implements ISecurity {
      */
 
     refreshToken = (token:string,secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):Promise<{}> => {
-
+        debug("refreshToken");
         return new Promise((resolve,reject) => {
 
             try {
@@ -120,6 +125,8 @@ export class Security implements ISecurity {
      */
 
     removeToken = ():boolean => {
+        debug("removeToken");
+
         if (!this.storedToken) {
             return false;
         }
@@ -157,7 +164,7 @@ export class Security implements ISecurity {
      */
 
     validateToken = (data:any, secret:string = this[_secret]):any => {
-
+        debug("validateToken");
         try{
           return nJwt.verify(data,secret);
         }
