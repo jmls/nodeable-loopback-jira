@@ -2,7 +2,7 @@ const debug = require('debug')('loopback:connector:jira.security');
 const _secret = Symbol('secret');
 const crypto = require("crypto-extra");
 const nJwt = require('njwt');
-
+const moment = require('moment');
 /**
  * Represents a security client for the Jira Connector
  *
@@ -14,9 +14,11 @@ const nJwt = require('njwt');
 export class Security implements ISecurity {
 
     private storedToken;
+    private duration:any = { hours: 24 };
 
     constructor (settings:any) {
         this[_secret] = settings.secret || crypto.generateKey();
+        this.duration = settings.duration || this.duration;
     }
 
     /**
@@ -50,11 +52,11 @@ export class Security implements ISecurity {
      * @return {string} the compacted jwt
      */
 
-    generateToken = (data:any, secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):string => {
+    generateToken = (data:any, secret:string = this[_secret],duration:any = this.duration):string => {
         debug("generateToken");
-        let jwt = nJwt.create(data,secret);
 
-        jwt.setExpiration(expiration);
+        let jwt = nJwt.create(data,secret);
+        jwt.setExpiration(moment().utc().add(duration).valueOf());
         return jwt.compact();
     }
 
@@ -97,8 +99,9 @@ export class Security implements ISecurity {
      * @return {string} the refreshed token
      */
 
-    refreshToken = (token:string,secret:string = this[_secret],expiration:number = new Date().getTime() + (1000 * 60 * 30)):Promise<{}> => {
+    refreshToken = (token:string,secret:string = this[_secret],duration:any = this.duration):Promise<{}> => {
         debug("refreshToken");
+
         return new Promise((resolve,reject) => {
 
             try {
@@ -109,7 +112,7 @@ export class Security implements ISecurity {
                 }
 
                 newToken.setSigningKey(secret);
-                newToken.setExpiration(expiration);
+                newToken.setExpiration(moment().utc().add(duration).valueOf());
                 return resolve(newToken.compact());
             }
 

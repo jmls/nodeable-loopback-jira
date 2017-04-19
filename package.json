@@ -40,6 +40,7 @@
     "load-json-file": "^2.0.0",
     "lodash": "^4.17.2",
     "loopback": "^3.0.0",
+    "moment": "^2.18.1",
     "njwt": "^0.3.2",
     "pluralize": "^3.1.0",
     "request": "^2.78.0",
