@@ -125,6 +125,7 @@ module.exports = class JiraConnector implements IConnector {
 
                 return this.resource.User.findById({
                     username: options.username,
+                    expand: 'groups',
                     token
                 });
 
