@@ -24,20 +24,29 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.expand expand optional flags: renderedBody (provides body rendered in HTML)
+     * @param {string} options.id id 
+     * @param {string} options.author author 
+     * @param {string} options.body body 
+     * @param {string} options.renderedBody renderedBody 
+     * @param {string} options.updateAuthor updateAuthor 
+     * @param {string} options.created created 
+     * @param {string} options.updated updated 
+     * @param {string} options.visibility visibility 
+     * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     addComment = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addComment','POST','rest/api/2/issue/:issueIdOrKey/comment',options,callback)
     };
@@ -55,13 +64,14 @@ export class Issue extends baseResource {
      */
 
     addVote = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addVote','POST','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
     };
@@ -79,13 +89,14 @@ export class Issue extends baseResource {
      */
 
     addWatcher = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addWatcher','POST','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
     };
@@ -110,22 +121,31 @@ export class Issue extends baseResource {
                        "auto"- Default option.  Will automatically adjust the value based on the new timeSpent specified on the worklog 
      * @param {string} options.newEstimate newEstimate (required when "new" is selected for adjustEstimate) the new value for the remaining estimate field. e.g. "2d"
      * @param {string} options.reduceBy reduceBy (required when "manual" is selected for adjustEstimate) the amount to reduce the remaining estimate by e.g. "2d"
+     * @param {string} options.author author 
+     * @param {string} options.updateAuthor updateAuthor 
+     * @param {string} options.comment comment 
+     * @param {string} options.created created 
+     * @param {string} options.updated updated 
+     * @param {string} options.visibility visibility 
+     * @param {string} options.started started 
+     * @param {string} options.timeSpent timeSpent 
+     * @param {string} options.timeSpentSeconds timeSpentSeconds 
+     * @param {string} options.id id 
+     * @param {string} options.issueId issueId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     addWorklog = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "adjustEstimate": args[1],
-             "newEstimate": args[2],
-             "reduceBy": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addWorklog','POST','rest/api/2/issue/:issueIdOrKey/worklog',options,callback)
     };
@@ -156,13 +176,14 @@ export class Issue extends baseResource {
      */
 
     assign = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('assign','PUT','rest/api/2/issue/:issueIdOrKey/assignee',options,callback)
     };
@@ -197,12 +218,14 @@ export class Issue extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/issue',options,callback)
     };
@@ -225,12 +248,14 @@ export class Issue extends baseResource {
      */
 
     createIssues = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createIssues','POST','rest/api/2/issue/bulk',options,callback)
     };
@@ -253,13 +278,14 @@ export class Issue extends baseResource {
      */
 
     createOrUpdateRemoteIssueLink = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createOrUpdateRemoteIssueLink','POST','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
     };
@@ -285,14 +311,14 @@ export class Issue extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "deleteSubtasks": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/issue/:issueIdOrKey',options,callback)
     };
@@ -311,14 +337,14 @@ export class Issue extends baseResource {
      */
 
     deleteComment = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteComment','DELETE','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
     };
@@ -337,14 +363,14 @@ export class Issue extends baseResource {
      */
 
     deleteRemoteIssueLinkByGlobalId = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "globalId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteRemoteIssueLinkByGlobalId','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
     };
@@ -363,14 +389,14 @@ export class Issue extends baseResource {
      */
 
     deleteRemoteIssueLinkById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "linkId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteRemoteIssueLinkById','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
     };
@@ -402,17 +428,14 @@ export class Issue extends baseResource {
      */
 
     deleteWorklog = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "adjustEstimate": args[2],
-             "newEstimate": args[3],
-             "increaseBy": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteWorklog','DELETE','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
     };
@@ -441,13 +464,14 @@ export class Issue extends baseResource {
      */
 
     doTransition = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('doTransition','POST','rest/api/2/issue/:issueIdOrKey/transitions',options,callback)
     };
@@ -473,20 +497,25 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.notifyUsers notifyUsers Default: truesend the email with notification that the issue was updated to users that watch it.
                     Admin or project admin permissions are required to disable the notification.
+     * @param {string} options.transition transition 
+     * @param {string} options.fields fields 
+     * @param {string} options.update update 
+     * @param {string} options.historyMetadata historyMetadata 
+     * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     editIssue = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "notifyUsers": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('editIssue','PUT','rest/api/2/issue/:issueIdOrKey',options,callback)
     };
@@ -557,16 +586,14 @@ export class Issue extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "fields": args[1],
-             "expand": args[2],
-             "properties": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/issue/:issueIdOrKey',options,callback)
     };
@@ -586,15 +613,14 @@ export class Issue extends baseResource {
      */
 
     getComment = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "expand": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getComment','GET','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
     };
@@ -619,17 +645,14 @@ export class Issue extends baseResource {
      */
 
     getComments = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "startAt": args[1],
-             "maxResults": args[2],
-             "orderBy": args[3],
-             "expand": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getComments','GET','rest/api/2/issue/:issueIdOrKey/comment',options,callback)
     };
@@ -675,16 +698,14 @@ export class Issue extends baseResource {
      */
 
     getCreateIssueMeta = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIds": args[0],
-             "projectKeys": args[1],
-             "issuetypeIds": args[2],
-             "issuetypeNames": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getCreateIssueMeta','GET','rest/api/2/issue/createmeta',options,callback)
     };
@@ -705,13 +726,14 @@ export class Issue extends baseResource {
      */
 
     getEditIssueMeta = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getEditIssueMeta','GET','rest/api/2/issue/:issueIdOrKey/editmeta',options,callback)
     };
@@ -735,18 +757,14 @@ export class Issue extends baseResource {
      */
 
     getIssuePickerResource = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "query": args[0],
-             "currentJQL": args[1],
-             "currentIssueKey": args[2],
-             "currentProjectId": args[3],
-             "showSubTasks": args[4],
-             "showSubTaskParent": args[5],
-             "token": args[6]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssuePickerResource','GET','rest/api/2/issue/picker',options,callback)
     };
@@ -764,13 +782,14 @@ export class Issue extends baseResource {
      */
 
     getIssueWatchers = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueWatchers','GET','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
     };
@@ -789,13 +808,14 @@ export class Issue extends baseResource {
      */
 
     getIssueWorklog = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog',options,callback)
     };
@@ -814,14 +834,14 @@ export class Issue extends baseResource {
      */
 
     getRemoteIssueLinkById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "linkId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getRemoteIssueLinkById','GET','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
     };
@@ -846,14 +866,14 @@ export class Issue extends baseResource {
      */
 
     getRemoteIssueLinks = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "globalId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getRemoteIssueLinks','GET','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
     };
@@ -877,14 +897,14 @@ export class Issue extends baseResource {
      */
 
     getTransitions = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "transitionId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getTransitions','GET','rest/api/2/issue/:issueIdOrKey/transitions',options,callback)
     };
@@ -902,13 +922,14 @@ export class Issue extends baseResource {
      */
 
     getVotes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getVotes','GET','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
     };
@@ -928,14 +949,14 @@ export class Issue extends baseResource {
      */
 
     getWorklog = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
     };
@@ -958,13 +979,14 @@ export class Issue extends baseResource {
      */
 
     notify = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('notify','POST','rest/api/2/issue/:issueIdOrKey/notify',options,callback)
     };
@@ -982,13 +1004,14 @@ export class Issue extends baseResource {
      */
 
     removeVote = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('removeVote','DELETE','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
     };
@@ -1007,14 +1030,14 @@ export class Issue extends baseResource {
      */
 
     removeWatcher = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "username": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('removeWatcher','DELETE','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
     };
@@ -1028,21 +1051,29 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.id id 
      * @param {string} options.expand expand optional flags: renderedBody (provides body rendered in HTML)
+     * @param {string} options.id id 
+     * @param {string} options.author author 
+     * @param {string} options.body body 
+     * @param {string} options.renderedBody renderedBody 
+     * @param {string} options.updateAuthor updateAuthor 
+     * @param {string} options.created created 
+     * @param {string} options.updated updated 
+     * @param {string} options.visibility visibility 
+     * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateComment = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "expand": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateComment','PUT','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
     };
@@ -1065,14 +1096,14 @@ export class Issue extends baseResource {
      */
 
     updateRemoteIssueLink = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "linkId": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateRemoteIssueLink','PUT','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
     };
@@ -1096,22 +1127,31 @@ export class Issue extends baseResource {
                        "leave"- leaves the estimate as is
                        "auto"- Default option.  Will automatically adjust the value based on the new timeSpent specified on the worklog 
      * @param {string} options.newEstimate newEstimate (required when "new" is selected for adjustEstimate) the new value for the remaining estimate field.
+     * @param {string} options.author author 
+     * @param {string} options.updateAuthor updateAuthor 
+     * @param {string} options.comment comment 
+     * @param {string} options.created created 
+     * @param {string} options.updated updated 
+     * @param {string} options.visibility visibility 
+     * @param {string} options.started started 
+     * @param {string} options.timeSpent timeSpent 
+     * @param {string} options.timeSpentSeconds timeSpentSeconds 
+     * @param {string} options.id id 
+     * @param {string} options.issueId issueId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateWorklog = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "id": args[1],
-             "adjustEstimate": args[2],
-             "newEstimate": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateWorklog','PUT','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
     };

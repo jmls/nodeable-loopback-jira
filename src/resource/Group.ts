@@ -25,19 +25,21 @@ export class Group extends baseResource {
      * @memberOf Group#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.groupname groupname A name of requested group.
+     * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     addUserToGroup = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "groupname": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addUserToGroup','POST','rest/api/2/group/user',options,callback)
     };
@@ -57,12 +59,14 @@ export class Group extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/group',options,callback)
     };
@@ -85,14 +89,14 @@ export class Group extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "groupname": args[0],
-             "swapGroup": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/group',options,callback)
     };
@@ -116,14 +120,14 @@ export class Group extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "groupname": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/group',options,callback)
     };
@@ -145,16 +149,14 @@ export class Group extends baseResource {
      */
 
     getUsersFromGroup = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "groupname": args[0],
-             "includeInactiveUsers": args[1],
-             "startAt": args[2],
-             "maxResults": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getUsersFromGroup','GET','rest/api/2/group/member',options,callback)
     };
@@ -175,14 +177,14 @@ export class Group extends baseResource {
      */
 
     removeUserFromGroup = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "groupname": args[0],
-             "username": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('removeUserFromGroup','DELETE','rest/api/2/group/user',options,callback)
     };

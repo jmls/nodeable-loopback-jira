@@ -39,12 +39,14 @@ export class Component extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/component',options,callback)
     };
@@ -65,14 +67,14 @@ export class Component extends baseResource {
      */
 
     delete = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "moveIssuesTo": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('delete','DELETE','rest/api/2/component/:id',options,callback)
     };
@@ -90,13 +92,14 @@ export class Component extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/component/:id',options,callback)
     };
@@ -114,13 +117,14 @@ export class Component extends baseResource {
      */
 
     getComponentRelatedIssues = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getComponentRelatedIssues','GET','rest/api/2/component/:id/relatedIssueCounts',options,callback)
     };
@@ -152,13 +156,14 @@ export class Component extends baseResource {
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/component/:id',options,callback)
     };

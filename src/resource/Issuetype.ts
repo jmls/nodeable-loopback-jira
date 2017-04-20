@@ -34,13 +34,14 @@ export class Issuetype extends baseResource {
      */
 
     createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/issuetype/:id/avatar',options,callback)
     };
@@ -61,12 +62,14 @@ export class Issuetype extends baseResource {
      */
 
     createIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createIssueType','POST','rest/api/2/issuetype',options,callback)
     };
@@ -87,14 +90,14 @@ export class Issuetype extends baseResource {
      */
 
     deleteIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "alternativeIssueTypeId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteIssueType','DELETE','rest/api/2/issuetype/:id',options,callback)
     };
@@ -114,13 +117,14 @@ export class Issuetype extends baseResource {
      */
 
     getAlternativeIssueTypes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAlternativeIssueTypes','GET','rest/api/2/issuetype/:id/alternatives',options,callback)
     };
@@ -137,12 +141,14 @@ export class Issuetype extends baseResource {
      */
 
     getIssueAllTypes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueAllTypes','GET','rest/api/2/issuetype',options,callback)
     };
@@ -160,13 +166,14 @@ export class Issuetype extends baseResource {
      */
 
     getIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueType','GET','rest/api/2/issuetype/:id',options,callback)
     };
@@ -207,15 +214,14 @@ export class Issuetype extends baseResource {
      */
 
     storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "filename": args[1],
-             "size": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/issuetype/:id/avatar/temporary',options,callback)
     };
@@ -246,13 +252,14 @@ export class Issuetype extends baseResource {
      */
 
     storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/issuetype/:id/avatar/temporary',options,callback)
     };
@@ -273,13 +280,14 @@ export class Issuetype extends baseResource {
      */
 
     updateIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateIssueType','PUT','rest/api/2/issuetype/:id',options,callback)
     };

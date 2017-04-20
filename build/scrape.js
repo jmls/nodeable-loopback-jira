@@ -179,36 +179,29 @@ request(config.url, (error, response, html) => {
                 }
             });
 
-            let request = $('h5',methodBody).filter(function() {
-                return $(this).text().indexOf('Request') > -1;
-            });
+            let request = $("h5:contains('Request')",methodBody);
 
-            request = request.next();
+            request = request.nextAll('.representation-doc').children('.representation-doc-block').last();
 
-            $(request).each(function(index,element) {
-                $(this).find('h6').each(function() {
+            if (request.children('h6').text() === "Schema") {
 
-                   if ($(this).text().indexOf('Schema') === -1) {
-                       return;
+               paramsInUse = {};
+
+               let schema = JSON.parse(request.children('pre').children('code').text()).properties;
+
+               method.schema = [];
+
+               schema && Object.keys(schema).forEach((key) => {
+
+                   if (!paramsInUse[key]) {
+                       paramsInUse[key] = true;
+                       method.schema.push({
+                           name: key,
+                           type: schema[key].type || 'Object'
+                       });
                    }
-
-                   let schema = JSON.parse($(this).next().find('code').text()).properties;
-                   method.schema = [];
-
-                   schema && Object.keys(schema).forEach((key) => {
-
-                       if (!paramsInUse[key]) {
-                           paramsInUse[key] = true;
-                           method.schema.push({
-                               name: key,
-                               type: schema[key].type || 'Object'
-                           });
-                       }
-                   });
-
-                });
-
-            });
+               });
+            }
 
             let response = $('h5',methodBody).filter(function() {
                 return $(this).text().indexOf('Responses') > -1;

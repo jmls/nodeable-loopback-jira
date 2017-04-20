@@ -32,12 +32,14 @@ export class IssueLinkType extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/issueLinkType',options,callback)
     };
@@ -55,13 +57,14 @@ export class IssueLinkType extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueLinkTypeId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/issueLinkType/:issueLinkTypeId',options,callback)
     };
@@ -79,13 +82,14 @@ export class IssueLinkType extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueLinkTypeId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/issueLinkType/:issueLinkTypeId',options,callback)
     };
@@ -103,12 +107,14 @@ export class IssueLinkType extends baseResource {
      */
 
     getIssueLinkTypes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueLinkTypes','GET','rest/api/2/issueLinkType',options,callback)
     };
@@ -130,13 +136,14 @@ export class IssueLinkType extends baseResource {
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueLinkTypeId": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/issueLinkType/:issueLinkTypeId',options,callback)
     };

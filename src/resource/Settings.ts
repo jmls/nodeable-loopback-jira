@@ -28,12 +28,14 @@ export class Settings extends baseResource {
      */
 
     getIssueNavigatorDefaultColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueNavigatorDefaultColumns','GET','rest/api/2/settings/columns',options,callback)
     };
@@ -50,12 +52,14 @@ export class Settings extends baseResource {
      */
 
     setBaseURL = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setBaseURL','PUT','rest/api/2/settings/baseUrl',options,callback)
     };
@@ -72,12 +76,14 @@ export class Settings extends baseResource {
      */
 
     setIssueNavigatorDefaultColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setIssueNavigatorDefaultColumns','PUT','rest/api/2/settings/columns',options,callback)
     };

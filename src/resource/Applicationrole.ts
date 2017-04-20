@@ -29,13 +29,14 @@ export class Applicationrole extends baseResource {
      */
 
     get = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "key": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('get','GET','rest/api/2/applicationrole/:key',options,callback)
     };
@@ -53,12 +54,14 @@ export class Applicationrole extends baseResource {
      */
 
     getAll = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAll','GET','rest/api/2/applicationrole',options,callback)
     };
@@ -75,20 +78,32 @@ export class Applicationrole extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.key key 
      * @param {string} options.If-Match If-Match the hash of the version to update. Optional Param
+     * @param {string} options.key key 
+     * @param {string} options.groups groups 
+     * @param {string} options.name name 
+     * @param {string} options.defaultGroups defaultGroups 
+     * @param {string} options.selectedByDefault selectedByDefault 
+     * @param {string} options.defined defined 
+     * @param {string} options.numberOfSeats numberOfSeats 
+     * @param {string} options.remainingSeats remainingSeats 
+     * @param {string} options.userCount userCount 
+     * @param {string} options.userCountDescription userCountDescription 
+     * @param {string} options.hasUnlimitedSeats hasUnlimitedSeats 
+     * @param {string} options.platform platform 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     put = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "key": args[0],
-             "If-Match": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('put','PUT','rest/api/2/applicationrole/:key',options,callback)
     };
@@ -109,13 +124,14 @@ export class Applicationrole extends baseResource {
      */
 
     putBulk = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "If-Match": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('putBulk','PUT','rest/api/2/applicationrole',options,callback)
     };

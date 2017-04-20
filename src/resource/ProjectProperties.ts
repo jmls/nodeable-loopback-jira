@@ -31,14 +31,14 @@ export class ProjectProperties extends baseResource {
      */
 
     deleteProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProperty','DELETE','rest/api/2/project/:projectIdOrKey/properties/:propertyKey',options,callback)
     };
@@ -56,13 +56,14 @@ export class ProjectProperties extends baseResource {
      */
 
     getPropertiesKeys = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPropertiesKeys','GET','rest/api/2/project/:projectIdOrKey/properties',options,callback)
     };
@@ -82,14 +83,14 @@ export class ProjectProperties extends baseResource {
      */
 
     getProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProperty','GET','rest/api/2/project/:projectIdOrKey/properties/:propertyKey',options,callback)
     };
@@ -112,14 +113,14 @@ export class ProjectProperties extends baseResource {
      */
 
     setProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setProperty','PUT','rest/api/2/project/:projectIdOrKey/properties/:propertyKey',options,callback)
     };

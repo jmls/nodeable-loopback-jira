@@ -31,13 +31,14 @@ export class Role extends baseResource {
      */
 
     addProjectRoleActorsToRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addProjectRoleActorsToRole','POST','rest/api/2/role/:id/actors',options,callback)
     };
@@ -57,12 +58,14 @@ export class Role extends baseResource {
      */
 
     createProjectRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createProjectRole','POST','rest/api/2/role',options,callback)
     };
@@ -81,14 +84,14 @@ export class Role extends baseResource {
      */
 
     deleteProjectRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "swap": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProjectRole','DELETE','rest/api/2/role/:id',options,callback)
     };
@@ -108,15 +111,14 @@ export class Role extends baseResource {
      */
 
     deleteProjectRoleActorsFromRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "user": args[1],
-             "group": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProjectRoleActorsFromRole','DELETE','rest/api/2/role/:id/actors',options,callback)
     };
@@ -136,13 +138,14 @@ export class Role extends baseResource {
      */
 
     fullyUpdateProjectRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('fullyUpdateProjectRole','PUT','rest/api/2/role/:id',options,callback)
     };
@@ -160,13 +163,14 @@ export class Role extends baseResource {
      */
 
     getProjectRoleActorsForRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectRoleActorsForRole','GET','rest/api/2/role/:id/actors',options,callback)
     };
@@ -183,12 +187,14 @@ export class Role extends baseResource {
      */
 
     getProjectRoles = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectRoles','GET','rest/api/2/role',options,callback)
     };
@@ -206,13 +212,14 @@ export class Role extends baseResource {
      */
 
     getProjectRolesById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectRolesById','GET','rest/api/2/role/:id',options,callback)
     };
@@ -232,13 +239,14 @@ export class Role extends baseResource {
      */
 
     partialUpdateProjectRole = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('partialUpdateProjectRole','POST','rest/api/2/role/:id',options,callback)
     };

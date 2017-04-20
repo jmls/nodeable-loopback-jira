@@ -31,14 +31,14 @@ export class ProjectNotificationscheme extends baseResource {
      */
 
     getNotificationScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectKeyOrId": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getNotificationScheme','GET','rest/api/2/project/:projectKeyOrId/notificationscheme',options,callback)
     };

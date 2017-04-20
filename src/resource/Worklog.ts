@@ -31,13 +31,14 @@ export class Worklog extends baseResource {
      */
 
     getIdsOfWorklogsDeletedSince = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "since": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIdsOfWorklogsDeletedSince','GET','rest/api/2/worklog/deleted',options,callback)
     };
@@ -57,13 +58,14 @@ export class Worklog extends baseResource {
      */
 
     getIdsOfWorklogsModifiedSince = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "since": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIdsOfWorklogsModifiedSince','GET','rest/api/2/worklog/updated',options,callback)
     };
@@ -82,12 +84,14 @@ export class Worklog extends baseResource {
      */
 
     getWorklogsForIds = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getWorklogsForIds','POST','rest/api/2/worklog/list',options,callback)
     };

@@ -30,14 +30,14 @@ export class ProjectRole extends baseResource {
      */
 
     addActorUsers = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addActorUsers','POST','rest/api/2/project/:projectIdOrKey/role/:id',options,callback)
     };
@@ -63,16 +63,14 @@ export class ProjectRole extends baseResource {
      */
 
     deleteActor = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "id": args[1],
-             "user": args[2],
-             "group": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteActor','DELETE','rest/api/2/project/:projectIdOrKey/role/:id',options,callback)
     };
@@ -91,14 +89,14 @@ export class ProjectRole extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/project/:projectIdOrKey/role/:id',options,callback)
     };
@@ -116,13 +114,14 @@ export class ProjectRole extends baseResource {
      */
 
     getProjectRoles = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectRoles','GET','rest/api/2/project/:projectIdOrKey/role',options,callback)
     };
@@ -135,6 +134,7 @@ export class ProjectRole extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.projectIdOrKey projectIdOrKey 
      * @param {string} options.id id 
+     * @param {string} options.id id 
      * @param {string} options.categorisedActors categorisedActors 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
@@ -142,14 +142,14 @@ export class ProjectRole extends baseResource {
      */
 
     setActors = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "id": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setActors','PUT','rest/api/2/project/:projectIdOrKey/role/:id',options,callback)
     };

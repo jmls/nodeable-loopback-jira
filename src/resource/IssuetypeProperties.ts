@@ -31,14 +31,14 @@ export class IssuetypeProperties extends baseResource {
      */
 
     deleteProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueTypeId": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProperty','DELETE','rest/api/2/issuetype/:issueTypeId/properties/:propertyKey',options,callback)
     };
@@ -58,14 +58,14 @@ export class IssuetypeProperties extends baseResource {
      */
 
     getProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueTypeId": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProperty','GET','rest/api/2/issuetype/:issueTypeId/properties/:propertyKey',options,callback)
     };
@@ -83,13 +83,14 @@ export class IssuetypeProperties extends baseResource {
      */
 
     getPropertyKeys = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueTypeId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPropertyKeys','GET','rest/api/2/issuetype/:issueTypeId/properties',options,callback)
     };
@@ -112,14 +113,14 @@ export class IssuetypeProperties extends baseResource {
      */
 
     setProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueTypeId": args[0],
-             "propertyKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setProperty','PUT','rest/api/2/issuetype/:issueTypeId/properties/:propertyKey',options,callback)
     };

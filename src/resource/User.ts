@@ -30,14 +30,14 @@ export class User extends baseResource {
      */
 
     addUserToApplication = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "applicationKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addUserToApplication','POST','rest/api/2/user/application',options,callback)
     };
@@ -50,20 +50,22 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username the username
      * @param {string} options.key key user key
+     * @param {string} options.password password 
+     * @param {string} options.currentPassword currentPassword 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     changeUserPassword = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "key": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('changeUserPassword','PUT','rest/api/2/user/password',options,callback)
     };
@@ -88,12 +90,14 @@ export class User extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/user',options,callback)
     };
@@ -105,19 +109,25 @@ export class User extends baseResource {
      * @memberOf User#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username username
+     * @param {string} options.cropperWidth cropperWidth 
+     * @param {string} options.cropperOffsetX cropperOffsetX 
+     * @param {string} options.cropperOffsetY cropperOffsetY 
+     * @param {string} options.url url 
+     * @param {string} options.needsCropping needsCropping 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/user/avatar',options,callback)
     };
@@ -136,13 +146,14 @@ export class User extends baseResource {
      */
 
     defaultColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('defaultColumns','GET','rest/api/2/user/columns',options,callback)
     };
@@ -161,14 +172,14 @@ export class User extends baseResource {
      */
 
     deleteAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "username": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteAvatar','DELETE','rest/api/2/user/avatar/:id',options,callback)
     };
@@ -187,14 +198,14 @@ export class User extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "key": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/user',options,callback)
     };
@@ -218,17 +229,14 @@ export class User extends baseResource {
      */
 
     find = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "startAt": args[1],
-             "maxResults": args[2],
-             "includeActive": args[3],
-             "includeInactive": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('find','GET','rest/api/2/user/search',options,callback)
     };
@@ -256,18 +264,14 @@ export class User extends baseResource {
      */
 
     findAssignableUsers = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "project": args[1],
-             "issueKey": args[2],
-             "startAt": args[3],
-             "maxResults": args[4],
-             "actionDescriptorId": args[5],
-             "token": args[6]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findAssignableUsers','GET','rest/api/2/user/assignable/search',options,callback)
     };
@@ -291,16 +295,14 @@ export class User extends baseResource {
      */
 
     findBulkAssignableUsers = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "projectKeys": args[1],
-             "startAt": args[2],
-             "maxResults": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findBulkAssignableUsers','GET','rest/api/2/user/assignable/multiProjectSearch',options,callback)
     };
@@ -319,14 +321,14 @@ export class User extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "key": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/user',options,callback)
     };
@@ -349,16 +351,14 @@ export class User extends baseResource {
      */
 
     findUsersForPicker = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "query": args[0],
-             "maxResults": args[1],
-             "showAvatar": args[2],
-             "exclude": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findUsersForPicker','GET','rest/api/2/user/picker',options,callback)
     };
@@ -388,18 +388,14 @@ export class User extends baseResource {
      */
 
     findUsersWithAllPermissions = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "permissions": args[1],
-             "issueKey": args[2],
-             "projectKey": args[3],
-             "startAt": args[4],
-             "maxResults": args[5],
-             "token": args[6]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findUsersWithAllPermissions','GET','rest/api/2/user/permission/search',options,callback)
     };
@@ -426,17 +422,14 @@ export class User extends baseResource {
      */
 
     findUsersWithBrowsePermission = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "issueKey": args[1],
-             "projectKey": args[2],
-             "startAt": args[3],
-             "maxResults": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findUsersWithBrowsePermission','GET','rest/api/2/user/viewissue/search',options,callback)
     };
@@ -454,13 +447,14 @@ export class User extends baseResource {
      */
 
     getAllAvatars = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllAvatars','GET','rest/api/2/user/avatars',options,callback)
     };
@@ -487,12 +481,14 @@ export class User extends baseResource {
      */
 
     login = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('login','POST','rest/auth/1/session',options,callback)
     };
@@ -509,12 +505,14 @@ export class User extends baseResource {
      */
 
     logout = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('logout','DELETE','rest/auth/1/session',options,callback)
     };
@@ -533,14 +531,14 @@ export class User extends baseResource {
      */
 
     removeUserFromApplication = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "applicationKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('removeUserFromApplication','DELETE','rest/api/2/user/application',options,callback)
     };
@@ -559,13 +557,14 @@ export class User extends baseResource {
      */
 
     resetColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('resetColumns','DELETE','rest/api/2/user/columns',options,callback)
     };
@@ -583,12 +582,14 @@ export class User extends baseResource {
      */
 
     setColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setColumns','PUT','rest/api/2/user/columns',options,callback)
     };
@@ -629,15 +630,14 @@ export class User extends baseResource {
      */
 
     storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "filename": args[1],
-             "size": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/user/avatar/temporary',options,callback)
     };
@@ -668,13 +668,14 @@ export class User extends baseResource {
      */
 
     storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/user/avatar/temporary',options,callback)
     };
@@ -688,20 +689,27 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username the username
      * @param {string} options.key key user key
+     * @param {string} options.key key 
+     * @param {string} options.name name 
+     * @param {string} options.password password 
+     * @param {string} options.emailAddress emailAddress 
+     * @param {string} options.displayName displayName 
+     * @param {string} options.notification notification 
+     * @param {string} options.applicationKeys applicationKeys 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "key": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/user',options,callback)
     };
@@ -713,19 +721,27 @@ export class User extends baseResource {
      * @memberOf User#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username 
+     * @param {string} options.id id 
+     * @param {string} options.owner owner 
+     * @param {string} options.isSystemAvatar isSystemAvatar 
+     * @param {string} options.isSelected isSelected 
+     * @param {string} options.isDeletable isDeletable 
+     * @param {string} options.urls urls 
+     * @param {string} options.selected selected 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateProjectAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "username": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateProjectAvatar','PUT','rest/api/2/user/avatar',options,callback)
     };

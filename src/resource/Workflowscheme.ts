@@ -29,13 +29,14 @@ export class Workflowscheme extends baseResource {
      */
 
     createDraftForParent = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createDraftForParent','POST','rest/api/2/workflowscheme/:id/createdraft',options,callback)
     };
@@ -66,12 +67,14 @@ export class Workflowscheme extends baseResource {
      */
 
     createScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createScheme','POST','rest/api/2/workflowscheme',options,callback)
     };
@@ -92,14 +95,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "updateDraftIfNeeded": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteDefault','DELETE','rest/api/2/workflowscheme/:id/default',options,callback)
     };
@@ -117,13 +120,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteDraftById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteDraftById','DELETE','rest/api/2/workflowscheme/:id/draft',options,callback)
     };
@@ -141,13 +145,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteDraftDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteDraftDefault','DELETE','rest/api/2/workflowscheme/:id/draft/default',options,callback)
     };
@@ -166,14 +171,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteDraftIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteDraftIssueType','DELETE','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
     };
@@ -192,14 +197,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteDraftWorkflowMapping = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteDraftWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
     };
@@ -221,15 +226,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "updateDraftIfNeeded": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteIssueType','DELETE','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
     };
@@ -247,13 +251,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteScheme','DELETE','rest/api/2/workflowscheme/:id',options,callback)
     };
@@ -275,15 +280,14 @@ export class Workflowscheme extends baseResource {
      */
 
     deleteWorkflowMapping = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "updateDraftIfNeeded": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/workflow',options,callback)
     };
@@ -304,14 +308,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "returnDraftIfExists": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getById','GET','rest/api/2/workflowscheme/:id',options,callback)
     };
@@ -332,14 +336,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "returnDraftIfExists": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDefault','GET','rest/api/2/workflowscheme/:id/default',options,callback)
     };
@@ -357,13 +361,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getDraftById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDraftById','GET','rest/api/2/workflowscheme/:id/draft',options,callback)
     };
@@ -381,13 +386,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getDraftDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDraftDefault','GET','rest/api/2/workflowscheme/:id/draft/default',options,callback)
     };
@@ -406,14 +412,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getDraftIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDraftIssueType','GET','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
     };
@@ -432,14 +438,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getDraftWorkflow = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDraftWorkflow','GET','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
     };
@@ -461,15 +467,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "returnDraftIfExists": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getIssueType','GET','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
     };
@@ -491,15 +496,14 @@ export class Workflowscheme extends baseResource {
      */
 
     getWorkflow = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "returnDraftIfExists": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getWorkflow','GET','rest/api/2/workflowscheme/:id/workflow',options,callback)
     };
@@ -515,6 +519,7 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.issueType issueType 
+     * @param {string} options.issueType issueType 
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
@@ -523,14 +528,14 @@ export class Workflowscheme extends baseResource {
      */
 
     setDraftIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setDraftIssueType','PUT','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
     };
@@ -546,6 +551,7 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.issueType issueType 
+     * @param {string} options.issueType issueType 
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
@@ -554,14 +560,14 @@ export class Workflowscheme extends baseResource {
      */
 
     setIssueType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "issueType": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setIssueType','PUT','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
     };
@@ -580,6 +586,7 @@ export class Workflowscheme extends baseResource {
      * @memberOf Workflowscheme#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
+     * @param {string} options.id id 
      * @param {string} options.name name 
      * @param {string} options.description description 
      * @param {string} options.defaultWorkflow defaultWorkflow 
@@ -597,13 +604,14 @@ export class Workflowscheme extends baseResource {
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/workflowscheme/:id',options,callback)
     };
@@ -627,13 +635,14 @@ export class Workflowscheme extends baseResource {
      */
 
     updateDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateDefault','PUT','rest/api/2/workflowscheme/:id/default',options,callback)
     };
@@ -646,6 +655,7 @@ export class Workflowscheme extends baseResource {
      * @method updateDraft
      * @memberOf Workflowscheme#
      * @param {Object} options An object containing options to pass to the Jira API.
+     * @param {string} options.id id 
      * @param {string} options.id id 
      * @param {string} options.name name 
      * @param {string} options.description description 
@@ -664,13 +674,14 @@ export class Workflowscheme extends baseResource {
      */
 
     updateDraft = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateDraft','PUT','rest/api/2/workflowscheme/:id/draft',options,callback)
     };
@@ -690,13 +701,14 @@ export class Workflowscheme extends baseResource {
      */
 
     updateDraftDefault = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateDraftDefault','PUT','rest/api/2/workflowscheme/:id/draft/default',options,callback)
     };
@@ -712,20 +724,24 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.workflowName workflowName the name of the workflow mapping to update.
+     * @param {string} options.workflow workflow 
+     * @param {string} options.issueTypes issueTypes 
+     * @param {string} options.defaultMapping defaultMapping 
+     * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateDraftWorkflowMapping = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateDraftWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
     };
@@ -744,20 +760,24 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.workflowName workflowName the name of the workflow mapping to update.
+     * @param {string} options.workflow workflow 
+     * @param {string} options.issueTypes issueTypes 
+     * @param {string} options.defaultMapping defaultMapping 
+     * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateWorkflowMapping = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "workflowName": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/workflow',options,callback)
     };

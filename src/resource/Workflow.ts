@@ -27,22 +27,22 @@ export class Workflow extends baseResource {
      * @param {string} options.key key the name of the property to add.
      * @param {string} options.workflowName workflowName the name of the workflow to use.
      * @param {string} options.workflowMode workflowMode the type of workflow to use. Can either be "live" or "draft".
+     * @param {string} options.key key 
+     * @param {string} options.value value 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     createProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "key": args[1],
-             "workflowName": args[2],
-             "workflowMode": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createProperty','POST','rest/api/2/workflow/:id/properties',options,callback)
     };
@@ -64,16 +64,14 @@ export class Workflow extends baseResource {
      */
 
     deleteProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "key": args[1],
-             "workflowName": args[2],
-             "workflowMode": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProperty','DELETE','rest/api/2/workflow/:id/properties',options,callback)
     };
@@ -91,13 +89,14 @@ export class Workflow extends baseResource {
      */
 
     find = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "workflowName": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('find','GET','rest/api/2/workflow',options,callback)
     };
@@ -121,17 +120,14 @@ export class Workflow extends baseResource {
      */
 
     getProperties = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "includeReservedKeys": args[1],
-             "key": args[2],
-             "workflowName": args[3],
-             "workflowMode": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProperties','GET','rest/api/2/workflow/:id/properties',options,callback)
     };
@@ -147,22 +143,22 @@ export class Workflow extends baseResource {
      * @param {string} options.key key the name of the property to add.
      * @param {string} options.workflowName workflowName the name of the workflow to use.
      * @param {string} options.workflowMode workflowMode the type of workflow to use. Can either be "live" or "draft".
+     * @param {string} options.key key 
+     * @param {string} options.value value 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updateProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "key": args[1],
-             "workflowName": args[2],
-             "workflowMode": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateProperty','PUT','rest/api/2/workflow/:id/properties',options,callback)
     };

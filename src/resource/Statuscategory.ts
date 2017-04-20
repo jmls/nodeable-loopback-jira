@@ -28,12 +28,14 @@ export class Statuscategory extends baseResource {
      */
 
     getStatusCategories = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getStatusCategories','GET','rest/api/2/statuscategory',options,callback)
     };
@@ -51,13 +53,14 @@ export class Statuscategory extends baseResource {
      */
 
     getStatusCategory = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "idOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getStatusCategory','GET','rest/api/2/statuscategory/:idOrKey',options,callback)
     };

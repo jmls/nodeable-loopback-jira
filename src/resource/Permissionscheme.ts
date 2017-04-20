@@ -24,20 +24,22 @@ export class Permissionscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.schemeId schemeId 
      * @param {string} options.expand expand 
+     * @param {string} options.holder holder 
+     * @param {string} options.permission permission 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     createPermissionGrant = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createPermissionGrant','POST','rest/api/2/permissionscheme/:schemeId/permission',options,callback)
     };
@@ -50,19 +52,23 @@ export class Permissionscheme extends baseResource {
      * @memberOf Permissionscheme#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.expand expand 
+     * @param {string} options.name name 
+     * @param {string} options.description description 
+     * @param {string} options.permissions permissions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     createPermissionScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "expand": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createPermissionScheme','POST','rest/api/2/permissionscheme',options,callback)
     };
@@ -80,13 +86,14 @@ export class Permissionscheme extends baseResource {
      */
 
     deletePermissionScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deletePermissionScheme','DELETE','rest/api/2/permissionscheme/:schemeId',options,callback)
     };
@@ -105,14 +112,14 @@ export class Permissionscheme extends baseResource {
      */
 
     deletePermissionSchemeEntity = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "permissionId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deletePermissionSchemeEntity','DELETE','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options,callback)
     };
@@ -131,14 +138,14 @@ export class Permissionscheme extends baseResource {
      */
 
     getPermissionScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPermissionScheme','GET','rest/api/2/permissionscheme/:schemeId',options,callback)
     };
@@ -158,15 +165,14 @@ export class Permissionscheme extends baseResource {
      */
 
     getPermissionSchemeGrant = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "permissionId": args[1],
-             "expand": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPermissionSchemeGrant','GET','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options,callback)
     };
@@ -185,14 +191,14 @@ export class Permissionscheme extends baseResource {
      */
 
     getPermissionSchemeGrants = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPermissionSchemeGrants','GET','rest/api/2/permissionscheme/:schemeId/permission',options,callback)
     };
@@ -215,13 +221,14 @@ export class Permissionscheme extends baseResource {
      */
 
     getPermissionSchemes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "expand": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPermissionSchemes','GET','rest/api/2/permissionscheme',options,callback)
     };
@@ -242,20 +249,23 @@ export class Permissionscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.schemeId schemeId 
      * @param {string} options.expand expand 
+     * @param {string} options.name name 
+     * @param {string} options.description description 
+     * @param {string} options.permissions permissions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     updatePermissionScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "schemeId": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updatePermissionScheme','PUT','rest/api/2/permissionscheme/:schemeId',options,callback)
     };

@@ -39,12 +39,14 @@ export class Auditing extends baseResource {
      */
 
     addRecord = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addRecord','POST','rest/api/2/auditing/record',options,callback)
     };
@@ -70,17 +72,14 @@ export class Auditing extends baseResource {
      */
 
     getRecords = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "offset": args[0],
-             "limit": args[1],
-             "filter": args[2],
-             "from": args[3],
-             "to": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getRecords','GET','rest/api/2/auditing/record',options,callback)
     };

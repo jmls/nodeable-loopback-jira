@@ -33,13 +33,14 @@ export class Filter extends baseResource {
      */
 
     addSharePermission = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addSharePermission','POST','rest/api/2/filter/:id/permission',options,callback)
     };
@@ -52,19 +53,31 @@ export class Filter extends baseResource {
      * @memberOf Filter#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.expand expand the parameters to expand
+     * @param {string} options.id id 
+     * @param {string} options.name name 
+     * @param {string} options.description description 
+     * @param {string} options.owner owner 
+     * @param {string} options.jql jql 
+     * @param {string} options.viewUrl viewUrl 
+     * @param {string} options.searchUrl searchUrl 
+     * @param {string} options.favourite favourite 
+     * @param {string} options.sharePermissions sharePermissions 
+     * @param {string} options.sharedUsers sharedUsers 
+     * @param {string} options.subscriptions subscriptions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "expand": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/filter',options,callback)
     };
@@ -83,13 +96,14 @@ export class Filter extends baseResource {
      */
 
     defaultColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('defaultColumns','GET','rest/api/2/filter/:id/columns',options,callback)
     };
@@ -107,13 +121,14 @@ export class Filter extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/filter/:id',options,callback)
     };
@@ -132,14 +147,14 @@ export class Filter extends baseResource {
      */
 
     deleteSharePermission = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "permission-id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteSharePermission','DELETE','rest/api/2/filter/:id/permission/:permission-id',options,callback)
     };
@@ -152,20 +167,31 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.expand expand the parameters to expand
+     * @param {string} options.id id 
+     * @param {string} options.name name 
+     * @param {string} options.description description 
+     * @param {string} options.owner owner 
+     * @param {string} options.jql jql 
+     * @param {string} options.viewUrl viewUrl 
+     * @param {string} options.searchUrl searchUrl 
+     * @param {string} options.favourite favourite 
+     * @param {string} options.sharePermissions sharePermissions 
+     * @param {string} options.sharedUsers sharedUsers 
+     * @param {string} options.subscriptions subscriptions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     editFilter = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('editFilter','PUT','rest/api/2/filter/:id',options,callback)
     };
@@ -184,14 +210,14 @@ export class Filter extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/filter/:id',options,callback)
     };
@@ -208,12 +234,14 @@ export class Filter extends baseResource {
      */
 
     getDefaultShareScope = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getDefaultShareScope','GET','rest/api/2/filter/defaultShareScope',options,callback)
     };
@@ -231,13 +259,14 @@ export class Filter extends baseResource {
      */
 
     getFavouriteFilters = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "expand": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getFavouriteFilters','GET','rest/api/2/filter/favourite',options,callback)
     };
@@ -256,14 +285,14 @@ export class Filter extends baseResource {
      */
 
     getSharePermission = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "permissionId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getSharePermission','GET','rest/api/2/filter/:id/permission/:permissionId',options,callback)
     };
@@ -281,13 +310,14 @@ export class Filter extends baseResource {
      */
 
     getSharePermissions = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getSharePermissions','GET','rest/api/2/filter/:id/permission',options,callback)
     };
@@ -305,13 +335,14 @@ export class Filter extends baseResource {
      */
 
     resetColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('resetColumns','DELETE','rest/api/2/filter/:id/columns',options,callback)
     };
@@ -329,13 +360,14 @@ export class Filter extends baseResource {
      */
 
     setColumns = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setColumns','PUT','rest/api/2/filter/:id/columns',options,callback)
     };
@@ -353,12 +385,14 @@ export class Filter extends baseResource {
      */
 
     setDefaultShareScope = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setDefaultShareScope','PUT','rest/api/2/filter/defaultShareScope',options,callback)
     };

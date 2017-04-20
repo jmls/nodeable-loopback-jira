@@ -32,15 +32,14 @@ export class UserProperties extends baseResource {
      */
 
     deleteProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "propertyKey": args[0],
-             "userKey": args[1],
-             "username": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteProperty','DELETE','rest/api/2/user/properties/:propertyKey',options,callback)
     };
@@ -59,14 +58,14 @@ export class UserProperties extends baseResource {
      */
 
     getPropertiesKeys = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "userKey": args[0],
-             "username": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getPropertiesKeys','GET','rest/api/2/user/properties',options,callback)
     };
@@ -87,15 +86,14 @@ export class UserProperties extends baseResource {
      */
 
     getProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "propertyKey": args[0],
-             "userKey": args[1],
-             "username": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProperty','GET','rest/api/2/user/properties/:propertyKey',options,callback)
     };
@@ -119,15 +117,14 @@ export class UserProperties extends baseResource {
      */
 
     setProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "propertyKey": args[0],
-             "userKey": args[1],
-             "username": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setProperty','PUT','rest/api/2/user/properties/:propertyKey',options,callback)
     };

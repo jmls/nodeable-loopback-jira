@@ -29,13 +29,14 @@ export class IssueSubtask extends baseResource {
      */
 
     canMoveSubTask = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('canMoveSubTask','GET','rest/api/2/issue/:issueIdOrKey/subtask/move',options,callback)
     };
@@ -53,13 +54,14 @@ export class IssueSubtask extends baseResource {
      */
 
     getSubTasks = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getSubTasks','GET','rest/api/2/issue/:issueIdOrKey/subtask',options,callback)
     };
@@ -80,13 +82,14 @@ export class IssueSubtask extends baseResource {
      */
 
     moveSubTasks = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('moveSubTasks','POST','rest/api/2/issue/:issueIdOrKey/subtask/move',options,callback)
     };

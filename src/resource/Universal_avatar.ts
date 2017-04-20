@@ -35,14 +35,14 @@ export class Universal_avatar extends baseResource {
      */
 
     createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "owningObjectId": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/universal_avatar/type/:type/owner/:owningObjectId/avatar',options,callback)
     };
@@ -62,15 +62,14 @@ export class Universal_avatar extends baseResource {
      */
 
     deleteAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "owningObjectId": args[1],
-             "id": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteAvatar','DELETE','rest/api/2/universal_avatar/type/:type/owner/:owningObjectId/avatar/:id',options,callback)
     };
@@ -89,14 +88,14 @@ export class Universal_avatar extends baseResource {
      */
 
     getAvatars = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "owningObjectId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAvatars','GET','rest/api/2/universal_avatar/type/:type/owner/:owningObjectId',options,callback)
     };
@@ -117,16 +116,14 @@ export class Universal_avatar extends baseResource {
      */
 
     storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "owningObjectId": args[1],
-             "filename": args[2],
-             "size": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/universal_avatar/type/:type/owner/:owningObjectId/temp',options,callback)
     };
@@ -145,14 +142,14 @@ export class Universal_avatar extends baseResource {
      */
 
     storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "owningObjectId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/universal_avatar/type/:type/owner/:owningObjectId/temp',options,callback)
     };

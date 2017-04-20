@@ -31,14 +31,14 @@ export class Screens extends baseResource {
      */
 
     addField = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields',options,callback)
     };
@@ -56,13 +56,14 @@ export class Screens extends baseResource {
      */
 
     addFieldToDefaultScreen = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "fieldId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addFieldToDefaultScreen','POST','rest/api/2/screens/addToDefault/:fieldId',options,callback)
     };
@@ -82,13 +83,14 @@ export class Screens extends baseResource {
      */
 
     addTab = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('addTab','POST','rest/api/2/screens/:screenId/tabs',options,callback)
     };
@@ -107,14 +109,14 @@ export class Screens extends baseResource {
      */
 
     deleteTab = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteTab','DELETE','rest/api/2/screens/:screenId/tabs/:tabId',options,callback)
     };
@@ -134,15 +136,14 @@ export class Screens extends baseResource {
      */
 
     getAllFields = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "projectKey": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllFields','GET','rest/api/2/screens/:screenId/tabs/:tabId/fields',options,callback)
     };
@@ -161,14 +162,14 @@ export class Screens extends baseResource {
      */
 
     getAllTabs = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "projectKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllTabs','GET','rest/api/2/screens/:screenId/tabs',options,callback)
     };
@@ -186,13 +187,14 @@ export class Screens extends baseResource {
      */
 
     getFieldsToAdd = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getFieldsToAdd','GET','rest/api/2/screens/:screenId/availableFields',options,callback)
     };
@@ -214,15 +216,14 @@ export class Screens extends baseResource {
      */
 
     moveField = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "id": args[2],
-             "data": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('moveField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id/move',options,callback)
     };
@@ -242,15 +243,14 @@ export class Screens extends baseResource {
      */
 
     moveTab = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "pos": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('moveTab','POST','rest/api/2/screens/:screenId/tabs/:tabId/move/:pos',options,callback)
     };
@@ -270,15 +270,14 @@ export class Screens extends baseResource {
      */
 
     removeField = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "id": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('removeField','DELETE','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id',options,callback)
     };
@@ -299,14 +298,14 @@ export class Screens extends baseResource {
      */
 
     renameTab = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "screenId": args[0],
-             "tabId": args[1],
-             "data": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('renameTab','PUT','rest/api/2/screens/:screenId/tabs/:tabId',options,callback)
     };

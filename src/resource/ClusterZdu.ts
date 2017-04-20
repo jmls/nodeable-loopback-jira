@@ -28,12 +28,14 @@ export class ClusterZdu extends baseResource {
      */
 
     approveUpgrade = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('approveUpgrade','POST','rest/api/2/cluster/zdu/approve',options,callback)
     };
@@ -50,12 +52,14 @@ export class ClusterZdu extends baseResource {
      */
 
     cancelUpgrade = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('cancelUpgrade','POST','rest/api/2/cluster/zdu/cancel',options,callback)
     };
@@ -72,12 +76,14 @@ export class ClusterZdu extends baseResource {
      */
 
     getState = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getState','GET','rest/api/2/cluster/zdu/state',options,callback)
     };
@@ -94,12 +100,14 @@ export class ClusterZdu extends baseResource {
      */
 
     setReadyToUpgrade = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setReadyToUpgrade','POST','rest/api/2/cluster/zdu/start',options,callback)
     };

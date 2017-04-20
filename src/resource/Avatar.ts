@@ -34,13 +34,14 @@ export class Avatar extends baseResource {
      */
 
     createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/avatar/:type/temporaryCrop',options,callback)
     };
@@ -58,13 +59,14 @@ export class Avatar extends baseResource {
      */
 
     getAllSystemAvatars = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllSystemAvatars','GET','rest/api/2/avatar/:type/system',options,callback)
     };
@@ -84,15 +86,14 @@ export class Avatar extends baseResource {
      */
 
     storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "filename": args[1],
-             "size": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/avatar/:type/temporary',options,callback)
     };

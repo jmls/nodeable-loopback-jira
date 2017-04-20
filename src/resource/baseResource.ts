@@ -124,6 +124,7 @@ export class baseResource implements IResource {
             let method = definition.methods[key];
 
             method.tokenRequired = ('tokenRequired' in method) ? method.tokenRequired : true;
+
             method.public = ('public' in method) ? method.public : true;
 
             if (!method.public) {

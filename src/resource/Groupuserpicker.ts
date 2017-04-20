@@ -51,18 +51,14 @@ export class Groupuserpicker extends baseResource {
      */
 
     findUsersAndGroups = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "query": args[0],
-             "maxResults": args[1],
-             "showAvatar": args[2],
-             "fieldId": args[3],
-             "projectId": args[4],
-             "issueTypeId": args[5],
-             "token": args[6]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findUsersAndGroups','GET','rest/api/2/groupuserpicker',options,callback)
     };

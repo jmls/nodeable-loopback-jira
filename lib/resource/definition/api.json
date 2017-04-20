@@ -91,6 +91,10 @@
                 ],
                 "schema": [
                     {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
                         "name": "value",
                         "type": "string"
                     }
@@ -122,18 +126,6 @@
         "name": "Applicationrole",
         "description": "Provides REST access to JIRA's Application Roles.",
         "methods": {
-            "getAll": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [],
-                "description": "Get all",
-                "name": "getAll",
-                "details": "Returns all ApplicationRoles in the system. Will also return an ETag header containing a version hash of the\n collection of ApplicationRoles.",
-                "verb": "GET",
-                "url": "rest/api/2/applicationrole",
-                "path": "/",
-                "responseType": "array"
-            },
             "putBulk": {
                 "urlParams": [],
                 "schema": [],
@@ -148,6 +140,18 @@
                 "name": "putBulk",
                 "details": "Updates the ApplicationRoles with the passed data if the version hash is the same as the server.\n Only the groups and default groups setting of the role may be updated. Requests to change the key\n or the name of the role will be silently ignored. It is acceptable to pass only the roles that are updated\n as roles that are present in the server but not in data to update with, will not be deleted.",
                 "verb": "PUT",
+                "url": "rest/api/2/applicationrole",
+                "path": "/",
+                "responseType": "array"
+            },
+            "getAll": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get all",
+                "name": "getAll",
+                "details": "Returns all ApplicationRoles in the system. Will also return an ETag header containing a version hash of the\n collection of ApplicationRoles.",
+                "verb": "GET",
                 "url": "rest/api/2/applicationrole",
                 "path": "/",
                 "responseType": "array"
@@ -176,7 +180,56 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "groups",
+                        "type": "array"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "defaultGroups",
+                        "type": "array"
+                    },
+                    {
+                        "name": "selectedByDefault",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "defined",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "numberOfSeats",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "remainingSeats",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "userCount",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "userCountDescription",
+                        "type": "string"
+                    },
+                    {
+                        "name": "hasUnlimitedSeats",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "platform",
+                        "type": "boolean"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "If-Match",
@@ -671,23 +724,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "findById": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [],
-                "description": "Get component",
-                "name": "findById",
-                "details": "Returns a project component.",
-                "verb": "GET",
-                "url": "rest/api/2/component/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
             "update": {
                 "urlParams": [
                     {
@@ -746,6 +782,23 @@
                 "name": "update",
                 "details": "Modify a component via PUT. Any fields present in the PUT will override existing values. As a convenience, if a field\n is not present, it is silently ignored.\n \n If leadUserName is an empty string (\"\") the component lead will be removed.",
                 "verb": "PUT",
+                "url": "rest/api/2/component/:id",
+                "path": "/:id",
+                "responseType": "object"
+            },
+            "findById": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get component",
+                "name": "findById",
+                "details": "Returns a project component.",
+                "verb": "GET",
                 "url": "rest/api/2/component/:id",
                 "path": "/:id",
                 "responseType": "object"
@@ -1039,7 +1092,52 @@
         "methods": {
             "create": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "jql",
+                        "type": "string"
+                    },
+                    {
+                        "name": "viewUrl",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchUrl",
+                        "type": "string"
+                    },
+                    {
+                        "name": "favourite",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sharePermissions",
+                        "type": "array"
+                    },
+                    {
+                        "name": "sharedUsers",
+                        "type": "object"
+                    },
+                    {
+                        "name": "subscriptions",
+                        "type": "object"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -1055,29 +1153,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "findById": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "expand",
-                        "type": "string",
-                        "description": "the parameters to expand"
-                    }
-                ],
-                "description": "Get filter",
-                "name": "findById",
-                "details": "Returns a filter given an idthe parameters to expand",
-                "verb": "GET",
-                "url": "rest/api/2/filter/:id",
-                "path": "/:id",
-                "responseType": "object"
-            },
             "editFilter": {
                 "urlParams": [
                     {
@@ -1085,7 +1160,52 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "jql",
+                        "type": "string"
+                    },
+                    {
+                        "name": "viewUrl",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchUrl",
+                        "type": "string"
+                    },
+                    {
+                        "name": "favourite",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "sharePermissions",
+                        "type": "array"
+                    },
+                    {
+                        "name": "sharedUsers",
+                        "type": "object"
+                    },
+                    {
+                        "name": "subscriptions",
+                        "type": "object"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -1117,6 +1237,29 @@
                 "url": "rest/api/2/filter/:id",
                 "path": "/:id",
                 "responseType": null
+            },
+            "findById": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": "the parameters to expand"
+                    }
+                ],
+                "description": "Get filter",
+                "name": "findById",
+                "details": "Returns a filter given an idthe parameters to expand",
+                "verb": "GET",
+                "url": "rest/api/2/filter/:id",
+                "path": "/:id",
+                "responseType": "object"
             },
             "defaultColumns": {
                 "urlParams": [
@@ -1413,7 +1556,12 @@
             },
             "addUserToGroup": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "groupname",
@@ -1659,7 +1807,28 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "transition",
+                        "type": "object"
+                    },
+                    {
+                        "name": "fields",
+                        "type": "object"
+                    },
+                    {
+                        "name": "update",
+                        "type": "object"
+                    },
+                    {
+                        "name": "historyMetadata",
+                        "type": "object"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "notifyUsers",
@@ -1778,7 +1947,44 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "author",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "renderedBody",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updateAuthor",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updated",
+                        "type": "string"
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "object"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -1794,33 +2000,6 @@
                 "path": "/:issueIdOrKey/comment",
                 "responseType": "object"
             },
-            "getComment": {
-                "urlParams": [
-                    {
-                        "name": "issueIdOrKey",
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "expand",
-                        "type": "string",
-                        "description": "optional flags: renderedBody (provides body rendered in HTML)"
-                    }
-                ],
-                "description": "Get comment",
-                "name": "getComment",
-                "details": "Returns a single comment.optional flags: renderedBody (provides body rendered in HTML)",
-                "verb": "GET",
-                "url": "rest/api/2/issue/:issueIdOrKey/comment/:id",
-                "path": "/:issueIdOrKey/comment/:id",
-                "responseType": "object"
-            },
             "updateComment": {
                 "urlParams": [
                     {
@@ -1832,7 +2011,44 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "author",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "body",
+                        "type": "string"
+                    },
+                    {
+                        "name": "renderedBody",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updateAuthor",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updated",
+                        "type": "string"
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "object"
+                    },
+                    {
+                        "name": "properties",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -1868,6 +2084,33 @@
                 "url": "rest/api/2/issue/:issueIdOrKey/comment/:id",
                 "path": "/:issueIdOrKey/comment/:id",
                 "responseType": null
+            },
+            "getComment": {
+                "urlParams": [
+                    {
+                        "name": "issueIdOrKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": "optional flags: renderedBody (provides body rendered in HTML)"
+                    }
+                ],
+                "description": "Get comment",
+                "name": "getComment",
+                "details": "Returns a single comment.optional flags: renderedBody (provides body rendered in HTML)",
+                "verb": "GET",
+                "url": "rest/api/2/issue/:issueIdOrKey/comment/:id",
+                "path": "/:issueIdOrKey/comment/:id",
+                "responseType": "object"
             },
             "getEditIssueMeta": {
                 "urlParams": [
@@ -2277,7 +2520,52 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "author",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "updateAuthor",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "comment",
+                        "type": "string"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updated",
+                        "type": "string"
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "object"
+                    },
+                    {
+                        "name": "started",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timeSpent",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timeSpentSeconds",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueId",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "adjustEstimate",
@@ -2335,7 +2623,52 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "author",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "updateAuthor",
+                        "type": "Object"
+                    },
+                    {
+                        "name": "comment",
+                        "type": "string"
+                    },
+                    {
+                        "name": "created",
+                        "type": "string"
+                    },
+                    {
+                        "name": "updated",
+                        "type": "string"
+                    },
+                    {
+                        "name": "visibility",
+                        "type": "object"
+                    },
+                    {
+                        "name": "started",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timeSpent",
+                        "type": "string"
+                    },
+                    {
+                        "name": "timeSpentSeconds",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueId",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "adjustEstimate",
@@ -2906,29 +3239,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "deleteIssueType": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "alternativeIssueTypeId",
-                        "type": "string",
-                        "description": "the id of an issue type to which issues associated with the removed issue type will be migrated."
-                    }
-                ],
-                "description": "Delete issue type",
-                "name": "deleteIssueType",
-                "details": "Deletes the specified issue type. If the issue type has any associated issues, these issues will be migrated to\n the alternative issue type specified in the parameter. You can determine the alternative issue types by calling\n the /rest/api/2/issuetype/{id}/alternatives resource.the id of an issue type to which issues associated with the removed issue type will be migrated.",
-                "verb": "DELETE",
-                "url": "rest/api/2/issuetype/:id",
-                "path": "/:id",
-                "responseType": null
-            },
             "updateIssueType": {
                 "urlParams": [
                     {
@@ -2975,6 +3285,29 @@
                 "url": "rest/api/2/issuetype/:id",
                 "path": "/:id",
                 "responseType": "object"
+            },
+            "deleteIssueType": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "alternativeIssueTypeId",
+                        "type": "string",
+                        "description": "the id of an issue type to which issues associated with the removed issue type will be migrated."
+                    }
+                ],
+                "description": "Delete issue type",
+                "name": "deleteIssueType",
+                "details": "Deletes the specified issue type. If the issue type has any associated issues, these issues will be migrated to\n the alternative issue type specified in the parameter. You can determine the alternative issue types by calling\n the /rest/api/2/issuetype/{id}/alternatives resource.the id of an issue type to which issues associated with the removed issue type will be migrated.",
+                "verb": "DELETE",
+                "url": "rest/api/2/issuetype/:id",
+                "path": "/:id",
+                "responseType": null
             },
             "getAlternativeIssueTypes": {
                 "urlParams": [
@@ -3297,18 +3630,6 @@
         "name": "Myself",
         "description": "Currently logged user resource",
         "methods": {
-            "getUser": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [],
-                "description": "Get user",
-                "name": "getUser",
-                "details": "Returns currently logged user. This resource cannot be accessed anonymously.",
-                "verb": "GET",
-                "url": "rest/api/2/myself",
-                "path": "/",
-                "responseType": "object"
-            },
             "updateUser": {
                 "urlParams": [],
                 "schema": [
@@ -3346,6 +3667,18 @@
                 "name": "updateUser",
                 "details": "Modify currently logged user. The \"value\" fields present will override the existing value.\n Fields skipped in request will not be changed. Only email and display name can be change that way.\n Requires user password.",
                 "verb": "PUT",
+                "url": "rest/api/2/myself",
+                "path": "/",
+                "responseType": "object"
+            },
+            "getUser": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [],
+                "description": "Get user",
+                "name": "getUser",
+                "details": "Returns currently logged user. This resource cannot be accessed anonymously.",
+                "verb": "GET",
                 "url": "rest/api/2/myself",
                 "path": "/",
                 "responseType": "object"
@@ -3532,7 +3865,20 @@
             },
             "createPermissionScheme": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "permissions",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -3595,7 +3941,20 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "permissions",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -3641,7 +4000,16 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "holder",
+                        "type": "object"
+                    },
+                    {
+                        "name": "permission",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -3834,29 +4202,6 @@
                 "path": "/",
                 "responseType": "object"
             },
-            "findById": {
-                "urlParams": [
-                    {
-                        "name": "projectIdOrKey",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "expand",
-                        "type": "string",
-                        "description": "the parameters to expand"
-                    }
-                ],
-                "description": "Get project",
-                "name": "findById",
-                "details": "Contains a full representation of a project in JSON format.\n \n All project keys associated with the project will only be returned if expand=projectKeys.\n the parameters to expand",
-                "verb": "GET",
-                "url": "rest/api/2/project/:projectIdOrKey",
-                "path": "/:projectIdOrKey",
-                "responseType": "object"
-            },
             "update": {
                 "urlParams": [
                     {
@@ -3864,7 +4209,60 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "projectTypeKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "projectTemplateKey",
+                        "type": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string"
+                    },
+                    {
+                        "name": "lead",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "assigneeType",
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatarId",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "issueSecurityScheme",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "permissionScheme",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "notificationScheme",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "categoryId",
+                        "type": "integer"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -3896,6 +4294,29 @@
                 "url": "rest/api/2/project/:projectIdOrKey",
                 "path": "/:projectIdOrKey",
                 "responseType": null
+            },
+            "findById": {
+                "urlParams": [
+                    {
+                        "name": "projectIdOrKey",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "expand",
+                        "type": "string",
+                        "description": "the parameters to expand"
+                    }
+                ],
+                "description": "Get project",
+                "name": "findById",
+                "details": "Contains a full representation of a project in JSON format.\n \n All project keys associated with the project will only be returned if expand=projectKeys.\n the parameters to expand",
+                "verb": "GET",
+                "url": "rest/api/2/project/:projectIdOrKey",
+                "path": "/:projectIdOrKey",
+                "responseType": "object"
             },
             "createAvatarFromTemporary": {
                 "urlParams": [
@@ -4323,6 +4744,10 @@
                 ],
                 "schema": [
                     {
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
                         "name": "categorisedActors",
                         "type": "object"
                     }
@@ -4454,7 +4879,12 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "integer"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "expand",
@@ -4653,6 +5083,10 @@
                     }
                 ],
                 "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
                     {
                         "name": "name",
                         "type": "string"
@@ -5116,6 +5550,29 @@
                 "path": "/:screenId/availableFields",
                 "responseType": "object"
             },
+            "getAllTabs": {
+                "urlParams": [
+                    {
+                        "name": "screenId",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "projectKey",
+                        "type": "string",
+                        "description": "the key of the project; this parameter is optional"
+                    }
+                ],
+                "description": "Get all tabs",
+                "name": "getAllTabs",
+                "details": "Returns a list of all tabs for the given screenthe key of the project; this parameter is optional",
+                "verb": "GET",
+                "url": "rest/api/2/screens/:screenId/tabs",
+                "path": "/:screenId/tabs",
+                "responseType": "object"
+            },
             "addTab": {
                 "urlParams": [
                     {
@@ -5138,29 +5595,6 @@
                 "name": "addTab",
                 "details": "Creates tab for given screen",
                 "verb": "POST",
-                "url": "rest/api/2/screens/:screenId/tabs",
-                "path": "/:screenId/tabs",
-                "responseType": "object"
-            },
-            "getAllTabs": {
-                "urlParams": [
-                    {
-                        "name": "screenId",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "projectKey",
-                        "type": "string",
-                        "description": "the key of the project; this parameter is optional"
-                    }
-                ],
-                "description": "Get all tabs",
-                "name": "getAllTabs",
-                "details": "Returns a list of all tabs for the given screenthe key of the project; this parameter is optional",
-                "verb": "GET",
                 "url": "rest/api/2/screens/:screenId/tabs",
                 "path": "/:screenId/tabs",
                 "responseType": "object"
@@ -5793,29 +6227,6 @@
         "name": "User",
         "description": "",
         "methods": {
-            "findById": {
-                "urlParams": [],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "username",
-                        "type": "string",
-                        "description": "the username"
-                    },
-                    {
-                        "name": "key",
-                        "type": "string",
-                        "description": "user key"
-                    }
-                ],
-                "description": "Get user",
-                "name": "findById",
-                "details": "Returns a user. This resource cannot be accessed anonymously.the usernameuser key",
-                "verb": "GET",
-                "url": "rest/api/2/user",
-                "path": "/",
-                "responseType": "object"
-            },
             "create": {
                 "urlParams": [],
                 "schema": [
@@ -5859,7 +6270,36 @@
             },
             "update": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "type": "string"
+                    },
+                    {
+                        "name": "emailAddress",
+                        "type": "string"
+                    },
+                    {
+                        "name": "displayName",
+                        "type": "string"
+                    },
+                    {
+                        "name": "notification",
+                        "type": "string"
+                    },
+                    {
+                        "name": "applicationKeys",
+                        "type": "array"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "username",
@@ -5902,6 +6342,29 @@
                 "url": "rest/api/2/user",
                 "path": "/",
                 "responseType": null
+            },
+            "findById": {
+                "urlParams": [],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "username",
+                        "type": "string",
+                        "description": "the username"
+                    },
+                    {
+                        "name": "key",
+                        "type": "string",
+                        "description": "user key"
+                    }
+                ],
+                "description": "Get user",
+                "name": "findById",
+                "details": "Returns a user. This resource cannot be accessed anonymously.the usernameuser key",
+                "verb": "GET",
+                "url": "rest/api/2/user",
+                "path": "/",
+                "responseType": "object"
             },
             "addUserToApplication": {
                 "urlParams": [],
@@ -6027,7 +6490,28 @@
             },
             "createAvatarFromTemporary": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "cropperWidth",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "cropperOffsetX",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "cropperOffsetY",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "needsCropping",
+                        "type": "boolean"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "username",
@@ -6045,7 +6529,36 @@
             },
             "updateProjectAvatar": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "owner",
+                        "type": "string"
+                    },
+                    {
+                        "name": "isSystemAvatar",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isSelected",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "isDeletable",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "urls",
+                        "type": "object"
+                    },
+                    {
+                        "name": "selected",
+                        "type": "boolean"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "username",
@@ -6198,7 +6711,16 @@
             },
             "changeUserPassword": {
                 "urlParams": [],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "password",
+                        "type": "string"
+                    },
+                    {
+                        "name": "currentPassword",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "username",
@@ -6613,6 +7135,10 @@
                 ],
                 "schema": [
                     {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
                         "name": "description",
                         "type": "string"
                     },
@@ -6886,7 +7412,16 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "key",
@@ -6919,7 +7454,16 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "key",
+                        "type": "string"
+                    },
+                    {
+                        "name": "value",
+                        "type": "string"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "key",
@@ -7098,6 +7642,10 @@
                     }
                 ],
                 "schema": [
+                    {
+                        "name": "id",
+                        "type": "integer"
+                    },
                     {
                         "name": "name",
                         "type": "string"
@@ -7284,6 +7832,10 @@
                 ],
                 "schema": [
                     {
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
                         "name": "name",
                         "type": "string"
                     },
@@ -7452,6 +8004,10 @@
                 ],
                 "schema": [
                     {
+                        "name": "issueType",
+                        "type": "string"
+                    },
+                    {
                         "name": "workflow",
                         "type": "string"
                     },
@@ -7522,7 +8078,24 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "workflow",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueTypes",
+                        "type": "array"
+                    },
+                    {
+                        "name": "defaultMapping",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "updateDraftIfNeeded",
+                        "type": "boolean"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "workflowName",
@@ -7536,33 +8109,6 @@
                 "verb": "PUT",
                 "url": "rest/api/2/workflowscheme/:id/draft/workflow",
                 "path": "/:id/draft/workflow",
-                "responseType": "object"
-            },
-            "deleteIssueType": {
-                "urlParams": [
-                    {
-                        "name": "id",
-                        "type": "string"
-                    },
-                    {
-                        "name": "issueType",
-                        "type": "string"
-                    }
-                ],
-                "schema": [],
-                "queryParams": [
-                    {
-                        "name": "updateDraftIfNeeded",
-                        "type": "boolean",
-                        "description": "when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project)."
-                    }
-                ],
-                "description": "Delete issue type",
-                "name": "deleteIssueType",
-                "details": "Remove the specified issue type mapping from the scheme.when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project).",
-                "verb": "DELETE",
-                "url": "rest/api/2/workflowscheme/:id/issuetype/:issueType",
-                "path": "/:id/issuetype/:issueType",
                 "responseType": "object"
             },
             "getIssueType": {
@@ -7592,6 +8138,33 @@
                 "path": "/:id/issuetype/:issueType",
                 "responseType": "object"
             },
+            "deleteIssueType": {
+                "urlParams": [
+                    {
+                        "name": "id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueType",
+                        "type": "string"
+                    }
+                ],
+                "schema": [],
+                "queryParams": [
+                    {
+                        "name": "updateDraftIfNeeded",
+                        "type": "boolean",
+                        "description": "when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project)."
+                    }
+                ],
+                "description": "Delete issue type",
+                "name": "deleteIssueType",
+                "details": "Remove the specified issue type mapping from the scheme.when true will create and return a draft when the workflow scheme cannot be edited\n                            (e.g. when it is being used by a project).",
+                "verb": "DELETE",
+                "url": "rest/api/2/workflowscheme/:id/issuetype/:issueType",
+                "path": "/:id/issuetype/:issueType",
+                "responseType": "object"
+            },
             "setIssueType": {
                 "urlParams": [
                     {
@@ -7604,6 +8177,10 @@
                     }
                 ],
                 "schema": [
+                    {
+                        "name": "issueType",
+                        "type": "string"
+                    },
                     {
                         "name": "workflow",
                         "type": "string"
@@ -7685,7 +8262,24 @@
                         "type": "string"
                     }
                 ],
-                "schema": [],
+                "schema": [
+                    {
+                        "name": "workflow",
+                        "type": "string"
+                    },
+                    {
+                        "name": "issueTypes",
+                        "type": "array"
+                    },
+                    {
+                        "name": "defaultMapping",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "updateDraftIfNeeded",
+                        "type": "boolean"
+                    }
+                ],
                 "queryParams": [
                     {
                         "name": "workflowName",
@@ -7766,27 +8360,6 @@
         "name": "Session",
         "description": "Implement a REST resource for acquiring a session cookie.",
         "methods": {
-            "login": {
-                "urlParams": [],
-                "schema": [
-                    {
-                        "name": "username",
-                        "type": "string"
-                    },
-                    {
-                        "name": "password",
-                        "type": "string"
-                    }
-                ],
-                "queryParams": [],
-                "description": "Login",
-                "name": "login",
-                "details": "Creates a new session for a user in JIRA. Once a session has been successfully created it can be used to access\n any of JIRA's remote APIs and also the web UI by passing the appropriate HTTP Cookie header.\n \n Note that it is generally preferrable to use HTTP BASIC authentication with the REST API. However, this resource\n may be used to mimic the behaviour of JIRA's log-in page (e.g. to display log-in errors to a user).\n Note that the response contains the Set-Cookie HTTP headers that must be honoured by the\n caller. If you are using a cookie-aware HTTP client then it will handle all Set-Cookie headers\n automatically. This is important because setting the JSESSIONID cookie alone may not be\n sufficient for the authentication to work.Schema{\"id\":\"https://docs.atlassian.com/jira/REST/schema/auth-success#\",\"title\":\"Auth Success\",\"type\":\"object\",\"properties\":{\"session\":{\"title\":\"Session Info\",\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"additionalProperties\":false},\"loginInfo\":{\"title\":\"Login Info\",\"type\":\"object\",\"properties\":{\"failedLoginCount\":{\"type\":\"integer\"},\"loginCount\":{\"type\":\"integer\"},\"lastFailedLoginTime\":{\"type\":\"string\"},\"previousLoginTime\":{\"type\":\"string\"}},\"additionalProperties\":false}},\"additionalProperties\":false}",
-                "verb": "POST",
-                "url": "rest/auth/1/session",
-                "path": "/1/session",
-                "responseType": "object"
-            },
             "logout": {
                 "urlParams": [],
                 "schema": [],
@@ -7807,6 +8380,27 @@
                 "name": "currentUser",
                 "details": "Returns information about the currently authenticated user's session. If the caller is not authenticated they\n will get a 401 Unauthorized status code.",
                 "verb": "GET",
+                "url": "rest/auth/1/session",
+                "path": "/1/session",
+                "responseType": "object"
+            },
+            "login": {
+                "urlParams": [],
+                "schema": [
+                    {
+                        "name": "username",
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "type": "string"
+                    }
+                ],
+                "queryParams": [],
+                "description": "Login",
+                "name": "login",
+                "details": "Creates a new session for a user in JIRA. Once a session has been successfully created it can be used to access\n any of JIRA's remote APIs and also the web UI by passing the appropriate HTTP Cookie header.\n \n Note that it is generally preferrable to use HTTP BASIC authentication with the REST API. However, this resource\n may be used to mimic the behaviour of JIRA's log-in page (e.g. to display log-in errors to a user).\n Note that the response contains the Set-Cookie HTTP headers that must be honoured by the\n caller. If you are using a cookie-aware HTTP client then it will handle all Set-Cookie headers\n automatically. This is important because setting the JSESSIONID cookie alone may not be\n sufficient for the authentication to work.Schema{\"id\":\"https://docs.atlassian.com/jira/REST/schema/auth-success#\",\"title\":\"Auth Success\",\"type\":\"object\",\"properties\":{\"session\":{\"title\":\"Session Info\",\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"}},\"additionalProperties\":false},\"loginInfo\":{\"title\":\"Login Info\",\"type\":\"object\",\"properties\":{\"failedLoginCount\":{\"type\":\"integer\"},\"loginCount\":{\"type\":\"integer\"},\"lastFailedLoginTime\":{\"type\":\"string\"},\"previousLoginTime\":{\"type\":\"string\"}},\"additionalProperties\":false}},\"additionalProperties\":false}",
+                "verb": "POST",
                 "url": "rest/auth/1/session",
                 "path": "/1/session",
                 "responseType": "object"

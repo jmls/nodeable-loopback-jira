@@ -28,12 +28,14 @@ export class ApplicationProperties extends baseResource {
      */
 
     getAdvancedSettings = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "token": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAdvancedSettings','GET','rest/api/2/application-properties/advanced-settings',options,callback)
     };
@@ -59,15 +61,14 @@ export class ApplicationProperties extends baseResource {
      */
 
     getProperty = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "key": args[0],
-             "permissionLevel": args[1],
-             "keyFilter": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProperty','GET','rest/api/2/application-properties',options,callback)
     };
@@ -79,6 +80,7 @@ export class ApplicationProperties extends baseResource {
      * @memberOf ApplicationProperties#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
+     * @param {string} options.id id 
      * @param {string} options.value value 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
@@ -86,13 +88,14 @@ export class ApplicationProperties extends baseResource {
      */
 
     setPropertyViaRestfulTable = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('setPropertyViaRestfulTable','PUT','rest/api/2/application-properties/:id',options,callback)
     };

@@ -41,12 +41,14 @@ export class Version extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/version',options,callback)
     };
@@ -65,13 +67,14 @@ export class Version extends baseResource {
      */
 
     createOrUpdateRemoteVersionLink = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "versionId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createOrUpdateRemoteVersionLink','POST','rest/api/2/version/:versionId/remotelink',options,callback)
     };
@@ -95,15 +98,14 @@ export class Version extends baseResource {
      */
 
     delete = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "moveFixIssuesTo": args[1],
-             "moveAffectedIssuesTo": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('delete','DELETE','rest/api/2/version/:id',options,callback)
     };
@@ -121,13 +123,14 @@ export class Version extends baseResource {
      */
 
     deleteRemoteVersionLinksByVersionId = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "versionId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteRemoteVersionLinksByVersionId','DELETE','rest/api/2/version/:versionId/remotelink',options,callback)
     };
@@ -146,14 +149,14 @@ export class Version extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/version/:id',options,callback)
     };
@@ -171,13 +174,14 @@ export class Version extends baseResource {
      */
 
     getRemoteVersionLinks = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "globalId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getRemoteVersionLinks','GET','rest/api/2/version/remotelink',options,callback)
     };
@@ -195,13 +199,14 @@ export class Version extends baseResource {
      */
 
     getRemoteVersionLinksByVersionId = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "versionId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getRemoteVersionLinksByVersionId','GET','rest/api/2/version/:versionId/remotelink',options,callback)
     };
@@ -219,13 +224,14 @@ export class Version extends baseResource {
      */
 
     getVersionRelatedIssues = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getVersionRelatedIssues','GET','rest/api/2/version/:id/relatedIssueCounts',options,callback)
     };
@@ -243,13 +249,14 @@ export class Version extends baseResource {
      */
 
     getVersionUnresolvedIssues = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getVersionUnresolvedIssues','GET','rest/api/2/version/:id/unresolvedIssueCount',options,callback)
     };
@@ -268,14 +275,14 @@ export class Version extends baseResource {
      */
 
     merge = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "moveIssuesTo": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('merge','PUT','rest/api/2/version/:id/mergeto/:moveIssuesTo',options,callback)
     };
@@ -301,13 +308,14 @@ export class Version extends baseResource {
      */
 
     moveVersion = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('moveVersion','POST','rest/api/2/version/:id/move',options,callback)
     };
@@ -319,6 +327,7 @@ export class Version extends baseResource {
      * @method update
      * @memberOf Version#
      * @param {Object} options An object containing options to pass to the Jira API.
+     * @param {string} options.id id 
      * @param {string} options.id id 
      * @param {string} options.description description 
      * @param {string} options.name name 
@@ -338,13 +347,14 @@ export class Version extends baseResource {
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/version/:id',options,callback)
     };

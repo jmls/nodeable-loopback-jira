@@ -35,13 +35,14 @@ export class Reindex extends baseResource {
      */
 
     getReindexInfo = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "taskId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getReindexInfo','GET','rest/api/2/reindex',options,callback)
     };
@@ -65,13 +66,14 @@ export class Reindex extends baseResource {
      */
 
     getReindexProgress = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "taskId": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getReindexProgress','GET','rest/api/2/reindex/progress',options,callback)
     };
@@ -92,16 +94,14 @@ export class Reindex extends baseResource {
      */
 
     reindex = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "type": args[0],
-             "indexComments": args[1],
-             "indexChangeHistory": args[2],
-             "indexWorklogs": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('reindex','POST','rest/api/2/reindex',options,callback)
     };
@@ -125,16 +125,14 @@ export class Reindex extends baseResource {
      */
 
     reindexIssues = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "issueId": args[0],
-             "indexComments": args[1],
-             "indexChangeHistory": args[2],
-             "indexWorklogs": args[3],
-             "token": args[4]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('reindexIssues','POST','rest/api/2/reindex/issue',options,callback)
     };

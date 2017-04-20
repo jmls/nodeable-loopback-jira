@@ -54,14 +54,14 @@ export class Notificationscheme extends baseResource {
      */
 
     getNotificationScheme = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "id": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getNotificationScheme','GET','rest/api/2/notificationscheme/:id',options,callback)
     };
@@ -85,15 +85,14 @@ export class Notificationscheme extends baseResource {
      */
 
     getNotificationSchemes = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "startAt": args[0],
-             "maxResults": args[1],
-             "expand": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getNotificationSchemes','GET','rest/api/2/notificationscheme',options,callback)
     };

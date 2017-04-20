@@ -41,12 +41,14 @@ export class Project extends baseResource {
      */
 
     create = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "data": args[0]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('create','POST','rest/api/2/project',options,callback)
     };
@@ -69,13 +71,14 @@ export class Project extends baseResource {
      */
 
     createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/project/:projectIdOrKey/avatar',options,callback)
     };
@@ -94,14 +97,14 @@ export class Project extends baseResource {
      */
 
     deleteAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "id": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteAvatar','DELETE','rest/api/2/project/:projectIdOrKey/avatar/:id',options,callback)
     };
@@ -119,13 +122,14 @@ export class Project extends baseResource {
      */
 
     deleteById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('deleteById','DELETE','rest/api/2/project/:projectIdOrKey',options,callback)
     };
@@ -145,14 +149,14 @@ export class Project extends baseResource {
      */
 
     find = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "expand": args[0],
-             "recent": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('find','GET','rest/api/2/project',options,callback)
     };
@@ -174,14 +178,14 @@ export class Project extends baseResource {
      */
 
     findById = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('findById','GET','rest/api/2/project/:projectIdOrKey',options,callback)
     };
@@ -200,13 +204,14 @@ export class Project extends baseResource {
      */
 
     getAllAvatars = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllAvatars','GET','rest/api/2/project/:projectIdOrKey/avatars',options,callback)
     };
@@ -224,13 +229,14 @@ export class Project extends baseResource {
      */
 
     getAllStatuses = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getAllStatuses','GET','rest/api/2/project/:projectIdOrKey/statuses',options,callback)
     };
@@ -248,13 +254,14 @@ export class Project extends baseResource {
      */
 
     getProjectComponents = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectComponents','GET','rest/api/2/project/:projectIdOrKey/components',options,callback)
     };
@@ -273,14 +280,14 @@ export class Project extends baseResource {
      */
 
     getProjectVersions = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectVersions','GET','rest/api/2/project/:projectIdOrKey/versions',options,callback)
     };
@@ -311,17 +318,14 @@ export class Project extends baseResource {
      */
 
     getProjectVersionsPaginated = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "startAt": args[1],
-             "maxResults": args[2],
-             "orderBy": args[3],
-             "expand": args[4],
-             "token": args[5]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('getProjectVersionsPaginated','GET','rest/api/2/project/:projectIdOrKey/version',options,callback)
     };
@@ -341,15 +345,14 @@ export class Project extends baseResource {
      */
 
     storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "filename": args[1],
-             "size": args[2],
-             "token": args[3]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/project/:projectIdOrKey/avatar/temporary',options,callback)
     };
@@ -369,13 +372,14 @@ export class Project extends baseResource {
      */
 
     storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "token": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/project/:projectIdOrKey/avatar/temporary',options,callback)
     };
@@ -391,20 +395,33 @@ export class Project extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.projectIdOrKey projectIdOrKey 
      * @param {string} options.expand expand the parameters to expand in returned project
+     * @param {string} options.key key 
+     * @param {string} options.name name 
+     * @param {string} options.projectTypeKey projectTypeKey 
+     * @param {string} options.projectTemplateKey projectTemplateKey 
+     * @param {string} options.description description 
+     * @param {string} options.lead lead 
+     * @param {string} options.url url 
+     * @param {string} options.assigneeType assigneeType 
+     * @param {string} options.avatarId avatarId 
+     * @param {string} options.issueSecurityScheme issueSecurityScheme 
+     * @param {string} options.permissionScheme permissionScheme 
+     * @param {string} options.notificationScheme notificationScheme 
+     * @param {string} options.categoryId categoryId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
      * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
     update = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "expand": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('update','PUT','rest/api/2/project/:projectIdOrKey',options,callback)
     };
@@ -429,13 +446,14 @@ export class Project extends baseResource {
      */
 
     updateProjectAvatar = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "data": args[1]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateProjectAvatar','PUT','rest/api/2/project/:projectIdOrKey/avatar',options,callback)
     };
@@ -454,14 +472,14 @@ export class Project extends baseResource {
      */
 
     updateProjectType = (...args : any[]):Promise<any> => {
+
+        if (args.length === 0) {
+            throw new Error("options must be passed");
+        }
+
         let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
 
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-             "projectIdOrKey": args[0],
-             "newProjectTypeKey": args[1],
-             "token": args[2]
-            
-        };
+        let options = ((typeof args[0]) === 'object') ? args[0] : {}
 
         return this.makeRequest('updateProjectType','PUT','rest/api/2/project/:projectIdOrKey/type/:newProjectTypeKey',options,callback)
     };
