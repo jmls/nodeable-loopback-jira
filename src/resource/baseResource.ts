@@ -266,6 +266,10 @@ export class baseResource implements IResource {
             }
         });
 
+        if (options.expand) {
+            requestData.qs.expand = options.expand;
+        }
+
         methodDefinition.schema.forEach((param) => {
             if (param.name in options) {
                 requestData.body[param.name] = options[param.name];
