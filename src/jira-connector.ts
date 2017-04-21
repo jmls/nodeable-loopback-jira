@@ -136,6 +136,7 @@ module.exports = class JiraConnector implements IConnector {
                     emailAddress: user.emailAddress,
                     displayName: user.displayName,
                     applicationRoles: user.applicationRoles,
+                    groups: user.groups,
                     session: sessionData.session
                 }
 
