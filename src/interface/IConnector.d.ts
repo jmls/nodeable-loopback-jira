@@ -1,5 +1,4 @@
 interface IConnector {
-    security: ISecurity;
     resource: any;
     baseUrl:string;
 

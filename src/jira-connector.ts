@@ -1,7 +1,5 @@
 const debug = require('debug')('loopback:connector:jira.jira-connector');
 
-import {Security} from './security';
-
 // load all the generated resources
 import * as resources from './resource';
 
@@ -19,7 +17,6 @@ module.exports = class JiraConnector implements IConnector {
     name: string;
     resource:any;
     modelToJira: Map<string,string>;
-    security: ISecurity ;
     baseUrl:string;
     DataAccessObject: any;
     prefix:string;
@@ -39,7 +36,6 @@ module.exports = class JiraConnector implements IConnector {
         this.name = settings.name || '';
         this.prefix = settings.prefix || 'Jira';
         this.resource = {};
-        this.security = new Security(settings);
         this.baseUrl = `${settings.protocol || 'https'}://${settings.host || 'jira'}`
 
         // loop through all the resources, creating a model for each one
@@ -56,50 +52,20 @@ module.exports = class JiraConnector implements IConnector {
 
         });
 
-
-        app.use('/api/token/refresh',(req,res) =>{
-            let jwt;
-
-            if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
-                jwt = req.headers.authorization.split(' ')[1];
-            } else if (req.query) {
-                jwt = req.query.token || req.query.access_token;
-            }
-
-            this.security.refreshToken(jwt)
-
-            .then((token) => {
-                return res.status(200).json({token});
-            })
-
-            .catch((e) => {
-                return res.status(406).send(e.message);
-            });
-        });
-
         debug("jira loaded");
 
     }
 
     /**
      * login a user and get a sessionId
-     * @param {string} username The user name
-     * @param {string} password The user password
-     * @param {string} id session id to use
-     * @param {function} [callback] The callback function
+     * @param {Object} options An object containing options to pass to the login API.
+     * @param {string} options.username The user name
+     * @param {string} options.password The user password
      */
 
-    login = (...args : any[]):Promise<String> => {
+    login = (options:any = {}):Promise<String> => {
         debug("login");
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {
-            username: args[0],
-            password: args[1],
-            sessionId: args[2]
-        };
-
-        let sessionData;
+        let jiraAuth;
 
         return new Promise((resolve,reject) => {
             return this.makeRequest({
@@ -110,26 +76,25 @@ module.exports = class JiraConnector implements IConnector {
             }).then((result) => {
 
                 if (result.statusCode) {
-                    if (callback) {
-                        callback(result);
-                    }
-
+                    debug("err",result)
                     return reject(result);
                 }
 
-                sessionData = result;
-
-                sessionData.session.sessionId = this.security.encrypt(Buffer.from(`${options.username}:${options.password}`, 'utf8').toString('base64'))
-
-                let token = this.security.generateToken(sessionData);
+                jiraAuth = Buffer.from(`${options.username}:${options.password}`, 'utf8').toString('base64');
 
                 return this.resource.User.findById({
                     username: options.username,
                     expand: 'groups',
-                    token
+                    token: jiraAuth
                 });
 
             }).then((user) => {
+
+                if (user.statusCode) {
+                    debug("err",user)
+                    return reject(user);
+                }
+
                 let tokenData = {
                     key: user.key,
                     name: user.name,
@@ -137,19 +102,14 @@ module.exports = class JiraConnector implements IConnector {
                     displayName: user.displayName,
                     applicationRoles: user.applicationRoles,
                     groups: user.groups,
-                    session: sessionData.session
+                    jiraAuth
                 }
-
-                tokenData.session.jwt = this.security.generateToken(tokenData);
-
-                delete tokenData.session.sessionId;
-                debug("login successful");
-                return callback ? callback(null,tokenData) : resolve(tokenData);
+                return resolve(tokenData);
             })
 
             .catch((e) => {
                 debug("unable to login",e);
-                return callback ? callback(e) : reject(e);
+                return reject(e);
             })
         })
     };
@@ -176,38 +136,25 @@ module.exports = class JiraConnector implements IConnector {
 
     makeRequest = (requestOptions:any = {}, callback?:Function):Promise<any> => {
         // require('request-debug')(this.request)
-        debug(`makeRequest`)
+        debug(`makeRequest`,requestOptions)
 
         let requestOpts:any = {
              method: requestOptions.method,
              json: true,
              followAllRedirects: true,
-             token: requestOptions.token,
              body: requestOptions.body,
              qs: requestOptions.qs,
              headers: {},
              uri: `${this.baseUrl}/${requestOptions.path}`
         }
 
-        if (!requestOpts.token) {
-            requestOpts.token = this.security.getToken();
-        }
-
-        let sessionId;
-
         if (requestOptions.tokenRequired) {
-            try { sessionId = this.security.getSessionId(requestOpts.token); }
-
-            catch(e) {
-                if (requestOptions.tokenRequired) {
-                    let err = {statusCode: 401, message:'no token supplied'};
-                    return callback ? callback(err) : Promise.reject(err);
-                }
+            if (!requestOptions.token) {
+                let err = {statusCode: 401, message:'no token supplied'};
+                return Promise.reject(err);
             }
 
-            if (sessionId) {
-                requestOpts.headers.Authorization = `Basic ${sessionId}`;
-            }
+            requestOpts.headers.Authorization = `Basic ${requestOptions.token}`;
         }
 
         return new Promise((resolve,reject) => {
