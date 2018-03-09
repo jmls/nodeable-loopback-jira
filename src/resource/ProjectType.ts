@@ -24,21 +24,12 @@ export class ProjectType extends baseResource {
      * @memberOf ProjectType#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    find = (...args : any[]):Promise<any> => {
+    find = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('find','GET','rest/api/2/project/type',options,callback)
+        return this.makeRequest('find','GET','rest/api/2/project/type',options)
     };
     
     /**
@@ -50,21 +41,12 @@ export class ProjectType extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.projectTypeKey projectTypeKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAccessibleProjectTypeByKey = (...args : any[]):Promise<any> => {
+    getAccessibleProjectTypeByKey = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAccessibleProjectTypeByKey','GET','rest/api/2/project/type/:projectTypeKey/accessible',options,callback)
+        return this.makeRequest('getAccessibleProjectTypeByKey','GET','rest/api/2/project/type/:projectTypeKey/accessible',options)
     };
     
     /**
@@ -75,21 +57,12 @@ export class ProjectType extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.projectTypeKey projectTypeKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProjectTypeByKey = (...args : any[]):Promise<any> => {
+    getProjectTypeByKey = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProjectTypeByKey','GET','rest/api/2/project/type/:projectTypeKey',options,callback)
+        return this.makeRequest('getProjectTypeByKey','GET','rest/api/2/project/type/:projectTypeKey',options)
     };
     
 

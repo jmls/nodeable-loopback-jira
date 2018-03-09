@@ -27,21 +27,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.holder holder 
      * @param {string} options.permission permission 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createPermissionGrant = (...args : any[]):Promise<any> => {
+    createPermissionGrant = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createPermissionGrant','POST','rest/api/2/permissionscheme/:schemeId/permission',options,callback)
+        return this.makeRequest('createPermissionGrant','POST','rest/api/2/permissionscheme/:schemeId/permission',options)
     };
     
     /**
@@ -56,21 +47,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.permissions permissions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createPermissionScheme = (...args : any[]):Promise<any> => {
+    createPermissionScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createPermissionScheme','POST','rest/api/2/permissionscheme',options,callback)
+        return this.makeRequest('createPermissionScheme','POST','rest/api/2/permissionscheme',options)
     };
     
     /**
@@ -81,21 +63,12 @@ export class Permissionscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.schemeId schemeId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deletePermissionScheme = (...args : any[]):Promise<any> => {
+    deletePermissionScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deletePermissionScheme','DELETE','rest/api/2/permissionscheme/:schemeId',options,callback)
+        return this.makeRequest('deletePermissionScheme','DELETE','rest/api/2/permissionscheme/:schemeId',options)
     };
     
     /**
@@ -107,21 +80,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.schemeId schemeId 
      * @param {string} options.permissionId permissionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deletePermissionSchemeEntity = (...args : any[]):Promise<any> => {
+    deletePermissionSchemeEntity = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deletePermissionSchemeEntity','DELETE','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options,callback)
+        return this.makeRequest('deletePermissionSchemeEntity','DELETE','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options)
     };
     
     /**
@@ -133,21 +97,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.schemeId schemeId 
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getPermissionScheme = (...args : any[]):Promise<any> => {
+    getPermissionScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getPermissionScheme','GET','rest/api/2/permissionscheme/:schemeId',options,callback)
+        return this.makeRequest('getPermissionScheme','GET','rest/api/2/permissionscheme/:schemeId',options)
     };
     
     /**
@@ -160,21 +115,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.permissionId permissionId 
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getPermissionSchemeGrant = (...args : any[]):Promise<any> => {
+    getPermissionSchemeGrant = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getPermissionSchemeGrant','GET','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options,callback)
+        return this.makeRequest('getPermissionSchemeGrant','GET','rest/api/2/permissionscheme/:schemeId/permission/:permissionId',options)
     };
     
     /**
@@ -186,21 +132,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.schemeId schemeId 
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getPermissionSchemeGrants = (...args : any[]):Promise<any> => {
+    getPermissionSchemeGrants = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getPermissionSchemeGrants','GET','rest/api/2/permissionscheme/:schemeId/permission',options,callback)
+        return this.makeRequest('getPermissionSchemeGrants','GET','rest/api/2/permissionscheme/:schemeId/permission',options)
     };
     
     /**
@@ -216,21 +153,12 @@ export class Permissionscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getPermissionSchemes = (...args : any[]):Promise<any> => {
+    getPermissionSchemes = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getPermissionSchemes','GET','rest/api/2/permissionscheme',options,callback)
+        return this.makeRequest('getPermissionSchemes','GET','rest/api/2/permissionscheme',options)
     };
     
     /**
@@ -253,21 +181,12 @@ export class Permissionscheme extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.permissions permissions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updatePermissionScheme = (...args : any[]):Promise<any> => {
+    updatePermissionScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updatePermissionScheme','PUT','rest/api/2/permissionscheme/:schemeId',options,callback)
+        return this.makeRequest('updatePermissionScheme','PUT','rest/api/2/permissionscheme/:schemeId',options)
     };
     
 

@@ -23,21 +23,12 @@ export class Permissions extends baseResource {
      * @memberOf Permissions#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    find = (...args : any[]):Promise<any> => {
+    find = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('find','GET','rest/api/2/permissions',options,callback)
+        return this.makeRequest('find','GET','rest/api/2/permissions',options)
     };
     
     /**
@@ -70,21 +61,12 @@ export class Permissions extends baseResource {
      * @param {string} options.issueKey issueKey - key of the issue to scope returned permissions for.
      * @param {string} options.issueId issueId - id of the issue to scope returned permissions for.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    myPermissions = (...args : any[]):Promise<any> => {
+    myPermissions = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('myPermissions','GET','rest/api/2/mypermissions',options,callback)
+        return this.makeRequest('myPermissions','GET','rest/api/2/mypermissions',options)
     };
     
 

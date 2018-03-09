@@ -34,21 +34,12 @@ export class Issue extends baseResource {
      * @param {string} options.visibility visibility 
      * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addComment = (...args : any[]):Promise<any> => {
+    addComment = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addComment','POST','rest/api/2/issue/:issueIdOrKey/comment',options,callback)
+        return this.makeRequest('addComment','POST','rest/api/2/issue/:issueIdOrKey/comment',options)
     };
     
     /**
@@ -59,21 +50,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addVote = (...args : any[]):Promise<any> => {
+    addVote = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addVote','POST','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
+        return this.makeRequest('addVote','POST','rest/api/2/issue/:issueIdOrKey/votes',options)
     };
     
     /**
@@ -84,21 +66,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addWatcher = (...args : any[]):Promise<any> => {
+    addWatcher = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addWatcher','POST','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
+        return this.makeRequest('addWatcher','POST','rest/api/2/issue/:issueIdOrKey/watchers',options)
     };
     
     /**
@@ -133,21 +106,12 @@ export class Issue extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.issueId issueId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addWorklog = (...args : any[]):Promise<any> => {
+    addWorklog = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addWorklog','POST','rest/api/2/issue/:issueIdOrKey/worklog',options,callback)
+        return this.makeRequest('addWorklog','POST','rest/api/2/issue/:issueIdOrKey/worklog',options)
     };
     
     /**
@@ -171,21 +135,12 @@ export class Issue extends baseResource {
      * @param {string} options.groups groups 
      * @param {string} options.applicationRoles applicationRoles 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    assign = (...args : any[]):Promise<any> => {
+    assign = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('assign','PUT','rest/api/2/issue/:issueIdOrKey/assignee',options,callback)
+        return this.makeRequest('assign','PUT','rest/api/2/issue/:issueIdOrKey/assignee',options)
     };
     
     /**
@@ -213,21 +168,12 @@ export class Issue extends baseResource {
      * @param {string} options.historyMetadata historyMetadata 
      * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    create = (...args : any[]):Promise<any> => {
+    create = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('create','POST','rest/api/2/issue',options,callback)
+        return this.makeRequest('create','POST','rest/api/2/issue',options)
     };
     
     /**
@@ -243,21 +189,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueUpdates issueUpdates 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createIssues = (...args : any[]):Promise<any> => {
+    createIssues = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createIssues','POST','rest/api/2/issue/bulk',options,callback)
+        return this.makeRequest('createIssues','POST','rest/api/2/issue/bulk',options)
     };
     
     /**
@@ -273,21 +210,12 @@ export class Issue extends baseResource {
      * @param {string} options.relationship relationship 
      * @param {string} options.object object 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createOrUpdateRemoteIssueLink = (...args : any[]):Promise<any> => {
+    createOrUpdateRemoteIssueLink = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createOrUpdateRemoteIssueLink','POST','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
+        return this.makeRequest('createOrUpdateRemoteIssueLink','POST','rest/api/2/issue/:issueIdOrKey/remotelink',options)
     };
     
     /**
@@ -306,21 +234,12 @@ export class Issue extends baseResource {
                        issue has no subtasks this parameter is ignored.  If the issue has subtasks and this parameter is missing or false,
                        then the issue will not be deleted and an error will be returned.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteById = (...args : any[]):Promise<any> => {
+    deleteById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteById','DELETE','rest/api/2/issue/:issueIdOrKey',options,callback)
+        return this.makeRequest('deleteById','DELETE','rest/api/2/issue/:issueIdOrKey',options)
     };
     
     /**
@@ -332,21 +251,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteComment = (...args : any[]):Promise<any> => {
+    deleteComment = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteComment','DELETE','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
+        return this.makeRequest('deleteComment','DELETE','rest/api/2/issue/:issueIdOrKey/comment/:id',options)
     };
     
     /**
@@ -358,21 +268,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.globalId globalId the global id of the remote issue link
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteRemoteIssueLinkByGlobalId = (...args : any[]):Promise<any> => {
+    deleteRemoteIssueLinkByGlobalId = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteRemoteIssueLinkByGlobalId','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
+        return this.makeRequest('deleteRemoteIssueLinkByGlobalId','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink',options)
     };
     
     /**
@@ -384,21 +285,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.linkId linkId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteRemoteIssueLinkById = (...args : any[]):Promise<any> => {
+    deleteRemoteIssueLinkById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteRemoteIssueLinkById','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
+        return this.makeRequest('deleteRemoteIssueLinkById','DELETE','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options)
     };
     
     /**
@@ -423,21 +315,12 @@ export class Issue extends baseResource {
      * @param {string} options.newEstimate newEstimate (required when "new" is selected for adjustEstimate) the new value for the remaining estimate field. e.g. "2d"
      * @param {string} options.increaseBy increaseBy (required when "manual" is selected for adjustEstimate) the amount to increase the remaining estimate by e.g. "2d"
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteWorklog = (...args : any[]):Promise<any> => {
+    deleteWorklog = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteWorklog','DELETE','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
+        return this.makeRequest('deleteWorklog','DELETE','rest/api/2/issue/:issueIdOrKey/worklog/:id',options)
     };
     
     /**
@@ -459,21 +342,12 @@ export class Issue extends baseResource {
      * @param {string} options.historyMetadata historyMetadata 
      * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    doTransition = (...args : any[]):Promise<any> => {
+    doTransition = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('doTransition','POST','rest/api/2/issue/:issueIdOrKey/transitions',options,callback)
+        return this.makeRequest('doTransition','POST','rest/api/2/issue/:issueIdOrKey/transitions',options)
     };
     
     /**
@@ -503,21 +377,12 @@ export class Issue extends baseResource {
      * @param {string} options.historyMetadata historyMetadata 
      * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    editIssue = (...args : any[]):Promise<any> => {
+    editIssue = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('editIssue','PUT','rest/api/2/issue/:issueIdOrKey',options,callback)
+        return this.makeRequest('editIssue','PUT','rest/api/2/issue/:issueIdOrKey',options)
     };
     
     /**
@@ -581,21 +446,12 @@ export class Issue extends baseResource {
      * @param {string} options.expand expand 
      * @param {string} options.properties properties the list of properties to return for the issue. By default no properties are returned.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findById = (...args : any[]):Promise<any> => {
+    findById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findById','GET','rest/api/2/issue/:issueIdOrKey',options,callback)
+        return this.makeRequest('findById','GET','rest/api/2/issue/:issueIdOrKey',options)
     };
     
     /**
@@ -608,21 +464,12 @@ export class Issue extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.expand expand optional flags: renderedBody (provides body rendered in HTML)
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getComment = (...args : any[]):Promise<any> => {
+    getComment = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getComment','GET','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
+        return this.makeRequest('getComment','GET','rest/api/2/issue/:issueIdOrKey/comment/:id',options)
     };
     
     /**
@@ -640,21 +487,12 @@ export class Issue extends baseResource {
      * @param {string} options.orderBy orderBy ordering of the results.
      * @param {string} options.expand expand optional flags: renderedBody (provides body rendered in HTML)
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getComments = (...args : any[]):Promise<any> => {
+    getComments = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getComments','GET','rest/api/2/issue/:issueIdOrKey/comment',options,callback)
+        return this.makeRequest('getComments','GET','rest/api/2/issue/:issueIdOrKey/comment',options)
     };
     
     /**
@@ -693,21 +531,12 @@ export class Issue extends baseResource {
                        This parameter can be specified multiple times, but is NOT interpreted as a comma-separated list.
                        Specifiying an issue type that does not exist is not an error.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getCreateIssueMeta = (...args : any[]):Promise<any> => {
+    getCreateIssueMeta = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getCreateIssueMeta','GET','rest/api/2/issue/createmeta',options,callback)
+        return this.makeRequest('getCreateIssueMeta','GET','rest/api/2/issue/createmeta',options)
     };
     
     /**
@@ -721,21 +550,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getEditIssueMeta = (...args : any[]):Promise<any> => {
+    getEditIssueMeta = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getEditIssueMeta','GET','rest/api/2/issue/:issueIdOrKey/editmeta',options,callback)
+        return this.makeRequest('getEditIssueMeta','GET','rest/api/2/issue/:issueIdOrKey/editmeta',options)
     };
     
     /**
@@ -752,21 +572,12 @@ export class Issue extends baseResource {
      * @param {string} options.showSubTasks showSubTasks if set to false, subtasks will not be included in the list.
      * @param {string} options.showSubTaskParent showSubTaskParent if set to false and request is executed in context of a subtask, the parent issue will not be included in the auto-completion result, even if it matches the query.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssuePickerResource = (...args : any[]):Promise<any> => {
+    getIssuePickerResource = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssuePickerResource','GET','rest/api/2/issue/picker',options,callback)
+        return this.makeRequest('getIssuePickerResource','GET','rest/api/2/issue/picker',options)
     };
     
     /**
@@ -777,21 +588,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssueWatchers = (...args : any[]):Promise<any> => {
+    getIssueWatchers = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssueWatchers','GET','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
+        return this.makeRequest('getIssueWatchers','GET','rest/api/2/issue/:issueIdOrKey/watchers',options)
     };
     
     /**
@@ -803,21 +605,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssueWorklog = (...args : any[]):Promise<any> => {
+    getIssueWorklog = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssueWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog',options,callback)
+        return this.makeRequest('getIssueWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog',options)
     };
     
     /**
@@ -829,21 +622,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.linkId linkId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getRemoteIssueLinkById = (...args : any[]):Promise<any> => {
+    getRemoteIssueLinkById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getRemoteIssueLinkById','GET','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
+        return this.makeRequest('getRemoteIssueLinkById','GET','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options)
     };
     
     /**
@@ -861,21 +645,12 @@ export class Issue extends baseResource {
                      For a fullexplanation of Issue Link fields please refer to
                      https://developer.atlassian.com/display/JIRADEV/Fields+in+Remote+Issue+Links
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getRemoteIssueLinks = (...args : any[]):Promise<any> => {
+    getRemoteIssueLinks = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getRemoteIssueLinks','GET','rest/api/2/issue/:issueIdOrKey/remotelink',options,callback)
+        return this.makeRequest('getRemoteIssueLinks','GET','rest/api/2/issue/:issueIdOrKey/remotelink',options)
     };
     
     /**
@@ -892,21 +667,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.transitionId transitionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getTransitions = (...args : any[]):Promise<any> => {
+    getTransitions = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getTransitions','GET','rest/api/2/issue/:issueIdOrKey/transitions',options,callback)
+        return this.makeRequest('getTransitions','GET','rest/api/2/issue/:issueIdOrKey/transitions',options)
     };
     
     /**
@@ -917,21 +683,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getVotes = (...args : any[]):Promise<any> => {
+    getVotes = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getVotes','GET','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
+        return this.makeRequest('getVotes','GET','rest/api/2/issue/:issueIdOrKey/votes',options)
     };
     
     /**
@@ -944,21 +701,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getWorklog = (...args : any[]):Promise<any> => {
+    getWorklog = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
+        return this.makeRequest('getWorklog','GET','rest/api/2/issue/:issueIdOrKey/worklog/:id',options)
     };
     
     /**
@@ -974,21 +722,12 @@ export class Issue extends baseResource {
      * @param {string} options.to to 
      * @param {string} options.restrict restrict 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    notify = (...args : any[]):Promise<any> => {
+    notify = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('notify','POST','rest/api/2/issue/:issueIdOrKey/notify',options,callback)
+        return this.makeRequest('notify','POST','rest/api/2/issue/:issueIdOrKey/notify',options)
     };
     
     /**
@@ -999,21 +738,12 @@ export class Issue extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    removeVote = (...args : any[]):Promise<any> => {
+    removeVote = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('removeVote','DELETE','rest/api/2/issue/:issueIdOrKey/votes',options,callback)
+        return this.makeRequest('removeVote','DELETE','rest/api/2/issue/:issueIdOrKey/votes',options)
     };
     
     /**
@@ -1025,21 +755,12 @@ export class Issue extends baseResource {
      * @param {string} options.issueIdOrKey issueIdOrKey 
      * @param {string} options.username username a String containing the name of the user to remove from the watcher list. Must not be null.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    removeWatcher = (...args : any[]):Promise<any> => {
+    removeWatcher = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('removeWatcher','DELETE','rest/api/2/issue/:issueIdOrKey/watchers',options,callback)
+        return this.makeRequest('removeWatcher','DELETE','rest/api/2/issue/:issueIdOrKey/watchers',options)
     };
     
     /**
@@ -1061,21 +782,12 @@ export class Issue extends baseResource {
      * @param {string} options.visibility visibility 
      * @param {string} options.properties properties 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateComment = (...args : any[]):Promise<any> => {
+    updateComment = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateComment','PUT','rest/api/2/issue/:issueIdOrKey/comment/:id',options,callback)
+        return this.makeRequest('updateComment','PUT','rest/api/2/issue/:issueIdOrKey/comment/:id',options)
     };
     
     /**
@@ -1091,21 +803,12 @@ export class Issue extends baseResource {
      * @param {string} options.relationship relationship 
      * @param {string} options.object object 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateRemoteIssueLink = (...args : any[]):Promise<any> => {
+    updateRemoteIssueLink = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateRemoteIssueLink','PUT','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options,callback)
+        return this.makeRequest('updateRemoteIssueLink','PUT','rest/api/2/issue/:issueIdOrKey/remotelink/:linkId',options)
     };
     
     /**
@@ -1139,21 +842,12 @@ export class Issue extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.issueId issueId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateWorklog = (...args : any[]):Promise<any> => {
+    updateWorklog = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateWorklog','PUT','rest/api/2/issue/:issueIdOrKey/worklog/:id',options,callback)
+        return this.makeRequest('updateWorklog','PUT','rest/api/2/issue/:issueIdOrKey/worklog/:id',options)
     };
     
 

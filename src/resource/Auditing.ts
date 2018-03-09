@@ -34,21 +34,12 @@ export class Auditing extends baseResource {
      * @param {string} options.changedValues changedValues 
      * @param {string} options.associatedItems associatedItems 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addRecord = (...args : any[]):Promise<any> => {
+    addRecord = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addRecord','POST','rest/api/2/auditing/record',options,callback)
+        return this.makeRequest('addRecord','POST','rest/api/2/auditing/record',options)
     };
     
     /**
@@ -67,21 +58,12 @@ export class Auditing extends baseResource {
      * @param {string} options.to to - timestamp in past; 'from' must be less or equal 'to', otherwise the result set will be empty
                only records that where created in the same moment or earlier than the 'to' timestamp will be provided in response
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getRecords = (...args : any[]):Promise<any> => {
+    getRecords = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getRecords','GET','rest/api/2/auditing/record',options,callback)
+        return this.makeRequest('getRecords','GET','rest/api/2/auditing/record',options)
     };
     
 

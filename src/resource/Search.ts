@@ -63,21 +63,12 @@ export class Search extends baseResource {
      * @param {string} options.fields fields the list of fields to return for each issue. By default, all navigable fields are returned.
      * @param {string} options.expand expand A comma-separated list of the parameters to expand.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    search = (...args : any[]):Promise<any> => {
+    search = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('search','GET','rest/api/2/search',options,callback)
+        return this.makeRequest('search','GET','rest/api/2/search',options)
     };
     
     /**
@@ -92,21 +83,12 @@ export class Search extends baseResource {
      * @param {string} options.fields fields 
      * @param {string} options.validateQuery validateQuery 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    searchUsingSearchRequest = (...args : any[]):Promise<any> => {
+    searchUsingSearchRequest = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('searchUsingSearchRequest','POST','rest/api/2/search',options,callback)
+        return this.makeRequest('searchUsingSearchRequest','POST','rest/api/2/search',options)
     };
     
 

@@ -25,21 +25,12 @@ export class User extends baseResource {
      * @param {string} options.username username username
      * @param {string} options.applicationKey applicationKey application key
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addUserToApplication = (...args : any[]):Promise<any> => {
+    addUserToApplication = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addUserToApplication','POST','rest/api/2/user/application',options,callback)
+        return this.makeRequest('addUserToApplication','POST','rest/api/2/user/application',options)
     };
     
     /**
@@ -53,21 +44,12 @@ export class User extends baseResource {
      * @param {string} options.password password 
      * @param {string} options.currentPassword currentPassword 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    changeUserPassword = (...args : any[]):Promise<any> => {
+    changeUserPassword = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('changeUserPassword','PUT','rest/api/2/user/password',options,callback)
+        return this.makeRequest('changeUserPassword','PUT','rest/api/2/user/password',options)
     };
     
     /**
@@ -85,21 +67,12 @@ export class User extends baseResource {
      * @param {string} options.notification notification 
      * @param {string} options.applicationKeys applicationKeys 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    create = (...args : any[]):Promise<any> => {
+    create = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('create','POST','rest/api/2/user',options,callback)
+        return this.makeRequest('create','POST','rest/api/2/user',options)
     };
     
     /**
@@ -115,21 +88,12 @@ export class User extends baseResource {
      * @param {string} options.url url 
      * @param {string} options.needsCropping needsCropping 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+    createAvatarFromTemporary = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/user/avatar',options,callback)
+        return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/user/avatar',options)
     };
     
     /**
@@ -141,21 +105,12 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username username
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    defaultColumns = (...args : any[]):Promise<any> => {
+    defaultColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('defaultColumns','GET','rest/api/2/user/columns',options,callback)
+        return this.makeRequest('defaultColumns','GET','rest/api/2/user/columns',options)
     };
     
     /**
@@ -167,21 +122,12 @@ export class User extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.username username username
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteAvatar = (...args : any[]):Promise<any> => {
+    deleteAvatar = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteAvatar','DELETE','rest/api/2/user/avatar/:id',options,callback)
+        return this.makeRequest('deleteAvatar','DELETE','rest/api/2/user/avatar/:id',options)
     };
     
     /**
@@ -193,21 +139,12 @@ export class User extends baseResource {
      * @param {string} options.username username the username
      * @param {string} options.key key user key
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteById = (...args : any[]):Promise<any> => {
+    deleteById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteById','DELETE','rest/api/2/user',options,callback)
+        return this.makeRequest('deleteById','DELETE','rest/api/2/user',options)
     };
     
     /**
@@ -224,21 +161,12 @@ export class User extends baseResource {
      * @param {string} options.includeActive includeActive If true, then active users are included in the results (default true)
      * @param {string} options.includeInactive includeInactive If true, then inactive users are included in the results (default false)
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    find = (...args : any[]):Promise<any> => {
+    find = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('find','GET','rest/api/2/user/search',options,callback)
+        return this.makeRequest('find','GET','rest/api/2/user/search',options)
     };
     
     /**
@@ -259,21 +187,12 @@ export class User extends baseResource {
                    If you specify a value that is higher than this number, your search results will be truncated.
      * @param {string} options.actionDescriptorId actionDescriptorId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findAssignableUsers = (...args : any[]):Promise<any> => {
+    findAssignableUsers = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findAssignableUsers','GET','rest/api/2/user/assignable/search',options,callback)
+        return this.makeRequest('findAssignableUsers','GET','rest/api/2/user/assignable/search',options)
     };
     
     /**
@@ -290,21 +209,12 @@ export class User extends baseResource {
      * @param {string} options.maxResults maxResults the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.
                        If you specify a value that is higher than this number, your search results will be truncated.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findBulkAssignableUsers = (...args : any[]):Promise<any> => {
+    findBulkAssignableUsers = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findBulkAssignableUsers','GET','rest/api/2/user/assignable/multiProjectSearch',options,callback)
+        return this.makeRequest('findBulkAssignableUsers','GET','rest/api/2/user/assignable/multiProjectSearch',options)
     };
     
     /**
@@ -316,21 +226,12 @@ export class User extends baseResource {
      * @param {string} options.username username the username
      * @param {string} options.key key user key
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findById = (...args : any[]):Promise<any> => {
+    findById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findById','GET','rest/api/2/user',options,callback)
+        return this.makeRequest('findById','GET','rest/api/2/user',options)
     };
     
     /**
@@ -346,21 +247,12 @@ export class User extends baseResource {
      * @param {string} options.showAvatar showAvatar 
      * @param {string} options.exclude exclude 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findUsersForPicker = (...args : any[]):Promise<any> => {
+    findUsersForPicker = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findUsersForPicker','GET','rest/api/2/user/picker',options,callback)
+        return this.makeRequest('findUsersForPicker','GET','rest/api/2/user/picker',options)
     };
     
     /**
@@ -383,21 +275,12 @@ export class User extends baseResource {
      * @param {string} options.maxResults maxResults the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.
                     If you specify a value that is higher than this number, your search results will be truncated.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findUsersWithAllPermissions = (...args : any[]):Promise<any> => {
+    findUsersWithAllPermissions = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findUsersWithAllPermissions','GET','rest/api/2/user/permission/search',options,callback)
+        return this.makeRequest('findUsersWithAllPermissions','GET','rest/api/2/user/permission/search',options)
     };
     
     /**
@@ -417,21 +300,12 @@ export class User extends baseResource {
      * @param {string} options.maxResults maxResults the maximum number of users to return (defaults to 50). The maximum allowed value is 1000.
                    If you specify a value that is higher than this number, your search results will be truncated.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findUsersWithBrowsePermission = (...args : any[]):Promise<any> => {
+    findUsersWithBrowsePermission = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findUsersWithBrowsePermission','GET','rest/api/2/user/viewissue/search',options,callback)
+        return this.makeRequest('findUsersWithBrowsePermission','GET','rest/api/2/user/viewissue/search',options)
     };
     
     /**
@@ -442,21 +316,12 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username username
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAllAvatars = (...args : any[]):Promise<any> => {
+    getAllAvatars = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAllAvatars','GET','rest/api/2/user/avatars',options,callback)
+        return this.makeRequest('getAllAvatars','GET','rest/api/2/user/avatars',options)
     };
     
     /**
@@ -476,21 +341,12 @@ export class User extends baseResource {
      * @param {string} options.username username 
      * @param {string} options.password password 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    login = (...args : any[]):Promise<any> => {
+    login = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('login','POST','rest/auth/1/session',options,callback)
+        return this.makeRequest('login','POST','rest/auth/1/session',options)
     };
     
     /**
@@ -500,21 +356,12 @@ export class User extends baseResource {
      * @memberOf User#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    logout = (...args : any[]):Promise<any> => {
+    logout = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('logout','DELETE','rest/auth/1/session',options,callback)
+        return this.makeRequest('logout','DELETE','rest/auth/1/session',options)
     };
     
     /**
@@ -526,21 +373,12 @@ export class User extends baseResource {
      * @param {string} options.username username username
      * @param {string} options.applicationKey applicationKey application key
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    removeUserFromApplication = (...args : any[]):Promise<any> => {
+    removeUserFromApplication = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('removeUserFromApplication','DELETE','rest/api/2/user/application',options,callback)
+        return this.makeRequest('removeUserFromApplication','DELETE','rest/api/2/user/application',options)
     };
     
     /**
@@ -552,21 +390,12 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username username
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    resetColumns = (...args : any[]):Promise<any> => {
+    resetColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('resetColumns','DELETE','rest/api/2/user/columns',options,callback)
+        return this.makeRequest('resetColumns','DELETE','rest/api/2/user/columns',options)
     };
     
     /**
@@ -577,21 +406,12 @@ export class User extends baseResource {
      * @memberOf User#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setColumns = (...args : any[]):Promise<any> => {
+    setColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setColumns','PUT','rest/api/2/user/columns',options,callback)
+        return this.makeRequest('setColumns','PUT','rest/api/2/user/columns',options)
     };
     
     /**
@@ -625,21 +445,12 @@ export class User extends baseResource {
      * @param {string} options.filename filename name of file being uploaded
      * @param {string} options.size size size of file
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+    storeTemporaryAvatar = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/user/avatar/temporary',options,callback)
+        return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/user/avatar/temporary',options)
     };
     
     /**
@@ -663,21 +474,12 @@ export class User extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.username username Username
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+    storeTemporaryAvatarUsingMultiPart = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/user/avatar/temporary',options,callback)
+        return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/user/avatar/temporary',options)
     };
     
     /**
@@ -697,21 +499,12 @@ export class User extends baseResource {
      * @param {string} options.notification notification 
      * @param {string} options.applicationKeys applicationKeys 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    update = (...args : any[]):Promise<any> => {
+    update = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('update','PUT','rest/api/2/user',options,callback)
+        return this.makeRequest('update','PUT','rest/api/2/user',options)
     };
     
     /**
@@ -729,21 +522,12 @@ export class User extends baseResource {
      * @param {string} options.urls urls 
      * @param {string} options.selected selected 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateProjectAvatar = (...args : any[]):Promise<any> => {
+    updateProjectAvatar = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateProjectAvatar','PUT','rest/api/2/user/avatar',options,callback)
+        return this.makeRequest('updateProjectAvatar','PUT','rest/api/2/user/avatar',options)
     };
     
 

@@ -49,21 +49,12 @@ export class Notificationscheme extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getNotificationScheme = (...args : any[]):Promise<any> => {
+    getNotificationScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getNotificationScheme','GET','rest/api/2/notificationscheme/:id',options,callback)
+        return this.makeRequest('getNotificationScheme','GET','rest/api/2/notificationscheme/:id',options)
     };
     
     /**
@@ -80,21 +71,12 @@ export class Notificationscheme extends baseResource {
      * @param {string} options.maxResults maxResults the maximum number of notification schemes to return (max 50).
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getNotificationSchemes = (...args : any[]):Promise<any> => {
+    getNotificationSchemes = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getNotificationSchemes','GET','rest/api/2/notificationscheme',options,callback)
+        return this.makeRequest('getNotificationSchemes','GET','rest/api/2/notificationscheme',options)
     };
     
 

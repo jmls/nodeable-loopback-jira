@@ -27,21 +27,12 @@ export class Group extends baseResource {
      * @param {string} options.groupname groupname A name of requested group.
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addUserToGroup = (...args : any[]):Promise<any> => {
+    addUserToGroup = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addUserToGroup','POST','rest/api/2/group/user',options,callback)
+        return this.makeRequest('addUserToGroup','POST','rest/api/2/group/user',options)
     };
     
     /**
@@ -54,21 +45,12 @@ export class Group extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    create = (...args : any[]):Promise<any> => {
+    create = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('create','POST','rest/api/2/group',options,callback)
+        return this.makeRequest('create','POST','rest/api/2/group',options)
     };
     
     /**
@@ -84,21 +66,12 @@ export class Group extends baseResource {
      * @param {string} options.swapGroup swapGroup If you delete a group and content is restricted to that group, the content will be hidden from all users. 
  To prevent this, use this parameter to specify a different group to transfer the restrictions (comments and worklogs only) to.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteById = (...args : any[]):Promise<any> => {
+    deleteById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteById','DELETE','rest/api/2/group',options,callback)
+        return this.makeRequest('deleteById','DELETE','rest/api/2/group',options)
     };
     
     /**
@@ -115,21 +88,12 @@ export class Group extends baseResource {
      * @param {string} options.groupname groupname A name of requested group.
      * @param {string} options.expand expand List of fields to expand. Currently only available expand is "users".
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findById = (...args : any[]):Promise<any> => {
+    findById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findById','GET','rest/api/2/group',options,callback)
+        return this.makeRequest('findById','GET','rest/api/2/group',options)
     };
     
     /**
@@ -144,21 +108,12 @@ export class Group extends baseResource {
      * @param {string} options.startAt startAt Default: 0the index of the first user in group to return (0 based).
      * @param {string} options.maxResults maxResults Default: 50the maximum number of users to return (max 50).
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getUsersFromGroup = (...args : any[]):Promise<any> => {
+    getUsersFromGroup = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getUsersFromGroup','GET','rest/api/2/group/member',options,callback)
+        return this.makeRequest('getUsersFromGroup','GET','rest/api/2/group/member',options)
     };
     
     /**
@@ -172,21 +127,12 @@ export class Group extends baseResource {
      * @param {string} options.groupname groupname A name of requested group.
      * @param {string} options.username username User to remove from a group
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    removeUserFromGroup = (...args : any[]):Promise<any> => {
+    removeUserFromGroup = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('removeUserFromGroup','DELETE','rest/api/2/group/user',options,callback)
+        return this.makeRequest('removeUserFromGroup','DELETE','rest/api/2/group/user',options)
     };
     
 

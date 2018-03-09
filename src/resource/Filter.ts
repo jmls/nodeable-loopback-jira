@@ -28,21 +28,12 @@ export class Filter extends baseResource {
      * @param {string} options.groupname groupname 
      * @param {string} options.projectRoleId projectRoleId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addSharePermission = (...args : any[]):Promise<any> => {
+    addSharePermission = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addSharePermission','POST','rest/api/2/filter/:id/permission',options,callback)
+        return this.makeRequest('addSharePermission','POST','rest/api/2/filter/:id/permission',options)
     };
     
     /**
@@ -65,21 +56,12 @@ export class Filter extends baseResource {
      * @param {string} options.sharedUsers sharedUsers 
      * @param {string} options.subscriptions subscriptions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    create = (...args : any[]):Promise<any> => {
+    create = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('create','POST','rest/api/2/filter',options,callback)
+        return this.makeRequest('create','POST','rest/api/2/filter',options)
     };
     
     /**
@@ -91,21 +73,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    defaultColumns = (...args : any[]):Promise<any> => {
+    defaultColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('defaultColumns','GET','rest/api/2/filter/:id/columns',options,callback)
+        return this.makeRequest('defaultColumns','GET','rest/api/2/filter/:id/columns',options)
     };
     
     /**
@@ -116,21 +89,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteById = (...args : any[]):Promise<any> => {
+    deleteById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteById','DELETE','rest/api/2/filter/:id',options,callback)
+        return this.makeRequest('deleteById','DELETE','rest/api/2/filter/:id',options)
     };
     
     /**
@@ -142,21 +106,12 @@ export class Filter extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.permission-id permission-id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteSharePermission = (...args : any[]):Promise<any> => {
+    deleteSharePermission = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteSharePermission','DELETE','rest/api/2/filter/:id/permission/:permission-id',options,callback)
+        return this.makeRequest('deleteSharePermission','DELETE','rest/api/2/filter/:id/permission/:permission-id',options)
     };
     
     /**
@@ -179,21 +134,12 @@ export class Filter extends baseResource {
      * @param {string} options.sharedUsers sharedUsers 
      * @param {string} options.subscriptions subscriptions 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    editFilter = (...args : any[]):Promise<any> => {
+    editFilter = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('editFilter','PUT','rest/api/2/filter/:id',options,callback)
+        return this.makeRequest('editFilter','PUT','rest/api/2/filter/:id',options)
     };
     
     /**
@@ -205,21 +151,12 @@ export class Filter extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.expand expand the parameters to expand
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findById = (...args : any[]):Promise<any> => {
+    findById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findById','GET','rest/api/2/filter/:id',options,callback)
+        return this.makeRequest('findById','GET','rest/api/2/filter/:id',options)
     };
     
     /**
@@ -229,21 +166,12 @@ export class Filter extends baseResource {
      * @memberOf Filter#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDefaultShareScope = (...args : any[]):Promise<any> => {
+    getDefaultShareScope = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDefaultShareScope','GET','rest/api/2/filter/defaultShareScope',options,callback)
+        return this.makeRequest('getDefaultShareScope','GET','rest/api/2/filter/defaultShareScope',options)
     };
     
     /**
@@ -254,21 +182,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.expand expand the parameters to expand
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getFavouriteFilters = (...args : any[]):Promise<any> => {
+    getFavouriteFilters = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getFavouriteFilters','GET','rest/api/2/filter/favourite',options,callback)
+        return this.makeRequest('getFavouriteFilters','GET','rest/api/2/filter/favourite',options)
     };
     
     /**
@@ -280,21 +199,12 @@ export class Filter extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.permissionId permissionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getSharePermission = (...args : any[]):Promise<any> => {
+    getSharePermission = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getSharePermission','GET','rest/api/2/filter/:id/permission/:permissionId',options,callback)
+        return this.makeRequest('getSharePermission','GET','rest/api/2/filter/:id/permission/:permissionId',options)
     };
     
     /**
@@ -305,21 +215,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getSharePermissions = (...args : any[]):Promise<any> => {
+    getSharePermissions = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getSharePermissions','GET','rest/api/2/filter/:id/permission',options,callback)
+        return this.makeRequest('getSharePermissions','GET','rest/api/2/filter/:id/permission',options)
     };
     
     /**
@@ -330,21 +231,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    resetColumns = (...args : any[]):Promise<any> => {
+    resetColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('resetColumns','DELETE','rest/api/2/filter/:id/columns',options,callback)
+        return this.makeRequest('resetColumns','DELETE','rest/api/2/filter/:id/columns',options)
     };
     
     /**
@@ -355,21 +247,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setColumns = (...args : any[]):Promise<any> => {
+    setColumns = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setColumns','PUT','rest/api/2/filter/:id/columns',options,callback)
+        return this.makeRequest('setColumns','PUT','rest/api/2/filter/:id/columns',options)
     };
     
     /**
@@ -380,21 +263,12 @@ export class Filter extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.scope scope 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setDefaultShareScope = (...args : any[]):Promise<any> => {
+    setDefaultShareScope = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setDefaultShareScope','PUT','rest/api/2/filter/defaultShareScope',options,callback)
+        return this.makeRequest('setDefaultShareScope','PUT','rest/api/2/filter/defaultShareScope',options)
     };
     
 

@@ -29,21 +29,12 @@ export class Issuetype extends baseResource {
      * @param {string} options.url url 
      * @param {string} options.needsCropping needsCropping 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createAvatarFromTemporary = (...args : any[]):Promise<any> => {
+    createAvatarFromTemporary = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/issuetype/:id/avatar',options,callback)
+        return this.makeRequest('createAvatarFromTemporary','POST','rest/api/2/issuetype/:id/avatar',options)
     };
     
     /**
@@ -57,21 +48,12 @@ export class Issuetype extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.type type 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createIssueType = (...args : any[]):Promise<any> => {
+    createIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createIssueType','POST','rest/api/2/issuetype',options,callback)
+        return this.makeRequest('createIssueType','POST','rest/api/2/issuetype',options)
     };
     
     /**
@@ -85,21 +67,12 @@ export class Issuetype extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.alternativeIssueTypeId alternativeIssueTypeId the id of an issue type to which issues associated with the removed issue type will be migrated.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteIssueType = (...args : any[]):Promise<any> => {
+    deleteIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteIssueType','DELETE','rest/api/2/issuetype/:id',options,callback)
+        return this.makeRequest('deleteIssueType','DELETE','rest/api/2/issuetype/:id',options)
     };
     
     /**
@@ -112,21 +85,12 @@ export class Issuetype extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAlternativeIssueTypes = (...args : any[]):Promise<any> => {
+    getAlternativeIssueTypes = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAlternativeIssueTypes','GET','rest/api/2/issuetype/:id/alternatives',options,callback)
+        return this.makeRequest('getAlternativeIssueTypes','GET','rest/api/2/issuetype/:id/alternatives',options)
     };
     
     /**
@@ -136,21 +100,12 @@ export class Issuetype extends baseResource {
      * @memberOf Issuetype#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssueAllTypes = (...args : any[]):Promise<any> => {
+    getIssueAllTypes = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssueAllTypes','GET','rest/api/2/issuetype',options,callback)
+        return this.makeRequest('getIssueAllTypes','GET','rest/api/2/issuetype',options)
     };
     
     /**
@@ -161,21 +116,12 @@ export class Issuetype extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssueType = (...args : any[]):Promise<any> => {
+    getIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssueType','GET','rest/api/2/issuetype/:id',options,callback)
+        return this.makeRequest('getIssueType','GET','rest/api/2/issuetype/:id',options)
     };
     
     /**
@@ -209,21 +155,12 @@ export class Issuetype extends baseResource {
      * @param {string} options.filename filename name of file being uploaded
      * @param {string} options.size size size of file
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    storeTemporaryAvatar = (...args : any[]):Promise<any> => {
+    storeTemporaryAvatar = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/issuetype/:id/avatar/temporary',options,callback)
+        return this.makeRequest('storeTemporaryAvatar','POST','rest/api/2/issuetype/:id/avatar/temporary',options)
     };
     
     /**
@@ -247,21 +184,12 @@ export class Issuetype extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    storeTemporaryAvatarUsingMultiPart = (...args : any[]):Promise<any> => {
+    storeTemporaryAvatarUsingMultiPart = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/issuetype/:id/avatar/temporary',options,callback)
+        return this.makeRequest('storeTemporaryAvatarUsingMultiPart','POST','rest/api/2/issuetype/:id/avatar/temporary',options)
     };
     
     /**
@@ -275,21 +203,12 @@ export class Issuetype extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.avatarId avatarId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateIssueType = (...args : any[]):Promise<any> => {
+    updateIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateIssueType','PUT','rest/api/2/issuetype/:id',options,callback)
+        return this.makeRequest('updateIssueType','PUT','rest/api/2/issuetype/:id',options)
     };
     
 

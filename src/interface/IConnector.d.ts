@@ -1,8 +1,8 @@
 interface IConnector {
     resource: any;
-    baseUrl:string;
+    baseUrl: string;
 
-    login(...args : any[]):Promise<String>
-    logout(username:string, callback:Function)
-    makeRequest (requestOptions:any, callback?:Function):Promise<any>
+    login(...args: any[]);
+    logout(username: string, callback: Function);
+    makeRequest(requestOptions: any, callback?: Function): Promise<any>;
 }

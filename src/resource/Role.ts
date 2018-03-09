@@ -26,21 +26,12 @@ export class Role extends baseResource {
      * @param {string} options.user user 
      * @param {string} options.group group 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addProjectRoleActorsToRole = (...args : any[]):Promise<any> => {
+    addProjectRoleActorsToRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addProjectRoleActorsToRole','POST','rest/api/2/role/:id/actors',options,callback)
+        return this.makeRequest('addProjectRoleActorsToRole','POST','rest/api/2/role/:id/actors',options)
     };
     
     /**
@@ -53,21 +44,12 @@ export class Role extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createProjectRole = (...args : any[]):Promise<any> => {
+    createProjectRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createProjectRole','POST','rest/api/2/role',options,callback)
+        return this.makeRequest('createProjectRole','POST','rest/api/2/role',options)
     };
     
     /**
@@ -79,21 +61,12 @@ export class Role extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.swap swap if given, removes a role even if it is used in scheme by replacing the role with the given one
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteProjectRole = (...args : any[]):Promise<any> => {
+    deleteProjectRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteProjectRole','DELETE','rest/api/2/role/:id',options,callback)
+        return this.makeRequest('deleteProjectRole','DELETE','rest/api/2/role/:id',options)
     };
     
     /**
@@ -106,21 +79,12 @@ export class Role extends baseResource {
      * @param {string} options.user user if given, removes an actor from given role
      * @param {string} options.group group if given, removes an actor from given role
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteProjectRoleActorsFromRole = (...args : any[]):Promise<any> => {
+    deleteProjectRoleActorsFromRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteProjectRoleActorsFromRole','DELETE','rest/api/2/role/:id/actors',options,callback)
+        return this.makeRequest('deleteProjectRoleActorsFromRole','DELETE','rest/api/2/role/:id/actors',options)
     };
     
     /**
@@ -133,21 +97,12 @@ export class Role extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    fullyUpdateProjectRole = (...args : any[]):Promise<any> => {
+    fullyUpdateProjectRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('fullyUpdateProjectRole','PUT','rest/api/2/role/:id',options,callback)
+        return this.makeRequest('fullyUpdateProjectRole','PUT','rest/api/2/role/:id',options)
     };
     
     /**
@@ -158,21 +113,12 @@ export class Role extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProjectRoleActorsForRole = (...args : any[]):Promise<any> => {
+    getProjectRoleActorsForRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProjectRoleActorsForRole','GET','rest/api/2/role/:id/actors',options,callback)
+        return this.makeRequest('getProjectRoleActorsForRole','GET','rest/api/2/role/:id/actors',options)
     };
     
     /**
@@ -182,21 +128,12 @@ export class Role extends baseResource {
      * @memberOf Role#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProjectRoles = (...args : any[]):Promise<any> => {
+    getProjectRoles = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProjectRoles','GET','rest/api/2/role',options,callback)
+        return this.makeRequest('getProjectRoles','GET','rest/api/2/role',options)
     };
     
     /**
@@ -207,21 +144,12 @@ export class Role extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProjectRolesById = (...args : any[]):Promise<any> => {
+    getProjectRolesById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProjectRolesById','GET','rest/api/2/role/:id',options,callback)
+        return this.makeRequest('getProjectRolesById','GET','rest/api/2/role/:id',options)
     };
     
     /**
@@ -234,21 +162,12 @@ export class Role extends baseResource {
      * @param {string} options.description description 
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    partialUpdateProjectRole = (...args : any[]):Promise<any> => {
+    partialUpdateProjectRole = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('partialUpdateProjectRole','POST','rest/api/2/role/:id',options,callback)
+        return this.makeRequest('partialUpdateProjectRole','POST','rest/api/2/role/:id',options)
     };
     
 

@@ -26,21 +26,12 @@ export class Worklog extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.since since Default: 0a date time in unix timestamp format since when deleted worklogs will be returned.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIdsOfWorklogsDeletedSince = (...args : any[]):Promise<any> => {
+    getIdsOfWorklogsDeletedSince = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIdsOfWorklogsDeletedSince','GET','rest/api/2/worklog/deleted',options,callback)
+        return this.makeRequest('getIdsOfWorklogsDeletedSince','GET','rest/api/2/worklog/deleted',options)
     };
     
     /**
@@ -53,21 +44,12 @@ export class Worklog extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.since since Default: 0a date time in unix timestamp format since when updated worklogs will be returned.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIdsOfWorklogsModifiedSince = (...args : any[]):Promise<any> => {
+    getIdsOfWorklogsModifiedSince = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIdsOfWorklogsModifiedSince','GET','rest/api/2/worklog/updated',options,callback)
+        return this.makeRequest('getIdsOfWorklogsModifiedSince','GET','rest/api/2/worklog/updated',options)
     };
     
     /**
@@ -79,21 +61,12 @@ export class Worklog extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.ids ids 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getWorklogsForIds = (...args : any[]):Promise<any> => {
+    getWorklogsForIds = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getWorklogsForIds','POST','rest/api/2/worklog/list',options,callback)
+        return this.makeRequest('getWorklogsForIds','POST','rest/api/2/worklog/list',options)
     };
     
 

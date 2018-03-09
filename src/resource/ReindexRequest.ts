@@ -24,21 +24,12 @@ export class ReindexRequest extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.requestId requestId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProgress = (...args : any[]):Promise<any> => {
+    getProgress = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProgress','GET','rest/api/2/reindex/request/:requestId',options,callback)
+        return this.makeRequest('getProgress','GET','rest/api/2/reindex/request/:requestId',options)
     };
     
     /**
@@ -50,21 +41,12 @@ export class ReindexRequest extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.requestId requestId the reindex request IDs.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProgressBulk = (...args : any[]):Promise<any> => {
+    getProgressBulk = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProgressBulk','GET','rest/api/2/reindex/request/bulk',options,callback)
+        return this.makeRequest('getProgressBulk','GET','rest/api/2/reindex/request/bulk',options)
     };
     
     /**
@@ -76,21 +58,12 @@ export class ReindexRequest extends baseResource {
      * @memberOf ReindexRequest#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    processRequests = (...args : any[]):Promise<any> => {
+    processRequests = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('processRequests','POST','rest/api/2/reindex/request',options,callback)
+        return this.makeRequest('processRequests','POST','rest/api/2/reindex/request',options)
     };
     
 

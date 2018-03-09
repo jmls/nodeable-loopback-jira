@@ -24,21 +24,12 @@ export class Applicationrole extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.key key 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    get = (...args : any[]):Promise<any> => {
+    get = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('get','GET','rest/api/2/applicationrole/:key',options,callback)
+        return this.makeRequest('get','GET','rest/api/2/applicationrole/:key',options)
     };
     
     /**
@@ -49,21 +40,12 @@ export class Applicationrole extends baseResource {
      * @memberOf Applicationrole#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAll = (...args : any[]):Promise<any> => {
+    getAll = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAll','GET','rest/api/2/applicationrole',options,callback)
+        return this.makeRequest('getAll','GET','rest/api/2/applicationrole',options)
     };
     
     /**
@@ -91,21 +73,12 @@ export class Applicationrole extends baseResource {
      * @param {string} options.hasUnlimitedSeats hasUnlimitedSeats 
      * @param {string} options.platform platform 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    put = (...args : any[]):Promise<any> => {
+    put = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('put','PUT','rest/api/2/applicationrole/:key',options,callback)
+        return this.makeRequest('put','PUT','rest/api/2/applicationrole/:key',options)
     };
     
     /**
@@ -119,21 +92,12 @@ export class Applicationrole extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.If-Match If-Match 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    putBulk = (...args : any[]):Promise<any> => {
+    putBulk = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('putBulk','PUT','rest/api/2/applicationrole',options,callback)
+        return this.makeRequest('putBulk','PUT','rest/api/2/applicationrole',options)
     };
     
 

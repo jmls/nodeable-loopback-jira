@@ -26,21 +26,12 @@ export class Screens extends baseResource {
      * @param {string} options.tabId tabId 
      * @param {string} options.fieldId fieldId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addField = (...args : any[]):Promise<any> => {
+    addField = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields',options,callback)
+        return this.makeRequest('addField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields',options)
     };
     
     /**
@@ -51,21 +42,12 @@ export class Screens extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.fieldId fieldId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addFieldToDefaultScreen = (...args : any[]):Promise<any> => {
+    addFieldToDefaultScreen = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addFieldToDefaultScreen','POST','rest/api/2/screens/addToDefault/:fieldId',options,callback)
+        return this.makeRequest('addFieldToDefaultScreen','POST','rest/api/2/screens/addToDefault/:fieldId',options)
     };
     
     /**
@@ -78,21 +60,12 @@ export class Screens extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    addTab = (...args : any[]):Promise<any> => {
+    addTab = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('addTab','POST','rest/api/2/screens/:screenId/tabs',options,callback)
+        return this.makeRequest('addTab','POST','rest/api/2/screens/:screenId/tabs',options)
     };
     
     /**
@@ -104,21 +77,12 @@ export class Screens extends baseResource {
      * @param {string} options.screenId screenId 
      * @param {string} options.tabId tabId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteTab = (...args : any[]):Promise<any> => {
+    deleteTab = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteTab','DELETE','rest/api/2/screens/:screenId/tabs/:tabId',options,callback)
+        return this.makeRequest('deleteTab','DELETE','rest/api/2/screens/:screenId/tabs/:tabId',options)
     };
     
     /**
@@ -131,21 +95,12 @@ export class Screens extends baseResource {
      * @param {string} options.tabId tabId 
      * @param {string} options.projectKey projectKey the key of the project; this parameter is optional
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAllFields = (...args : any[]):Promise<any> => {
+    getAllFields = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAllFields','GET','rest/api/2/screens/:screenId/tabs/:tabId/fields',options,callback)
+        return this.makeRequest('getAllFields','GET','rest/api/2/screens/:screenId/tabs/:tabId/fields',options)
     };
     
     /**
@@ -157,21 +112,12 @@ export class Screens extends baseResource {
      * @param {string} options.screenId screenId 
      * @param {string} options.projectKey projectKey the key of the project; this parameter is optional
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAllTabs = (...args : any[]):Promise<any> => {
+    getAllTabs = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAllTabs','GET','rest/api/2/screens/:screenId/tabs',options,callback)
+        return this.makeRequest('getAllTabs','GET','rest/api/2/screens/:screenId/tabs',options)
     };
     
     /**
@@ -182,21 +128,12 @@ export class Screens extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.screenId screenId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getFieldsToAdd = (...args : any[]):Promise<any> => {
+    getFieldsToAdd = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getFieldsToAdd','GET','rest/api/2/screens/:screenId/availableFields',options,callback)
+        return this.makeRequest('getFieldsToAdd','GET','rest/api/2/screens/:screenId/availableFields',options)
     };
     
     /**
@@ -211,21 +148,12 @@ export class Screens extends baseResource {
      * @param {string} options.after after 
      * @param {string} options.position position 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    moveField = (...args : any[]):Promise<any> => {
+    moveField = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('moveField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id/move',options,callback)
+        return this.makeRequest('moveField','POST','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id/move',options)
     };
     
     /**
@@ -238,21 +166,12 @@ export class Screens extends baseResource {
      * @param {string} options.tabId tabId 
      * @param {string} options.pos pos 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    moveTab = (...args : any[]):Promise<any> => {
+    moveTab = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('moveTab','POST','rest/api/2/screens/:screenId/tabs/:tabId/move/:pos',options,callback)
+        return this.makeRequest('moveTab','POST','rest/api/2/screens/:screenId/tabs/:tabId/move/:pos',options)
     };
     
     /**
@@ -265,21 +184,12 @@ export class Screens extends baseResource {
      * @param {string} options.tabId tabId 
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    removeField = (...args : any[]):Promise<any> => {
+    removeField = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('removeField','DELETE','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id',options,callback)
+        return this.makeRequest('removeField','DELETE','rest/api/2/screens/:screenId/tabs/:tabId/fields/:id',options)
     };
     
     /**
@@ -293,21 +203,12 @@ export class Screens extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.name name 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    renameTab = (...args : any[]):Promise<any> => {
+    renameTab = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('renameTab','PUT','rest/api/2/screens/:screenId/tabs/:tabId',options,callback)
+        return this.makeRequest('renameTab','PUT','rest/api/2/screens/:screenId/tabs/:tabId',options)
     };
     
 

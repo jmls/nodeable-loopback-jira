@@ -1,4 +1,4 @@
-import {Validator} from '../validator';
+import { Validator } from '../validator';
 
 const validation = new Validator();
 const debug = require('debug')('loopback:connector:jira.resource.baseResource');
@@ -14,7 +14,7 @@ function getToken(ctx) {
         let parts = req.headers.authorization.split(' ');
 
         if (parts.length !== 2 || !/^Bearer$/i.test(parts[0])) {
-             return null;
+            return null;
         }
 
         return parts[1];
@@ -36,14 +36,14 @@ function getToken(ctx) {
  */
 export class baseResource implements IResource {
     name: string;
-    connector:IConnector;
-    apiPath:string;
-    methods:any;
-    modelMethods:any;
+    connector: IConnector;
+    apiPath: string;
+    methods: any;
+    modelMethods: any;
     model: any;
     definition: any;
-    settings:any;
-    jiraModelName:string;
+    settings: any;
+    jiraModelName: string;
 
     /**
      * loadCustom
@@ -53,34 +53,34 @@ export class baseResource implements IResource {
      * @return {Object} the json data in the file (if it exists) or an empty object {}
      */
 
-     static loadCustom = (file:string) => {
+    static loadCustom = (file: string) => {
+        let override = {
+            methods: {}
+        };
 
-         let override = {
-             methods: {}
-         };
+        if (!file) {
+            return {};
+        }
 
-         if (!file) {
-             return {};
-         }
-
-         let fileName = path.resolve(file);
+        let fileName = path.resolve(file);
 
         // try to load the override definitions
 
         try {
             override = require(fileName);
             override.methods = override.methods || {};
-        }
-
-        catch(e) {
+        } catch (e) {
             if (e.code !== 'MODULE_NOT_FOUND') {
-                console.log("ERROR: unable to process custom model definition %s",fileName,e);
+                console.log(
+                    'ERROR: unable to process custom model definition %s',
+                    fileName,
+                    e
+                );
             }
         }
 
         return override;
-     }
-
+    };
 
     /**
      * loadDefinition
@@ -90,16 +90,15 @@ export class baseResource implements IResource {
      * @param {string} settings.name The name of jira model.
      */
 
-    static loadDefinition = (modelName:string,customFolder:string) => {
-
+    static loadDefinition = (modelName: string, customFolder: string) => {
         let definition = api[modelName];
 
         // special case for User - we want to merge the login / logout methods from Session into the User model
 
-        if (modelName === "User") {
+        if (modelName === 'User') {
             let sessionApi = api['Session'];
 
-            Object.keys(sessionApi.methods).forEach((key) => {
+            Object.keys(sessionApi.methods).forEach(key => {
                 let method = sessionApi.methods[key];
 
                 if (method.name === 'currentUser') {
@@ -113,19 +112,22 @@ export class baseResource implements IResource {
         let custom = _.merge(
             {},
             baseResource.loadCustom(`./definition/${modelName}`),
-            customFolder ? baseResource.loadCustom(`${customFolder}/${modelName}`) : null
+            customFolder
+                ? baseResource.loadCustom(`${customFolder}/${modelName}`)
+                : null
         );
 
-        _.merge(definition,custom);
+        _.merge(definition, custom);
 
         // default the model visibility to true
 
-        Object.keys(definition.methods).forEach((key) => {
+        Object.keys(definition.methods).forEach(key => {
             let method = definition.methods[key];
 
-            method.tokenRequired = ('tokenRequired' in method) ? method.tokenRequired : true;
+            method.tokenRequired =
+                'tokenRequired' in method ? method.tokenRequired : true;
 
-            method.public = ('public' in method) ? method.public : true;
+            method.public = 'public' in method ? method.public : true;
 
             if (!method.public) {
                 return;
@@ -142,39 +144,60 @@ export class baseResource implements IResource {
                     path: method.path
                 },
 
-                returns: {arg: 'data', type: method.responseType ,root: true}
+                returns: { arg: 'data', type: method.responseType, root: true }
             };
 
             // run through all parameters, building up an `accepts` array
-            let params = [...method.urlParams,...method.queryParams];
+            let params = [...method.urlParams, ...method.queryParams];
 
             if (method.schema.length > 0) {
-                params.push({arg: "data", name: "data",type: 'object', http: { source: 'body' }});
+                params.push({
+                    arg: 'data',
+                    name: 'data',
+                    type: 'object',
+                    http: { source: 'body' }
+                });
             } else {
                 if (method.tokenRequired) {
-                    params.push({ arg: "token", type: "string", http: getToken});
+                    params.push({
+                        arg: 'token',
+                        type: 'string',
+                        http: getToken
+                    });
                 }
             }
 
-            params.forEach((param) => {
-                remoteMethod.accepts.push({arg: param.name || param.arg, name: param.name || param.arg, type: param.type, description: param.description, http: param.http});
+            params.forEach(param => {
+                remoteMethod.accepts.push({
+                    arg: param.name || param.arg,
+                    name: param.name || param.arg,
+                    type: param.type,
+                    description: param.description,
+                    http: param.http
+                });
             });
 
             definition.methods[method.name].remoteMethod = remoteMethod;
         });
 
         return definition;
-    }
+    };
 
-    constructor (connector:IConnector,Model:any,settings:any) {
+    constructor(connector: IConnector, Model: any, settings: any) {
         this.name = Model.modelName;
         this.model = Model;
         this.settings = settings;
         this.jiraModelName = this.model.settings.jiraModelName;
 
-        this.definition = baseResource.loadDefinition(this.jiraModelName,this.settings.customFolder);
+        this.definition = baseResource.loadDefinition(
+            this.jiraModelName,
+            this.settings.customFolder
+        );
 
-        this.definition.public = ('public' in this.definition) ? this.definition.public : this.settings.public || false;
+        this.definition.public =
+            'public' in this.definition
+                ? this.definition.public
+                : this.settings.public || false;
 
         this.connector = connector;
     }
@@ -184,28 +207,25 @@ export class baseResource implements IResource {
      * registers all the api methods with the model
      */
 
-    register = ():void => {
-
+    register = (): void => {
         // "this.methods" is defined in the class itself
 
-        Object.keys(this.definition.methods).forEach((key) => {
-
+        Object.keys(this.definition.methods).forEach(key => {
             let method = this.definition.methods[key].remoteMethod;
 
             if (!method) {
                 return;
             }
 
-            if (key === "login" || key === "logout") {
+            if (key === 'login' || key === 'logout') {
                 this.model[key] = this.connector[key];
             } else {
                 this.model[key] = this[key];
             }
 
-            this.model.remoteMethod(key,method);
+            this.model.remoteMethod(key, method);
         });
-
-    }
+    };
 
     /**
      * makeRequest
@@ -214,12 +234,15 @@ export class baseResource implements IResource {
      * @param {string} verb The http method to use (GET , PUT etc)
      * @param {string} url The method api url
      * @param {Object} options The data to send in the request
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    makeRequest = (method:string,verb:string,url:string,options:any = {}, callback:Function):Promise<any> => {
-
+    makeRequest = async (
+        method: string,
+        verb: string,
+        url: string,
+        options: any = {}
+    ) => {
         let methodDefinition = this.definition.methods[method];
         let path;
 
@@ -228,11 +251,11 @@ export class baseResource implements IResource {
         // check out validations before making the request
 
         if (methodDefinition.rules) {
-            let result = validation.validate(options,methodDefinition.rules);
+            let result = validation.validate(options, methodDefinition.rules);
 
             if (result !== true) {
-                let err = { statusCode: 422, message: result};
-                return callback ? callback(err) : Promise.reject(err);
+                let err = { statusCode: 422, message: result };
+                throw err;
             }
         }
 
@@ -240,27 +263,25 @@ export class baseResource implements IResource {
 
         try {
             path = pattern.stringify(options);
-        }
-
-        catch(e) {
-            let err = { statusCode: 422, message: e.message};
-            return callback ? callback(err) : Promise.reject(err);
+        } catch (e) {
+            let err = { statusCode: 422, message: e.message };
+            throw err;
         }
 
         let token = options.token;
 
         delete options.token;
 
-        let requestData:any = {
-             method: verb,
-             token,
-             path,
-             qs: {},
-             body: {},
-             tokenRequired: methodDefinition.tokenRequired
-        }
+        let requestData: any = {
+            method: verb,
+            token,
+            path,
+            qs: {},
+            body: {},
+            tokenRequired: methodDefinition.tokenRequired
+        };
 
-        methodDefinition.queryParams.forEach((param) => {
+        methodDefinition.queryParams.forEach(param => {
             if (param.name in options) {
                 requestData.qs[param.name] = options[param.name];
             }
@@ -270,7 +291,7 @@ export class baseResource implements IResource {
             requestData.qs.expand = options.expand;
         }
 
-        methodDefinition.schema.forEach((param) => {
+        methodDefinition.schema.forEach(param => {
             if (param.name in options) {
                 requestData.body[param.name] = options[param.name];
             }
@@ -286,7 +307,6 @@ export class baseResource implements IResource {
 
         requestData._description = methodDefinition.description;
 
-        return this.connector.makeRequest(requestData, callback);
-    }
-
+        return this.connector.makeRequest(requestData);
+    };
 }

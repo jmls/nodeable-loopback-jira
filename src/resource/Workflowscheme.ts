@@ -24,21 +24,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createDraftForParent = (...args : any[]):Promise<any> => {
+    createDraftForParent = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createDraftForParent','POST','rest/api/2/workflowscheme/:id/createdraft',options,callback)
+        return this.makeRequest('createDraftForParent','POST','rest/api/2/workflowscheme/:id/createdraft',options)
     };
     
     /**
@@ -62,21 +53,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.issueTypes issueTypes 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createScheme = (...args : any[]):Promise<any> => {
+    createScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createScheme','POST','rest/api/2/workflowscheme',options,callback)
+        return this.makeRequest('createScheme','POST','rest/api/2/workflowscheme',options)
     };
     
     /**
@@ -90,21 +72,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded when true will create and return a draft when the workflow scheme cannot be edited
                             (e.g. when it is being used by a project).
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteDefault = (...args : any[]):Promise<any> => {
+    deleteDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteDefault','DELETE','rest/api/2/workflowscheme/:id/default',options,callback)
+        return this.makeRequest('deleteDefault','DELETE','rest/api/2/workflowscheme/:id/default',options)
     };
     
     /**
@@ -115,21 +88,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteDraftById = (...args : any[]):Promise<any> => {
+    deleteDraftById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteDraftById','DELETE','rest/api/2/workflowscheme/:id/draft',options,callback)
+        return this.makeRequest('deleteDraftById','DELETE','rest/api/2/workflowscheme/:id/draft',options)
     };
     
     /**
@@ -140,21 +104,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteDraftDefault = (...args : any[]):Promise<any> => {
+    deleteDraftDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteDraftDefault','DELETE','rest/api/2/workflowscheme/:id/draft/default',options,callback)
+        return this.makeRequest('deleteDraftDefault','DELETE','rest/api/2/workflowscheme/:id/draft/default',options)
     };
     
     /**
@@ -166,21 +121,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.issueType issueType 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteDraftIssueType = (...args : any[]):Promise<any> => {
+    deleteDraftIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteDraftIssueType','DELETE','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
+        return this.makeRequest('deleteDraftIssueType','DELETE','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options)
     };
     
     /**
@@ -192,21 +138,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.workflowName workflowName the name of the workflow to delete.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteDraftWorkflowMapping = (...args : any[]):Promise<any> => {
+    deleteDraftWorkflowMapping = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteDraftWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
+        return this.makeRequest('deleteDraftWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/draft/workflow',options)
     };
     
     /**
@@ -221,21 +158,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded when true will create and return a draft when the workflow scheme cannot be edited
                             (e.g. when it is being used by a project).
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteIssueType = (...args : any[]):Promise<any> => {
+    deleteIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteIssueType','DELETE','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
+        return this.makeRequest('deleteIssueType','DELETE','rest/api/2/workflowscheme/:id/issuetype/:issueType',options)
     };
     
     /**
@@ -246,21 +174,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteScheme = (...args : any[]):Promise<any> => {
+    deleteScheme = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteScheme','DELETE','rest/api/2/workflowscheme/:id',options,callback)
+        return this.makeRequest('deleteScheme','DELETE','rest/api/2/workflowscheme/:id',options)
     };
     
     /**
@@ -275,21 +194,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded flag to indicate if a draft should be created if necessary to delete the workflow
                             from the scheme.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteWorkflowMapping = (...args : any[]):Promise<any> => {
+    deleteWorkflowMapping = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/workflow',options,callback)
+        return this.makeRequest('deleteWorkflowMapping','DELETE','rest/api/2/workflowscheme/:id/workflow',options)
     };
     
     /**
@@ -303,21 +213,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.returnDraftIfExists returnDraftIfExists Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of
                             the scheme itself.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getById = (...args : any[]):Promise<any> => {
+    getById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getById','GET','rest/api/2/workflowscheme/:id',options,callback)
+        return this.makeRequest('getById','GET','rest/api/2/workflowscheme/:id',options)
     };
     
     /**
@@ -331,21 +232,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.returnDraftIfExists returnDraftIfExists Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of
                             the scheme itself.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDefault = (...args : any[]):Promise<any> => {
+    getDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDefault','GET','rest/api/2/workflowscheme/:id/default',options,callback)
+        return this.makeRequest('getDefault','GET','rest/api/2/workflowscheme/:id/default',options)
     };
     
     /**
@@ -356,21 +248,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDraftById = (...args : any[]):Promise<any> => {
+    getDraftById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDraftById','GET','rest/api/2/workflowscheme/:id/draft',options,callback)
+        return this.makeRequest('getDraftById','GET','rest/api/2/workflowscheme/:id/draft',options)
     };
     
     /**
@@ -381,21 +264,12 @@ export class Workflowscheme extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDraftDefault = (...args : any[]):Promise<any> => {
+    getDraftDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDraftDefault','GET','rest/api/2/workflowscheme/:id/draft/default',options,callback)
+        return this.makeRequest('getDraftDefault','GET','rest/api/2/workflowscheme/:id/draft/default',options)
     };
     
     /**
@@ -407,21 +281,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.issueType issueType 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDraftIssueType = (...args : any[]):Promise<any> => {
+    getDraftIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDraftIssueType','GET','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
+        return this.makeRequest('getDraftIssueType','GET','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options)
     };
     
     /**
@@ -433,21 +298,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.workflowName workflowName the workflow mapping to return. Null can be passed to return all mappings. Must be a valid workflow name.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getDraftWorkflow = (...args : any[]):Promise<any> => {
+    getDraftWorkflow = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getDraftWorkflow','GET','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
+        return this.makeRequest('getDraftWorkflow','GET','rest/api/2/workflowscheme/:id/draft/workflow',options)
     };
     
     /**
@@ -462,21 +318,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.returnDraftIfExists returnDraftIfExists Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of
                             the scheme itself.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getIssueType = (...args : any[]):Promise<any> => {
+    getIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getIssueType','GET','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
+        return this.makeRequest('getIssueType','GET','rest/api/2/workflowscheme/:id/issuetype/:issueType',options)
     };
     
     /**
@@ -491,21 +338,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.returnDraftIfExists returnDraftIfExists Default: falsewhen true indicates that a scheme's draft, if it exists, should be queried instead of
                             the scheme itself.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getWorkflow = (...args : any[]):Promise<any> => {
+    getWorkflow = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getWorkflow','GET','rest/api/2/workflowscheme/:id/workflow',options,callback)
+        return this.makeRequest('getWorkflow','GET','rest/api/2/workflowscheme/:id/workflow',options)
     };
     
     /**
@@ -523,21 +361,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setDraftIssueType = (...args : any[]):Promise<any> => {
+    setDraftIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setDraftIssueType','PUT','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options,callback)
+        return this.makeRequest('setDraftIssueType','PUT','rest/api/2/workflowscheme/:id/draft/issuetype/:issueType',options)
     };
     
     /**
@@ -555,21 +384,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setIssueType = (...args : any[]):Promise<any> => {
+    setIssueType = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setIssueType','PUT','rest/api/2/workflowscheme/:id/issuetype/:issueType',options,callback)
+        return this.makeRequest('setIssueType','PUT','rest/api/2/workflowscheme/:id/issuetype/:issueType',options)
     };
     
     /**
@@ -599,21 +419,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.issueTypes issueTypes 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    update = (...args : any[]):Promise<any> => {
+    update = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('update','PUT','rest/api/2/workflowscheme/:id',options,callback)
+        return this.makeRequest('update','PUT','rest/api/2/workflowscheme/:id',options)
     };
     
     /**
@@ -630,21 +441,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateDefault = (...args : any[]):Promise<any> => {
+    updateDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateDefault','PUT','rest/api/2/workflowscheme/:id/default',options,callback)
+        return this.makeRequest('updateDefault','PUT','rest/api/2/workflowscheme/:id/default',options)
     };
     
     /**
@@ -669,21 +471,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.issueTypes issueTypes 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateDraft = (...args : any[]):Promise<any> => {
+    updateDraft = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateDraft','PUT','rest/api/2/workflowscheme/:id/draft',options,callback)
+        return this.makeRequest('updateDraft','PUT','rest/api/2/workflowscheme/:id/draft',options)
     };
     
     /**
@@ -696,21 +489,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.workflow workflow 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateDraftDefault = (...args : any[]):Promise<any> => {
+    updateDraftDefault = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateDraftDefault','PUT','rest/api/2/workflowscheme/:id/draft/default',options,callback)
+        return this.makeRequest('updateDraftDefault','PUT','rest/api/2/workflowscheme/:id/draft/default',options)
     };
     
     /**
@@ -729,21 +513,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.defaultMapping defaultMapping 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateDraftWorkflowMapping = (...args : any[]):Promise<any> => {
+    updateDraftWorkflowMapping = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateDraftWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/draft/workflow',options,callback)
+        return this.makeRequest('updateDraftWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/draft/workflow',options)
     };
     
     /**
@@ -765,21 +540,12 @@ export class Workflowscheme extends baseResource {
      * @param {string} options.defaultMapping defaultMapping 
      * @param {string} options.updateDraftIfNeeded updateDraftIfNeeded 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    updateWorkflowMapping = (...args : any[]):Promise<any> => {
+    updateWorkflowMapping = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('updateWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/workflow',options,callback)
+        return this.makeRequest('updateWorkflowMapping','PUT','rest/api/2/workflowscheme/:id/workflow',options)
     };
     
 

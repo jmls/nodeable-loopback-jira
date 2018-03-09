@@ -36,21 +36,12 @@ export class Version extends baseResource {
      * @param {string} options.operations operations 
      * @param {string} options.remotelinks remotelinks 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    create = (...args : any[]):Promise<any> => {
+    create = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('create','POST','rest/api/2/version',options,callback)
+        return this.makeRequest('create','POST','rest/api/2/version',options)
     };
     
     /**
@@ -62,21 +53,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.versionId versionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    createOrUpdateRemoteVersionLink = (...args : any[]):Promise<any> => {
+    createOrUpdateRemoteVersionLink = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('createOrUpdateRemoteVersionLink','POST','rest/api/2/version/:versionId/remotelink',options,callback)
+        return this.makeRequest('createOrUpdateRemoteVersionLink','POST','rest/api/2/version/:versionId/remotelink',options)
     };
     
     /**
@@ -93,21 +75,12 @@ export class Version extends baseResource {
      * @param {string} options.moveAffectedIssuesTo moveAffectedIssuesTo The version to set affectedVersion to on issues where the deleted version is the affected version,
                              If null then the affectedVersion is removed.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    delete = (...args : any[]):Promise<any> => {
+    delete = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('delete','DELETE','rest/api/2/version/:id',options,callback)
+        return this.makeRequest('delete','DELETE','rest/api/2/version/:id',options)
     };
     
     /**
@@ -118,21 +91,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.versionId versionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteRemoteVersionLinksByVersionId = (...args : any[]):Promise<any> => {
+    deleteRemoteVersionLinksByVersionId = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteRemoteVersionLinksByVersionId','DELETE','rest/api/2/version/:versionId/remotelink',options,callback)
+        return this.makeRequest('deleteRemoteVersionLinksByVersionId','DELETE','rest/api/2/version/:versionId/remotelink',options)
     };
     
     /**
@@ -144,21 +108,12 @@ export class Version extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.expand expand 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findById = (...args : any[]):Promise<any> => {
+    findById = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findById','GET','rest/api/2/version/:id',options,callback)
+        return this.makeRequest('findById','GET','rest/api/2/version/:id',options)
     };
     
     /**
@@ -169,21 +124,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.globalId globalId the global ID of the remote resource that is linked to the versions
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getRemoteVersionLinks = (...args : any[]):Promise<any> => {
+    getRemoteVersionLinks = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getRemoteVersionLinks','GET','rest/api/2/version/remotelink',options,callback)
+        return this.makeRequest('getRemoteVersionLinks','GET','rest/api/2/version/remotelink',options)
     };
     
     /**
@@ -194,21 +140,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.versionId versionId 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getRemoteVersionLinksByVersionId = (...args : any[]):Promise<any> => {
+    getRemoteVersionLinksByVersionId = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getRemoteVersionLinksByVersionId','GET','rest/api/2/version/:versionId/remotelink',options,callback)
+        return this.makeRequest('getRemoteVersionLinksByVersionId','GET','rest/api/2/version/:versionId/remotelink',options)
     };
     
     /**
@@ -219,21 +156,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getVersionRelatedIssues = (...args : any[]):Promise<any> => {
+    getVersionRelatedIssues = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getVersionRelatedIssues','GET','rest/api/2/version/:id/relatedIssueCounts',options,callback)
+        return this.makeRequest('getVersionRelatedIssues','GET','rest/api/2/version/:id/relatedIssueCounts',options)
     };
     
     /**
@@ -244,21 +172,12 @@ export class Version extends baseResource {
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.id id 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getVersionUnresolvedIssues = (...args : any[]):Promise<any> => {
+    getVersionUnresolvedIssues = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getVersionUnresolvedIssues','GET','rest/api/2/version/:id/unresolvedIssueCount',options,callback)
+        return this.makeRequest('getVersionUnresolvedIssues','GET','rest/api/2/version/:id/unresolvedIssueCount',options)
     };
     
     /**
@@ -270,21 +189,12 @@ export class Version extends baseResource {
      * @param {string} options.id id 
      * @param {string} options.moveIssuesTo moveIssuesTo 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    merge = (...args : any[]):Promise<any> => {
+    merge = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('merge','PUT','rest/api/2/version/:id/mergeto/:moveIssuesTo',options,callback)
+        return this.makeRequest('merge','PUT','rest/api/2/version/:id/mergeto/:moveIssuesTo',options)
     };
     
     /**
@@ -303,21 +213,12 @@ export class Version extends baseResource {
      * @param {string} options.after after 
      * @param {string} options.position position 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    moveVersion = (...args : any[]):Promise<any> => {
+    moveVersion = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('moveVersion','POST','rest/api/2/version/:id/move',options,callback)
+        return this.makeRequest('moveVersion','POST','rest/api/2/version/:id/move',options)
     };
     
     /**
@@ -342,21 +243,12 @@ export class Version extends baseResource {
      * @param {string} options.operations operations 
      * @param {string} options.remotelinks remotelinks 
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    update = (...args : any[]):Promise<any> => {
+    update = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('update','PUT','rest/api/2/version/:id',options,callback)
+        return this.makeRequest('update','PUT','rest/api/2/version/:id',options)
     };
     
 

@@ -1,21 +1,19 @@
-import {baseResource} from './baseResource';
+import { baseResource } from './baseResource';
 
 /**
- * ApplicationProperties 
+ * ApplicationProperties
  *
  * @constructor ApplicationProperties
  * @property {IConnector} connector the jira connector instance
  */
 
 export class ApplicationProperties extends baseResource {
-
-    constructor (connector:IConnector,Model:any,settings:any) {
-        super(connector,Model,settings);
+    constructor(connector: IConnector, Model: any, settings: any) {
+        super(connector, Model, settings);
         this.methods = [];
         this.register();
     }
 
-    
     /**
      * Returns the properties that are displayed on the "General Configuration > Advanced Settings" page.
      *
@@ -23,23 +21,18 @@ export class ApplicationProperties extends baseResource {
      * @memberOf ApplicationProperties#
      * @param {Object} options An object containing options to pass to the Jira API.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getAdvancedSettings = (...args : any[]):Promise<any> => {
-
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getAdvancedSettings','GET','rest/api/2/application-properties/advanced-settings',options,callback)
+    getAdvancedSettings = async options => {
+        return this.makeRequest(
+            'getAdvancedSettings',
+            'GET',
+            'rest/api/2/application-properties/advanced-settings',
+            options
+        );
     };
-    
+
     /**
      * Returns an application property.a String containing the property keywhen fetching a list specifies the permission level of all items in the list
      *                        see {@link com.atlassian.jira.bc.admin.ApplicationPropertiesService.EditPermissionLevel}when fetching a list allows the list to be filtered by the property's start of key
@@ -56,49 +49,37 @@ export class ApplicationProperties extends baseResource {
                         e.g. "jira.lf.*" whould fetch only those permissions that are editable and whose keys start with
                         "jira.lf.". This is a regex.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProperty = (...args : any[]):Promise<any> => {
-
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProperty','GET','rest/api/2/application-properties',options,callback)
+    getProperty = async options => {
+        return this.makeRequest(
+            'getProperty',
+            'GET',
+            'rest/api/2/application-properties',
+            options
+        );
     };
-    
+
     /**
      * Modify an application property via PUT. The "value" field present in the PUT will override the existing value.
      *
      * @method setPropertyViaRestfulTable
      * @memberOf ApplicationProperties#
      * @param {Object} options An object containing options to pass to the Jira API.
-     * @param {string} options.id id 
-     * @param {string} options.id id 
-     * @param {string} options.value value 
+     * @param {string} options.id id
+     * @param {string} options.id id
+     * @param {string} options.value value
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setPropertyViaRestfulTable = (...args : any[]):Promise<any> => {
-
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setPropertyViaRestfulTable','PUT','rest/api/2/application-properties/:id',options,callback)
+    setPropertyViaRestfulTable = async options => {
+        return this.makeRequest(
+            'setPropertyViaRestfulTable',
+            'PUT',
+            'rest/api/2/application-properties/:id',
+            options
+        );
     };
-    
-
 }

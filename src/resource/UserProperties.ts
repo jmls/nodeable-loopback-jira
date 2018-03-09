@@ -27,21 +27,12 @@ export class UserProperties extends baseResource {
      * @param {string} options.userKey userKey key of the user whose property is to be removed
      * @param {string} options.username username username of the user whose property is to be removed
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    deleteProperty = (...args : any[]):Promise<any> => {
+    deleteProperty = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('deleteProperty','DELETE','rest/api/2/user/properties/:propertyKey',options,callback)
+        return this.makeRequest('deleteProperty','DELETE','rest/api/2/user/properties/:propertyKey',options)
     };
     
     /**
@@ -53,21 +44,12 @@ export class UserProperties extends baseResource {
      * @param {string} options.userKey userKey key of the user whose properties are to be returned
      * @param {string} options.username username username of the user whose properties are to be returned
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getPropertiesKeys = (...args : any[]):Promise<any> => {
+    getPropertiesKeys = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getPropertiesKeys','GET','rest/api/2/user/properties',options,callback)
+        return this.makeRequest('getPropertiesKeys','GET','rest/api/2/user/properties',options)
     };
     
     /**
@@ -81,21 +63,12 @@ export class UserProperties extends baseResource {
      * @param {string} options.userKey userKey key of the user whose property is to be returned
      * @param {string} options.username username username of the user whose property is to be returned
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    getProperty = (...args : any[]):Promise<any> => {
+    getProperty = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('getProperty','GET','rest/api/2/user/properties/:propertyKey',options,callback)
+        return this.makeRequest('getProperty','GET','rest/api/2/user/properties/:propertyKey',options)
     };
     
     /**
@@ -112,21 +85,12 @@ export class UserProperties extends baseResource {
      * @param {string} options.userKey userKey key of the user whose property is to be set
      * @param {string} options.username username username of the user whose property is to be set
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    setProperty = (...args : any[]):Promise<any> => {
+    setProperty = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('setProperty','PUT','rest/api/2/user/properties/:propertyKey',options,callback)
+        return this.makeRequest('setProperty','PUT','rest/api/2/user/properties/:propertyKey',options)
     };
     
 

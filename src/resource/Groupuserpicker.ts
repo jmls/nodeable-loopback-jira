@@ -46,21 +46,12 @@ export class Groupuserpicker extends baseResource {
                     Special values such as -1 (all standard issue types), -2 (all subtask issue types) are supported.
                     This parameter is only used when fieldId is present.
      * @param {string} options.token token The token to use for authentication. This token is supplied on a sucessful login. If not supplied, the default token (if set) is used
-     * @param [callback] if supplied, called with result of api call
      * @return {Promise.<any>} result of api call
      */
 
-    findUsersAndGroups = (...args : any[]):Promise<any> => {
+    findUsersAndGroups = async options => {
 
-        if (args.length === 0) {
-            throw new Error("options must be passed");
-        }
-
-        let callback = ((typeof args[args.length - 1]) === 'function') ? args.pop() : null;
-
-        let options = ((typeof args[0]) === 'object') ? args[0] : {}
-
-        return this.makeRequest('findUsersAndGroups','GET','rest/api/2/groupuserpicker',options,callback)
+        return this.makeRequest('findUsersAndGroups','GET','rest/api/2/groupuserpicker',options)
     };
     
 
